@@ -15,6 +15,7 @@
     height: 56px;
     line-height: 56px;
     color: red;
+    
 }
 
 .form-header > span{
@@ -25,8 +26,14 @@
 .column{
     float: left;
     font-size: 16px;
+    margin-bottom: 0 !important;
+}
+
+.remember{
+    float: left;
+    margin-left: 5px !important;
 }
 
 .login-form-button{
-    margin: 0 16px;
+    width: 180px !important;
 }

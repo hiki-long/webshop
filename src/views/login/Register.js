@@ -3,15 +3,14 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
 
-    //变换登录的形式
     toggleForm = () => {
-        this.props.switchForm("register")
+        this.props.switchForm("login")
     }
 
     render() {
@@ -19,8 +18,8 @@ class Login extends React.Component {
             <div className="form-wrap">
                 <div>
                     <div className="form-header">
-                        <h4 className="column">登录</h4>
-                        <span onClick={this.toggleForm}>账号注册</span>
+                        <h4 className="column">账号注册</h4>
+                        <span onClick={this.toggleForm}>登录</span>
                     </div>
                     <div className="form-content">
                         <Form
@@ -29,6 +28,8 @@ class Login extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
+                            {/* 莫名奇妙的bug,没有换行符会出现两个input对不齐 */}
+                            {/* <br></br> */}
                             <Form.Item name="username" rules={[
                                     {
                                         required: true,
@@ -55,17 +56,38 @@ class Login extends React.Component {
                                     // },
                                     {
                                         pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: "密码需要包含字母+数字，长度在6-20之间"
-                                    },
+                                    }
                                 ]}
                             >
                                 <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" />
                             </Form.Item>
-                            <Form.Item name="remember"  valuePropName="checked" className="remember">
-                                <Checkbox>记住密码</Checkbox>
+                            <Form.Item
+                                name="password2"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: '请在此重复你的密码!',
+                                    },
+                                    ({getFieldValue}) => ({
+                                        validator(rule, value) {
+                                            if(getFieldValue('password') === value)
+                                            {
+                                                return Promise.resolve();
+                                            }
+                                            else
+                                            {
+                                                return Promise.reject("两次密码不一致");
+                                            }
+                                        }
+
+                                    }),
+                                ]}
+                            >
+                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="再次输入" />
                             </Form.Item>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button" block>
-                                    登录
+                                    注册
                                 </Button>
                             </Form.Item>
                         </Form>
@@ -75,4 +97,4 @@ class Login extends React.Component {
         );
     }
 }
-export default Login;
+export default Register;
