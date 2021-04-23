@@ -2,17 +2,38 @@ import React from "react";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
+import { Login } from "../../api/account";
 
 class LoginShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            email: "",
+            password: ""
+        };
     }
 
     //变换登录的形式
     toggleForm = () => {
         // this.props.switchForm("register")
     }
+
+    changeEmail = event => {
+        this.setState({email: event.target.value})
+    }
+
+    changePassword = event => {
+        this.setState({password: event.target.value});
+    }
+
+    handleSubmit = event => {
+        const sumbitInfo = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+        Login(sumbitInfo);
+    }
+
 
     render() {
         return (
@@ -26,6 +47,7 @@ class LoginShow extends React.Component {
                         <Form
                             name="normal_login"
                             className="login-form"
+                            onFinish={this.handleSubmit}
                             initialValues={{
                                 remember: true,
                             }}>
@@ -38,7 +60,7 @@ class LoginShow extends React.Component {
                                         type: "email", message: "邮箱格式不正确"
                                     },
                                 ]}>
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱" />
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱" onChange={this.changeEmail}/>
                             </Form.Item>
                             <Form.Item
                                 name="password"
@@ -47,18 +69,12 @@ class LoginShow extends React.Component {
                                         required: true,
                                         message: '请在此输入你的密码!',
                                     },
-                                    // {
-                                    //     min:6, message: "密码不能小于6位"
-                                    // },
-                                    // {
-                                    //     max:20, message: "密码不能大于20位"
-                                    // },
                                     {
                                         pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: "密码需要包含字母+数字，长度在6-20之间"
                                     },
                                 ]}
                             >
-                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" />
+                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.changePassword}/>
                             </Form.Item>
                             <Form.Item name="remember"  valuePropName="checked" className="remember">
                                 <Checkbox>记住密码</Checkbox>

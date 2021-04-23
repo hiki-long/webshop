@@ -2,15 +2,43 @@ import React from "react";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
+import { Register } from "../../api/account";
 
 class RegisterShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            email: "",
+            password: "",
+            password2: ""
+        };
     }
 
     toggleForm = () => {
         // this.props.switchForm("login")
+    };
+
+    
+
+    changeEmail = event => {
+        this.setState({email: event.target.value})
+    }
+
+    changePassword = event => {
+        this.setState({password: event.target.value});
+    }
+
+    changePassword2 = event => {
+        this.setState({password2: event.target.value});
+    }
+
+    handleSubmit = event => {
+        const sumbitInfo = {
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2,
+        };
+        Register(sumbitInfo);
     }
 
     render() {
@@ -25,6 +53,7 @@ class RegisterShow extends React.Component {
                         <Form
                             name="normal_login"
                             className="login-form"
+                            onFinish={this.handleSubmit}
                             initialValues={{
                                 remember: true,
                             }}>
@@ -37,7 +66,7 @@ class RegisterShow extends React.Component {
                                         type: "email", message: "邮箱格式不正确"
                                     },
                                 ]}>
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱" />
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱" onChange={this.changeEmail}/>
                             </Form.Item>
                             <Form.Item
                                 name="password"
@@ -51,7 +80,7 @@ class RegisterShow extends React.Component {
                                     }
                                 ]}
                             >
-                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" />
+                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.changePassword} />
                             </Form.Item>
                             <Form.Item
                                 name="password2"
@@ -75,7 +104,7 @@ class RegisterShow extends React.Component {
                                     }),
                                 ]}
                             >
-                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="再次输入" />
+                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="再次输入" onChange={this.changePassword2} />
                             </Form.Item>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button" block>
