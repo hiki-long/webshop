@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 
-class Login extends React.Component {
+class LoginShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -75,4 +75,4 @@ class Login extends React.Component {
         );
     }
 }
-export default Login;
+export default LoginShow;

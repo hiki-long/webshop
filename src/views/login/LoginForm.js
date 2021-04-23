@@ -1,6 +1,6 @@
 import React from "react";
-import Login from './Login';
-import Register from './Register';
+import LoginShow from './LoginShow';
+import RegisterShow from './RegisterShow';
 class LoginForm extends React.Component{
     constructor(){
         super();
@@ -19,8 +19,8 @@ class LoginForm extends React.Component{
         return(
             <div className="form-warp">
                 {this.state.formType === 'login' 
-                ? <Login switchForm={this.switchForm} />
-                : <Register switchForm={this.switchForm} />}
+                ? <LoginShow switchForm={this.switchForm} />
+                : <RegisterShow switchForm={this.switchForm} />}
             </div>
         );
     }

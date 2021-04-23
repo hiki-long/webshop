@@ -1,17 +1,21 @@
 import './App.css';
-import { Switch, Route, Router, HashHistroy, Link, HashRouter } from 'react-router-dom';
-import Login from './views/login/Login'
-import Register from './views/login/Register'
+import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 import LoginForm from './views/login/LoginForm'
+import Home from './views/shop/Home'
+import Navigate from './views/shop/Navigate';
+import LoginShow from './views/login/LoginShow';
+import RegisterShow from './views/login/RegisterShow';
+
 
 function App() {
   return (
     <div className="App">
-      <HashRouter>
-        <Switch>
-          <Route component={LoginForm} path="/" />
-        </Switch>
-      </HashRouter>
+      <Navigate />
+      <BrowserRouter>
+          <Route component={Home} exact path="/" />
+          <Route component={LoginShow} path="/login" />
+          <Route component={RegisterShow} path="/register" />
+      </BrowserRouter>
     </div>
       
   );

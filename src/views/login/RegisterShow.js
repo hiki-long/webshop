@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 
-class Register extends React.Component {
+class RegisterShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -28,8 +28,6 @@ class Register extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
-                            {/* 莫名奇妙的bug,没有换行符会出现两个input对不齐 */}
-                            {/* <br></br> */}
                             <Form.Item name="username" rules={[
                                     {
                                         required: true,
@@ -48,12 +46,6 @@ class Register extends React.Component {
                                         required: true,
                                         message: '请在此输入你的密码!',
                                     },
-                                    // {
-                                    //     min:6, message: "密码不能小于6位"
-                                    // },
-                                    // {
-                                    //     max:20, message: "密码不能大于20位"
-                                    // },
                                     {
                                         pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: "密码需要包含字母+数字，长度在6-20之间"
                                     }
@@ -97,4 +89,4 @@ class Register extends React.Component {
         );
     }
 }
-export default Register;
+export default RegisterShow;
