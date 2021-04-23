@@ -10,7 +10,7 @@ class RegisterShow extends React.Component {
     }
 
     toggleForm = () => {
-        this.props.switchForm("login")
+        // this.props.switchForm("login")
     }
 
     render() {

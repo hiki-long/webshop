@@ -11,7 +11,7 @@ class LoginShow extends React.Component {
 
     //变换登录的形式
     toggleForm = () => {
-        this.props.switchForm("register")
+        // this.props.switchForm("register")
     }
 
     render() {
