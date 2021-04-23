@@ -3,10 +3,9 @@
 import axios from "axios"
 
 export function Login(data){
-    axios.post('http://localhost:3000/login',data)
+    axios.post('http://localhost:3000/api/login',data)
         .then(res => {
             console.log(res)
-            localStorage.setItem('token',res.data.token)
         })
         .catch(err => {
             console.log(err)

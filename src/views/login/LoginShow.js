@@ -29,7 +29,7 @@ class LoginShow extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
-                            <Form.Item name="username" rules={[
+                            <Form.Item name="email" rules={[
                                     {
                                         required: true,
                                         message: '请在此输入你的邮箱!',
