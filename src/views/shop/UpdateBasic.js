@@ -15,18 +15,62 @@ import {
   Upload,
 } from 'antd';
 import { InputGroup } from 'react-bootstrap';
+import { UploadGoad } from '../../api/uploadgoad';
 const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
     }
     return e && e.fileList;
-  };
+};
+
 class UpdateBasic extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            
+            goad_name: "",
+            goad_owner: "",
+            goad_remain: "",
+            goad_onSale: false,
+            goad_description: ""
         };
+        this.handleSaleChange = this.handleSaleChange.bind(this)
+        this.handleChangeRemain = this.handleChangeRemain.bind(this)
+    }
+
+    handleSaleChange(checked) {
+        if(checked){
+            this.setState({goad_onSale: true})
+        }
+        else{
+            this.setState({goad_onSale: false})
+        }
+    }
+
+    handleChangeName = event => {
+        this.setState({goad_name: event.target.value})
+    }
+
+    handleChangeOwner = event => {
+        this.setState({goad_owner: event.target.value})
+    }
+
+    handleChangeRemain(value) {
+        this.setState({goad_remain: value})
+    }
+ 
+    handleChangeDesc = event => {
+        this.setState({goad_description: event.target.value})
+    }
+
+    handleSubmit = event => {
+        const sumbitInfo = {
+            goad_name: this.state.goad_name,
+            goad_owner: this.state.goad_owner,
+            goad_remain: this.state.goad_remain,
+            goad_onSale: this.state.goad_onSale,
+            goad_description: this.state.goad_description,
+        };
+        UploadGoad(sumbitInfo)
     }
 
     render(){
@@ -41,25 +85,26 @@ class UpdateBasic extends React.Component{
               span: 4,
             }}
             layout="horizontal"
+            onFinish={this.handleSubmit}
           >
             <Form.Item label="卖方ID">
-              <Input />
+              <Input onChange={this.handleChangeOwner} />
             </Form.Item>
-            <Form.Item label="产品情况">
+            <Form.Item label="产品情况" >
               <Select>
                 <Select.Option value="demo">新上架</Select.Option>
                 <Select.Option value="demo">已有</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item label="商品名">
-                <Input />
+                <Input onChange={this.handleChangeName}/>
             </Form.Item>
             <Form.Item label="商品类别"
                 wrapperCol={{
                     span:1,
                 }}
             >
-                <Select defaultValue="请选择" style={{ width: 120 }} allowClear onChange={this.handleChange}>
+                <Select defaultValue="请选择" style={{ width: 120 }} allowClear >
                     <Select.Option value="jack">衣服</Select.Option>
                     <Select.Option value="jack">食品</Select.Option>
                     <Select.Option value="jack">电器</Select.Option>
@@ -85,7 +130,7 @@ class UpdateBasic extends React.Component{
                 }}
             >
                 <Form.Item name="input-number" noStyle>
-                    <InputNumber min={0} max={100000} />
+                    <InputNumber min={0} max={100000} onChange={this.handleChangeRemain}/>
                 </Form.Item>
                 <span className="ant-form-text">件</span>
                 
@@ -94,7 +139,7 @@ class UpdateBasic extends React.Component{
                 wrapperCol={{
                     span:1,
                 }}>
-                <Switch />
+                <Switch  onChange={this.handleSaleChange}/>
             </Form.Item>
             <Form.Item name="upload" label="商品图片" valuePropName="fileList" getValueFromEvent={normFile}
                 >
@@ -103,14 +148,14 @@ class UpdateBasic extends React.Component{
                 </Upload>
             </Form.Item>
             <Form.Item name={['user','introduction']} label="商品描述">
-                <Input.TextArea showCount maxLength={250}/>
+                <Input.TextArea showCount maxLength={250} onChange={this.handleChangeDesc}/>
             </Form.Item>
             <Form.Item 
                 wrapperCol={{
                     span:12,
                     offset:6,
                 }}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" >
                     上传商品信息
                 </Button>
             </Form.Item>

@@ -12,6 +12,8 @@ class LoginShow extends React.Component {
             password: ""
         };
     }
+    
+
 
     //变换登录的形式
     toggleForm = () => {
