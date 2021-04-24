@@ -31,7 +31,7 @@ class LoginShow extends React.Component {
     handleSubmit = event => {
         const sumbitInfo = {
             email: this.state.email,
-            password: this.state.password,
+            pw: this.state.password,
         };
         Login(sumbitInfo);
     }

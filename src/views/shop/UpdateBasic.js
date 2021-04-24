@@ -27,11 +27,11 @@ class UpdateBasic extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            goad_name: "",
-            goad_owner: "",
-            goad_remain: "",
-            goad_onSale: false,
-            goad_description: ""
+            good_name: "",
+            good_owner: "",
+            good_remain: "",
+            good_onSale: false,
+            good_description: ""
         };
         this.handleSaleChange = this.handleSaleChange.bind(this)
         this.handleChangeRemain = this.handleChangeRemain.bind(this)
@@ -47,28 +47,28 @@ class UpdateBasic extends React.Component{
     }
 
     handleChangeName = event => {
-        this.setState({goad_name: event.target.value})
+        this.setState({good_name: event.target.value})
     }
 
     handleChangeOwner = event => {
-        this.setState({goad_owner: event.target.value})
+        this.setState({good_owner: event.target.value})
     }
 
     handleChangeRemain(value) {
-        this.setState({goad_remain: value})
+        this.setState({good_remain: value})
     }
  
     handleChangeDesc = event => {
-        this.setState({goad_description: event.target.value})
+        this.setState({good_description: event.target.value})
     }
 
     handleSubmit = event => {
         const sumbitInfo = {
-            goad_name: this.state.goad_name,
-            goad_owner: this.state.goad_owner,
-            goad_remain: this.state.goad_remain,
-            goad_onSale: this.state.goad_onSale,
-            goad_description: this.state.goad_description,
+            name: this.state.good_name,
+            owner: this.state.good_owner,
+            remain: this.state.good_remain,
+            onsale: this.state.good_onSale,
+            desc: this.state.good_description,
         };
         UploadGoad(sumbitInfo)
     }

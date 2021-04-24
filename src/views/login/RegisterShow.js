@@ -35,8 +35,8 @@ class RegisterShow extends React.Component {
     handleSubmit = event => {
         const sumbitInfo = {
             email: this.state.email,
-            password: this.state.password,
-            password2: this.state.password2,
+            pw: this.state.password,
+            pw2: this.state.password2,
         };
         Register(sumbitInfo);
     }
