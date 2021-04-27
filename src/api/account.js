@@ -1,7 +1,8 @@
 import axios from "axios"
+import qs from "qs"
 
 export function Login(data){
-    axios.post('http://localhost:8089/api/login',data)
+    axios.post('http://localhost:8089/api/login', qs.stringify(data))
         .then(res => {
             console.log(res)
         })
@@ -11,7 +12,7 @@ export function Login(data){
 }
 
 export function Register(data) {
-    axios.post('http://localhost:8089/register', data)
+    axios.post('http://localhost:8089/register', qs.stringify(data))
         .then(res => {
             console.log(res)
         })
