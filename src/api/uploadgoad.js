@@ -4,7 +4,7 @@ export function UploadGoad(params) {
     var data = qs.stringify(params);
     var config = {
         method: 'post',
-        url: 'localhost:8089/item/addItem',
+        url: '/api/item/addItem',
         headers: {
             'Access-Control-Allow-Origin':'*', 
             'Access-Control-Allow-Credentials':'true',

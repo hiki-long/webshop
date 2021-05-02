@@ -30,19 +30,22 @@ class UpdateBasic extends React.Component{
             good_name: "",
             good_owner: "",
             good_remain: "",
-            good_onSale: false,
-            good_description: ""
+            good_onSale: "",
+            good_description: "",
+            good_type: ""
         };
-        this.handleSaleChange = this.handleSaleChange.bind(this)
-        this.handleChangeRemain = this.handleChangeRemain.bind(this)
+        this.handleSaleChange = this.handleSaleChange.bind(this);
+        this.handleChangeRemain = this.handleChangeRemain.bind(this);
+        this.handleChangeType = this.handleChangeType.bind(this);
     }
 
     handleSaleChange(checked) {
+        console.log(checked)
         if(checked){
-            this.setState({goad_onSale: true})
+            this.setState({good_onSale: true})
         }
         else{
-            this.setState({goad_onSale: false})
+            this.setState({good_onSale: false})
         }
     }
 
@@ -62,16 +65,21 @@ class UpdateBasic extends React.Component{
         this.setState({good_description: event.target.value})
     }
 
+    handleChangeType = value =>{
+        this.setState({good_type: value})
+    }
+
     handleSubmit = event => {
         const sumbitInfo = {
             name: this.state.good_name,
             owner: this.state.good_owner,
             remain: this.state.good_remain,
-            onsale: this.state.good_onSale,
-            desc: this.state.good_description,
+            type: this.state.good_type,
+            onSale: this.state.good_onSale,
+            description: this.state.good_description,
         };
         UploadGoad(sumbitInfo)
-        window.location.href="http://localhost:3000/itemUpload";
+        // window.location.href="http://localhost:3000/itemUpload";
     }
 
     render(){
@@ -105,7 +113,7 @@ class UpdateBasic extends React.Component{
                     span:1,
                 }}
             >
-                <Select defaultValue="请选择" style={{ width: 120 }} allowClear >
+                <Select defaultValue="请选择" style={{ width: 120 }} allowClear onChange={this.handleChangeType}>
                     <Select.Option value="cloth">衣服</Select.Option>
                     <Select.Option value="food">食品</Select.Option>
                     <Select.Option value="electric">电器</Select.Option>

@@ -1,35 +1,47 @@
-import axios from "axios"
-
 export function Login(params){
-    axios.post('http://localhost:8089/api/login', {
-        data: params
-        },{
-            headers: {
-                'Access-Control-Allow-Origin':'*',  //解决cors头问题
-                'Access-Control-Allow-Credentials':'true', //解决session问题
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' //将表单数据传递转化为form-data类型
-        }})
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    var axios = require('axios');
+    var qs = require('qs');
+    var data = qs.stringify(params);
+    var config = {
+        method: 'post',
+        url: '/api/user/login',
+        headers: {
+            'Access-Control-Allow-Origin':'*', 
+            'Access-Control-Allow-Credentials':'true',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        withCredentials: true,
+        data: data
+    };
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }
 
 export function Register(params) {
-    axios.post('http://localhost:8089/register', {
-        data: params
-        },{
-            headers: {
-                'Access-Control-Allow-Origin':'*',  //解决cors头问题
-                'Access-Control-Allow-Credentials':'true', //解决session问题
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' //将表单数据传递转化为form-data类型
-        }})
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    var axios = require('axios');
+    var qs = require('qs');
+    var data = qs.stringify(params);
+    var config = {
+        method: 'post',
+        url: '/api/user/register',
+        headers: {
+            'Access-Control-Allow-Origin':'*', 
+            'Access-Control-Allow-Credentials':'true',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        withCredentials: true,
+        data: data
+    };
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }
