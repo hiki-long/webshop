@@ -1,18 +1,24 @@
-import axios from "axios"
-
 export function UploadGoad(params) {
-    axios.post('/api/item/addItem', {
-            params
-        },{
-            headers: {
-                'Access-Control-Allow-Origin':'*',  //解决cors头问题
-                'Access-Control-Allow-Credentials':'true', //解决session问题
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', //将表单数据传递转化为form-data类型
-        },withCredentials : true})
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    var axios = require('axios');
+    var qs = require('qs');
+    var data = qs.stringify(params);
+    var config = {
+        method: 'post',
+        url: 'localhost:8089/item/addItem',
+        headers: {
+            'Access-Control-Allow-Origin':'*', 
+            'Access-Control-Allow-Credentials':'true',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        withCredentials: true,
+        data: data
+    };
+
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }

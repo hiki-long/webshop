@@ -71,6 +71,7 @@ class UpdateBasic extends React.Component{
             desc: this.state.good_description,
         };
         UploadGoad(sumbitInfo)
+        window.location.href="http://localhost:3000/itemUpload";
     }
 
     render(){
@@ -123,7 +124,6 @@ class UpdateBasic extends React.Component{
                     parser={value => value.replace(/\$\s?|(,*)/g, '')}
                 />
             </Form.Item>
-            {/* 库存这里对不齐我不知道怎么调整布局，交给牛晓磊 */}
             <Form.Item label="库存"
                 wrapperCol={{
                     span:2,
