@@ -92,8 +92,8 @@ class UpdateBasic extends React.Component{
             </Form.Item>
             <Form.Item label="产品情况" >
               <Select>
-                <Select.Option value="demo">新上架</Select.Option>
-                <Select.Option value="demo">已有</Select.Option>
+                <Select.Option value="none" >新上架</Select.Option>
+                <Select.Option value="has">已有</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item label="商品名">
@@ -105,11 +105,11 @@ class UpdateBasic extends React.Component{
                 }}
             >
                 <Select defaultValue="请选择" style={{ width: 120 }} allowClear >
-                    <Select.Option value="jack">衣服</Select.Option>
-                    <Select.Option value="jack">食品</Select.Option>
-                    <Select.Option value="jack">电器</Select.Option>
-                    <Select.Option value="jack">家具</Select.Option>
-                    <Select.Option value="jack">器械</Select.Option>
+                    <Select.Option value="cloth">衣服</Select.Option>
+                    <Select.Option value="food">食品</Select.Option>
+                    <Select.Option value="electric">电器</Select.Option>
+                    <Select.Option value="furniture">家具</Select.Option>
+                    <Select.Option value="machine">器械</Select.Option>
                 </Select>
             </Form.Item>
             <Form.Item label="价格"
