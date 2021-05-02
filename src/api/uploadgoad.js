@@ -2,7 +2,7 @@ import axios from "axios"
 
 export function UploadGoad(params) {
     axios.post('/api/item/addItem', {
-        data: params
+            params
         },{
             headers: {
                 'Access-Control-Allow-Origin':'*',  //解决cors头问题
