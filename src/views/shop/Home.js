@@ -1,10 +1,11 @@
 import React from "react";
-import { Carousel, Row, Col } from 'antd';
+import { Carousel, Row, Col, Space, Pagination } from 'antd';
+import OneItem from '../item/OneItem';
 
 const contentStyle = {
-    height: '400px',
+    height: '450px',
     color: '#fff',
-    lineHeight: '400px',
+    lineHeight: '450px',
     textAlign: 'center',
     background: '#364d79',
 };
@@ -29,10 +30,19 @@ class Home extends React.Component {
                         </div>
                     </Carousel>
                 </Col>
-                <Row>
-
+                <Row gutter={16}>
+                    <Col span={4} offset={2}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
                 </Row>
-
+                <Row gutter={16}>
+                    <Col span={4} offset={2}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
+                    <Col span={4} offset={1}><OneItem/></Col>
+                </Row>
+                <Pagination showQuickJumper defaultCurrent={1} total={500} />
             </div>
         );
     }

@@ -6,9 +6,11 @@ import LoginShow from './views/login/LoginShow';
 import RegisterShow from './views/login/RegisterShow';
 import UpdateBasic from './views/shop/UpdateBasic';
 import ShowUpload from './views/shop/ShowUpload';
-
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 
 function App() {
+  moment.locale('zh-cn');
   return (
     <div className="App">
       <Navigate />

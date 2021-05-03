@@ -8,6 +8,7 @@ class RegisterShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            username: "",
             email: "",
             password: "",
             password2: ""
@@ -18,7 +19,9 @@ class RegisterShow extends React.Component {
         // this.props.switchForm("login")
     };
 
-    
+    changeUsername = event => {
+        this.setState({username: event.target.value})
+    }
 
     changeEmail = event => {
         this.setState({email: event.target.value})
@@ -34,6 +37,7 @@ class RegisterShow extends React.Component {
 
     handleSubmit = event => {
         const sumbitInfo = {
+            username: this.state.username,
             email: this.state.email,
             pw: this.state.password,
             pw2: this.state.password2,
@@ -57,6 +61,17 @@ class RegisterShow extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
+                            <Form.Item name="username" rules={[
+                                {
+                                    required: true,
+                                    message: '请在此输入你的用户名',
+                                },
+                                {
+                                    type: "string"
+                                },
+                            ]}>
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="用户名" onChange={this.changeUsername}/>
+                            </Form.Item>
                             <Form.Item name="email" rules={[
                                     {
                                         required: true,
