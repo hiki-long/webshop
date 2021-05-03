@@ -39,8 +39,7 @@ class RegisterShow extends React.Component {
         const sumbitInfo = {
             username: this.state.username,
             email: this.state.email,
-            pw: this.state.password,
-            pw2: this.state.password2,
+            password: this.state.password,
         };
         Register(sumbitInfo);
     }
