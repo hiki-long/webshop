@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel, Row, Col, Space, Pagination } from 'antd';
 import OneItem from '../item/OneItem';
+import OneItemInfo from '../item/OneItemInfo'
 
 const contentStyle = {
     height: '450px',
@@ -14,7 +15,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <Col className="gutter-row" span={20} offset={2}>
+                {/* <Col className="gutter-row" span={20} offset={2}>
                     <Carousel autoplay >
                         <div>
                             <h3 style={contentStyle}>1</h3>
@@ -41,7 +42,8 @@ class Home extends React.Component {
                     <Col span={4} offset={1}><OneItem/></Col>
                     <Col span={4} offset={1}><OneItem/></Col>
                     <Col span={4} offset={1}><OneItem/></Col>
-                </Row>
+                </Row> */}
+                <OneItemInfo />
                 <Pagination showQuickJumper defaultCurrent={1} total={500} />
             </div>
         );
