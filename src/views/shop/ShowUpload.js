@@ -1,5 +1,6 @@
 import { Descriptions, Radio, Button, Space } from 'antd';
-import React from 'react'
+import React from 'react';
+import {GetItem} from '../../api/item';
 
 class ShowUpload extends React.Component {
   state = {
@@ -7,7 +8,8 @@ class ShowUpload extends React.Component {
   };
 
   onEdit = e => {
-    window.location.href="http://localhost:3000/itemInfo";
+    // window.location.href="http://localhost:3000/itemInfo";
+    GetItem()
   }
 
   render() {
