@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel, Row, Col, Space, Pagination } from 'antd';
 import OneItem from '../item/OneItem';
 import OneItemInfo from '../item/OneItemInfo'
+import { Store } from "../../api/storeage";
 
 const contentStyle = {
     height: '450px',
@@ -12,6 +13,13 @@ const contentStyle = {
 };
 
 class Home extends React.Component {
+    constructor(props){
+        super(props);
+        var data = "uuid=123456"
+        Store(data);
+    }
+
+
     render() {
         return (
             <div>

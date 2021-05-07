@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, Row, Col, Space, Pagination, Card } from 'antd';
-import { Label } from 'semantic-ui-react';
 import ProductImage from './ProductImage';
 import ProductHeaer from './ProductHeader';
 import ProductSelect from './ProductSelect';
