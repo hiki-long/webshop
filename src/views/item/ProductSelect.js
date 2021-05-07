@@ -22,9 +22,9 @@ class ProductSelect extends React.Component{
         return(
             <div>
                 <div>
-                    <span>
+                    <h3>
                         类别选择
-                    </span>
+                    </h3>
                         <Space>
                             {tagsData.map(tag => (
                                 <CheckableTag

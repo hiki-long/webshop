@@ -6,23 +6,29 @@ import ProductHeaer from './ProductHeader';
 import ProductSelect from './ProductSelect';
 import ProductNumber from './ProductNumber';
 import ProductBuyButton from './ProductBuyButton';
+import ProductDetail from './ProductDetail';
+
+
 //商品详情页面
 class OneItemInfo extends React.Component{
     render(){
         return (
-            <Row justify="start">
-                <Col offset={4}>
-                    <ProductImage ImageList={['http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg']}/>
-                </Col>
-                <Col offset={4} style={{textAlign: 'left'}} >
-                    <Space direction="vertical" size={40}>
-                        <ProductHeaer name="商品名" price={100}/>
-                        <ProductSelect />
-                        <ProductNumber buynum={1}/>
-                        <ProductBuyButton />
-                    </Space>
-                </Col>
-            </Row>
+            <div>
+                <Row justify="start">
+                    <Col offset={4}>
+                        <ProductImage ImageList={['http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg']}/>
+                    </Col>
+                    <Col offset={4} style={{textAlign: 'left'}} >
+                        <Space direction="vertical" size={20}>
+                            <ProductHeaer name="商品名" price={100}/>
+                            <ProductSelect />
+                            <ProductNumber buynum={1}/>
+                            <ProductBuyButton />
+                            <ProductDetail />
+                        </Space>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 }
