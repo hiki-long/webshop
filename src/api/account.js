@@ -1,3 +1,5 @@
+import { setCookie } from './storeage';
+
 export function Login(params){
     var axios = require('axios');
     var qs = require('qs');
@@ -15,7 +17,10 @@ export function Login(params){
     };
     axios(config)
     .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
+        var uuid = JSON.parse(response.data.data).uuid;
+        console.log("uuid="+uuid);
+        setCookie("uuid",uuid);
     })
     .catch(function (error) {
         console.log(error);
