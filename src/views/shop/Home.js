@@ -13,11 +13,6 @@ const contentStyle = {
 };
 
 class Home extends React.Component {
-    constructor(props){
-        super(props);
-        var data = "uuid=123456"
-        Store(data);
-    }
 
 
     render() {

@@ -17,11 +17,17 @@ const TopNavItems = [
         cName: 'nav-links',
         logincanseen: false
     },
+    // {
+    //     title: 'Logout',
+    //     url: '/login',
+    //     cName: 'nav-links',
+    //     logincanseen: true
+    // },
     {
-        title: 'Logout',
-        url: '/login',
+        title: 'User',
+        url: '/user',
         cName: 'nav-links',
-        logincanseen: true
+        logincanseen: false
     }
 ]
 

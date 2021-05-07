@@ -1,6 +1,5 @@
 .NavbarItems {
     background: linear-gradient(90deg, rgba(110, 94, 254, 100%), rgba(73,63,25,100%));
-    /* background: black; */
     height: 80px;
     display: flex;
     justify-content: center;
@@ -13,7 +12,7 @@
     grid-template-columns: repeat(4,auto);
     grid-gap: 10px;
     list-style: none;
-    text-align: center;
+    text-align: left;
     width: 70vw;
     justify-content: end;
     margin-right: 2rem;

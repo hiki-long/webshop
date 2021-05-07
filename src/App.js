@@ -8,6 +8,7 @@ import UpdateBasic from './views/shop/UpdateBasic';
 import ShowUpload from './views/shop/ShowUpload';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
+import UserPage from './views/user/UserPage';
 
 function App() {
   moment.locale('zh-cn');
@@ -16,10 +17,11 @@ function App() {
       <Navigate />
       <BrowserRouter>
           <Route component={Home} exact path="/" />
-          <Route component={ShowUpload} exact path="/itemUpload" />
+          <Route component={ShowUpload} exact path="/itemUploadResult" />
           <Route component={LoginShow} path="/login" />
           <Route component={RegisterShow} path="/register" />
-          <Route component={UpdateBasic} path="/itemInfo" />
+          <Route component={UpdateBasic} path="/itemUpload" />
+          <Route component={UserPage} path="/user" />
       </BrowserRouter>
     </div>
       
