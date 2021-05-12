@@ -17,9 +17,9 @@ class OneItemInfo extends React.Component{
             <div>
                 <Row justify="start">
                     <Col offset={4}>
-                        <ProductImage ImageList={['http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg']}/>
+                        <ProductImage ImageList={['http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg']} />
                     </Col>
-                    <Col offset={4} style={{textAlign: 'left' , zIndex: -1}} >
+                    <Col offset={4} style={{textAlign: 'left' }} >
                         <Space direction="vertical" size={20}>
                             <ProductHeaer name="商品名" price={100}/>
                             <ProductSelect />
