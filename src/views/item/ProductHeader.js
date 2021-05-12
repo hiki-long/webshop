@@ -1,6 +1,6 @@
 import { Space } from 'antd';
 import React from 'react';
-
+//商品基本价格信息
 class ProductHeaer extends React.Component{
     constructor(props){
         super(props);

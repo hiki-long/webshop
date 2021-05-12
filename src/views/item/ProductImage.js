@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Row, Space} from 'antd';
 // import ReactImageMagnify from 'react-image-magnify';
-//这里是处理传入进来的图片模块
+//商品预览页
 class ProductImage extends React.Component{
     constructor(props){
         super(props)

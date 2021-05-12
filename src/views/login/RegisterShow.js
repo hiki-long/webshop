@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 import { Register } from "../../api/account";
-
+//注册界面展示
 class RegisterShow extends React.Component {
     constructor(props) {
         super(props);

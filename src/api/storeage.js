@@ -1,3 +1,4 @@
+//存储cookie信息的函数
 export function Store(key, value) {
     document.cookie = setCookie(key, value, );
     console.log(getCookie("uuid"))

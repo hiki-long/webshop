@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 const data = [
     '商品已发送到xxx'
 ];
+//用户个人页面
 class UserBasicInfo extends React.Component{
     
     render(){

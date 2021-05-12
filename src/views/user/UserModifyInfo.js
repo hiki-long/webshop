@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Select, Button, Space, DatePicker, Avatar } from 'antd';
 import { UserOutlined,UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
+//修改用户信息个人页面
 class UserModifyInfo extends React.Component{
     onFinish = values => {
         console.log('Received values of form: ', values);

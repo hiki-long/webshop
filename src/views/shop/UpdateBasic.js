@@ -23,6 +23,7 @@ const normFile = (e) => {
     return e && e.fileList;
 };
 
+//商品信息上传确认页面
 class UpdateBasic extends React.Component{
     constructor(props) {
         super(props);

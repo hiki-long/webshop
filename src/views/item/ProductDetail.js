@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'antd';
 const { TabPane } = Tabs;
-
+//商品详情介绍
 class ProductDetail extends React.Component{
     callback(key) {
         console.log(key);

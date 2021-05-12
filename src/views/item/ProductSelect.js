@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag, { Space } from 'antd';
 import CheckableTag from 'antd/lib/tag/CheckableTag';
-
+//商品类型选择
 const tagsData = ['标签1','标签2','标签3'];
 
 class ProductSelect extends React.Component{

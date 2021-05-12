@@ -6,6 +6,8 @@ import ProductSelect from './ProductSelect';
 import ProductNumber from './ProductNumber';
 import ProductBuyButton from './ProductBuyButton';
 import ProductDetail from './ProductDetail';
+import ProductComment from './ProductComment';
+import ProductRecommend from './ProductRecommend';
 
 
 //商品详情页面
@@ -26,6 +28,12 @@ class OneItemInfo extends React.Component{
                             <ProductDetail />
                         </Space>
                     </Col>
+                </Row>
+                <Row justify="center" >
+                    <ProductComment />
+                </Row>
+                <Row justify="center">
+                    <ProductRecommend />
                 </Row>
             </div>
         );

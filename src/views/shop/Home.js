@@ -12,8 +12,8 @@ const contentStyle = {
     background: '#364d79',
 };
 
+//主界面,对应'/'路径，方便用来测试
 class Home extends React.Component {
-
 
     render() {
         return (

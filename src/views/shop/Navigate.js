@@ -2,6 +2,7 @@ import React from 'react'
 import TopNavItems from '../../model/TopNavItems'
 import './Navigate.css'
 
+//顶部导航栏
 class Navigate extends React.Component{
     state = {
         clicked: false,

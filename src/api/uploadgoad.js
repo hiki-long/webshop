@@ -1,3 +1,4 @@
+//上传商品信息
 export function UploadGoad(params) {
     var axios = require('axios');
     var qs = require('qs');

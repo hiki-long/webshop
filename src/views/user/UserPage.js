@@ -8,7 +8,7 @@ import LoginShow from '../login/LoginShow';
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
-
+//个人中心总布局
 class UserPage extends React.Component {
 
     constructor(){

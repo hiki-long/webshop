@@ -1,5 +1,6 @@
 import { stringify } from 'qs';
 
+//获得商品信息，包括分页
 export function GetItem(params) {
     var axios = require('axios');
     var qs = require('qs');

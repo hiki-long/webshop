@@ -1,5 +1,6 @@
 import { setCookie } from './storeage';
 
+//登录和注册接口
 export function Login(params){
     var axios = require('axios');
     var qs = require('qs');
