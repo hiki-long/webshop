@@ -1,36 +1,65 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Steps, Button, message, Col, Row } from 'antd';
 import FindAccount from './FindAccount';
 import ResetAccont from './ResetAccount';
+import "antd/dist/antd.css";
+import { Reset } from '../../api/account';
 const { Step } = Steps;
-const steps = [
-    {
-        title: '身份验证',
-        content: <FindAccount />,
-    },
-    {
-        title: '重置密码',
-        content: <ResetAccont />,
-    },
-    {
-        title: '完成',
-        content: <h1>重置密码成功！</h1>,
-    },
-];
+// const steps = [
+//     {
+//         title: '身份验证',
+//         content: <FindAccount />,
+//     },
+//     {
+//         title: '重置密码',
+//         content: <ResetAccont />,
+//     },
+//     {
+//         title: '完成',
+//         content: <h1>重置密码成功！</h1>,
+//     },
+// ];
+
 class ForgetShow extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {
             current: 0,
-            
         }
+        this.formRef = React.createRef()
+    }
+
+    ResetPasswd(params) {
+        console.log("发送重置密码")
+        const data = {
+            password: params
+        };
+        Reset(data);
+    }
+
+    Done() {
+        message.success('重置完成，将返回主页!')
     }
 
     next = () => {
+        if(this.state.current === 1) {
+            // console.log(this.formRef.current.validateFields())
+            //
+            if (this.formRef.current.getFieldValue("password") === this.formRef.current.getFieldValue("password2") && this.formRef.current.getFieldValue("password") !== undefined && this.formRef.current.getFieldValue("password").length > 5) {
+                this.ResetPasswd(this.formRef.current.getFieldValue("password"))
+            }
+            else
+            {
+                message.success('密码不符合要求!')
+                return
+            }
+        }
         var temp = this.state.current
         this.setState({
             current: temp + 1
         })
+
     };
 
     prev = () => {
@@ -40,14 +69,31 @@ class ForgetShow extends React.Component {
         })
     };
     render() {
+        let steps = [
+            {
+                title: '身份验证',
+                content: <FindAccount />,
+            },
+            {
+                title: '重置密码',
+                content: <ResetAccont formRef={this.formRef} />,
+            },
+            {
+                title: '完成',
+                content: <h1>重置密码成功！</h1>,
+            },
+        ];
         return (
             <div style={{backgroundColor: "#DADED4"}}>
                 <Row>
                     <Col span={18} offset={3}>
                         <Steps current={this.state.current}>
-                            {steps.map(item => (
+                            {
+                                steps.map(item => (
                                 <Step key={item.title} title={item.title} />
-                            ))}
+                                )
+                            )
+                            }
                         </Steps>
                     </Col>
                 </Row>
@@ -69,7 +115,7 @@ class ForgetShow extends React.Component {
                             </Button>
                         )}
                         {this.state.current === steps.length - 1 && (
-                            <Button type="primary" onClick={() => message.success('重置完成，将返回主页!')}>
+                            <Button type="primary" onClick={this.Done}>
                                 完成
                             </Button>
                         )}

@@ -51,3 +51,25 @@ export function Register(params) {
         console.log(error);
     });
 }
+
+export function Reset(params) {
+    var axios = require('axios');
+    var qs = require('qs');
+    var data = qs.stringify(params);
+    var config = {
+        method: 'post',
+        //这里是重置的密码
+        url: '/api/user/reset',
+        headers: {
+            'Access-Control-Allow-Origin':'*', 
+            'Access-Control-Allow-Credentials':'true',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        withCredentials: true,
+        data: data
+    };
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+    })
+}

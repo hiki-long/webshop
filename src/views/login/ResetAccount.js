@@ -1,19 +1,43 @@
 import React from 'react';
-import { Button, Form, Input, Row, Col} from 'antd';
-import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Form, Input } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+
 class ResetAccont extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            pw: "",
+            pw2: "",
+            formRef: props.formRef
+        };
+    }
+
+    HandlerPw2 = event => {
+        this.setState({
+            pw2: event.target.value
+        })
+    }
+    
+    HandlerPw = event => {
+        this.setState({
+            pw: event.target.value
+        })
+    }
+
+    
 
     render() {
         return(
             <div className="form-wrap">
                 <div>
                     <div className="form-header">
-                        <div>找回密码</div>
+                        <div>重置密码</div>
                     </div>
                     <div className="form-content">
                         <Form
                             name="normal_login"
                             className="login-form"
+                            ref={this.state.formRef}
                             initialValues={{
                                 remember: true,
                             }}>
@@ -26,7 +50,7 @@ class ResetAccont extends React.Component {
                                         pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: "密码需要包含字母+数字，长度在6-20之间"
                                     },
                                 ]}>
-                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码"/>
+                                <Input.Password name="pw" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.HandlerPw} />
                             </Form.Item>
                             <Form.Item name="password2" rules={[
                                     {
@@ -47,7 +71,7 @@ class ResetAccont extends React.Component {
 
                                     })
                                 ]}>
-                                <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码"/>
+                                <Input.Password name="pw2" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.HandlerPw2} />
                             </Form.Item>
                         </Form>
                     </div>
