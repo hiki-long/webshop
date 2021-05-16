@@ -68,7 +68,7 @@ class ProductComment extends React.Component {
     render() {
         return(
             <div>
-                <Divider horizontal><span>Product Comment</span></Divider>
+                <Divider horizontal><span>评论区</span></Divider>
                 <List
                     className="comment-list"
                     header={`${data.length} replies`}

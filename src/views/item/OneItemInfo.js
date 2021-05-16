@@ -8,7 +8,7 @@ import ProductBuyButton from './ProductBuyButton';
 import ProductDetail from './ProductDetail';
 import ProductComment from './ProductComment';
 import ProductRecommend from './ProductRecommend';
-
+import CommentEditor from './CommentEditor';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -35,6 +35,7 @@ class OneItemInfo extends React.Component{
                 <Row justify="center">
                     <ProductRecommend />
                 </Row>
+                <CommentEditor />
             </div>
         );
     }

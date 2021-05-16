@@ -43,7 +43,7 @@ class LoginShow extends React.Component {
                 <div>
                     <div className="form-header">
                         <h4 className="column">登录</h4>
-                        <span onClick={this.toggleForm}>账号注册</span>
+                        <span onClick={this.toggleForm}>忘记密码</span>
                     </div>
                     <div className="form-content">
                         <Form
@@ -89,7 +89,7 @@ class LoginShow extends React.Component {
                         </Form>
                     </div>
                 </div>
-        </div>
+            </div>
         );
     }
 }

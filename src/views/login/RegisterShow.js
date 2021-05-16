@@ -50,7 +50,6 @@ class RegisterShow extends React.Component {
                 <div>
                     <div className="form-header">
                         <h4 className="column">账号注册</h4>
-                        <span onClick={this.toggleForm}>登录</span>
                     </div>
                     <div className="form-content">
                         <Form

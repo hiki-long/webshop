@@ -9,19 +9,21 @@ import ShowUpload from './views/shop/ShowUpload';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import UserPage from './views/user/UserPage';
+import ForgetShow from './views/login/ForgetShow';
 
 function App() {
   moment.locale('zh-cn');
   return (
     <div className="App">
       <Navigate />
-      <BrowserRouter>
+      <BrowserRouter >
           <Route component={Home} exact path="/" />
           <Route component={ShowUpload} exact path="/itemUploadResult" />
           <Route component={LoginShow} path="/login" />
           <Route component={RegisterShow} path="/register" />
           <Route component={UpdateBasic} path="/itemUpload" />
           <Route component={UserPage} path="/user" />
+          <Route component={ForgetShow} path="/forget" />
       </BrowserRouter>
     </div>
       

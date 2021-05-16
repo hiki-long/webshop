@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
+import React from 'react';
+import { UploadOutlined } from '@ant-design/icons';
 import {
-  Col,
   Form,
   Input,
   Button,
-  Radio,
   Select,
-  Cascader,
-  DatePicker,
   InputNumber,
-  TreeSelect,
   Switch,
   Upload,
 } from 'antd';
-import { InputGroup } from 'react-bootstrap';
 import { UploadGoad } from '../../api/uploadgoad';
+import ItemType from './ItemType';
+
 const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -94,10 +90,11 @@ class UpdateBasic extends React.Component{
             wrapperCol={{
               span: 4,
             }}
+            style={{textAlign:"left"}}
             layout="horizontal"
             onFinish={this.handleSubmit}
           >
-            <Form.Item label="卖方ID">
+            <Form.Item label="卖方ID" >
               <Input onChange={this.handleChangeOwner} />
             </Form.Item>
             <Form.Item label="产品情况" >
@@ -106,23 +103,32 @@ class UpdateBasic extends React.Component{
                 <Select.Option value="has">已有</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="商品名">
+            <Form.Item name="item_name" label="商品名" >
                 <Input onChange={this.handleChangeName}/>
             </Form.Item>
-            <Form.Item label="商品类别"
+            <Form.Item name="type" label="商品类别"
                 wrapperCol={{
-                    span:1,
+                    span:4,
                 }}
+                rules={
+                    [
+                        {
+                            required: true,
+                            message:"请选择你商品的类型"
+                        },
+                    ]
+                }
             >
-                <Select defaultValue="请选择" style={{ width: 120 }} allowClear onChange={this.handleChangeType}>
+                <ItemType />
+                {/* <Select defaultValue="请选择" style={{ width: 120 }} allowClear onChange={this.handleChangeType}>
                     <Select.Option value="cloth">衣服</Select.Option>
                     <Select.Option value="food">食品</Select.Option>
                     <Select.Option value="electric">电器</Select.Option>
                     <Select.Option value="furniture">家具</Select.Option>
                     <Select.Option value="machine">器械</Select.Option>
-                </Select>
+                </Select> */}
             </Form.Item>
-            <Form.Item label="价格"
+            <Form.Item name="price" label="价格"
                 wrapperCol={{
                     span:1,
                 }}
@@ -133,18 +139,18 @@ class UpdateBasic extends React.Component{
                     parser={value => value.replace(/\$\s?|(,*)/g, '')}
                 />
             </Form.Item>
-            <Form.Item label="库存"
+            <Form.Item name="number" label="库存"
                 wrapperCol={{
                     span:2,
                 }}
+                
             >
                 <Form.Item name="input-number" noStyle>
-                    <InputNumber min={0} max={100000} onChange={this.handleChangeRemain}/>
+                    <InputNumber min={0} max={100000}  onChange={this.handleChangeRemain}/>
                 </Form.Item>
                 <span className="ant-form-text">件</span>
-                
             </Form.Item>
-            <Form.Item label="是否在售"
+            <Form.Item name="onsale" label="是否在售"
                 wrapperCol={{
                     span:1,
                 }}>
@@ -152,7 +158,7 @@ class UpdateBasic extends React.Component{
             </Form.Item>
             <Form.Item name="upload" label="商品图片" valuePropName="fileList" getValueFromEvent={normFile}
                 >
-                <Upload name="logo" action="/upload.do" listType="picture">
+                <Upload name="logo" listType="picture">
                     <Button icon={<UploadOutlined />}>上传图片</Button>
                 </Upload>
             </Form.Item>
@@ -162,7 +168,7 @@ class UpdateBasic extends React.Component{
             <Form.Item 
                 wrapperCol={{
                     span:12,
-                    offset:6,
+                    offset:10,
                 }}>
                 <Button type="primary" htmlType="submit" >
                     上传商品信息

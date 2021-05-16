@@ -4,20 +4,18 @@ const TopNavItems = [
         title: 'Home',
         url: '/',
         cName: 'nav-links',
-        logincanseen: true
     },
     {
         title: 'Login',
         url: '/login',
         cName: 'nav-links',
-        logincanseen: false
     },
-    {
-        title: 'Register',
-        url: '/register',
-        cName: 'nav-links',
-        logincanseen: false
-    },
+    // {
+    //     title: 'Register',
+    //     url: '/register',
+    //     cName: 'nav-links',
+    //     logincanseen: false
+    // },
     // {
     //     title: 'Logout',
     //     url: '/login',
@@ -25,10 +23,19 @@ const TopNavItems = [
     //     logincanseen: true
     // },
     {
+        title: 'Upload',
+        url: '/itemUpload',
+        cName: 'nav-links',
+    },
+    {
         title: 'User',
         url: '/user',
         cName: 'nav-links',
-        logincanseen: false
+    },
+    {
+        title: 'Forget',
+        url: '/forget',
+        cName: 'nav-links',
     }
 ]
 
