@@ -30,7 +30,7 @@ class UserPage extends React.Component {
             <div>
                 <BrowserRouter>
                  <Layout>
-                    <Sider width={200} className="site-layout-background">
+                    <Sider width={200} className="site-layout-background" style={{height:"900px"}}>
                         <Menu
                         mode="inline"
                         defaultSelectedKeys={['1']}
