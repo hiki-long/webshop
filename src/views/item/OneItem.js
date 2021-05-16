@@ -8,11 +8,12 @@ class OneItem extends React.Component {
         return(
             <div>
                 <Layout >
-                    <Card size="small" style={{width: 300 }}>
+                    <Card size="small" style={{width: 320 }}>
                         <Image
                             preview={false}
                             width={300}
                             src={'http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'}
+                            style={{alignSelf:"start"}}
                         />
                         <Link>
                             <p>价格：￥1000</p>
