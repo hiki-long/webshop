@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Row, Col, Space, Pagination, Card } from 'antd';
+import { Row, Col, Space, Button } from 'antd';
 import ProductImage from './ProductImage';
 import ProductHeaer from './ProductHeader';
 import ProductSelect from './ProductSelect';
@@ -9,6 +9,7 @@ import ProductDetail from './ProductDetail';
 import ProductComment from './ProductComment';
 import ProductRecommend from './ProductRecommend';
 import CommentEditor from './CommentEditor';
+import { Footer } from 'antd/lib/layout/layout';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -36,6 +37,8 @@ class OneItemInfo extends React.Component{
                     <ProductRecommend />
                 </Row>
                 <CommentEditor />
+                <Button type="primary">发表评论</Button>
+                <Footer style={{height: "100px", backgroundColor: "#DADED4"}} ></Footer>
             </div>
         );
     }

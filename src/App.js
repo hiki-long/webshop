@@ -10,6 +10,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import UserPage from './views/user/UserPage';
 import ForgetShow from './views/login/ForgetShow';
+import Test from './views/shop/Test';
 
 function App() {
   moment.locale('zh-cn');
@@ -24,6 +25,7 @@ function App() {
           <Route component={UpdateBasic} path="/itemUpload" />
           <Route component={UserPage} path="/user" />
           <Route component={ForgetShow} path="/forget" />
+          <Route component={Test} path="/test" />
       </BrowserRouter>
     </div>
       
