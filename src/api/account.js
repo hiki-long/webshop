@@ -59,7 +59,7 @@ export function Reset(params) {
     var config = {
         method: 'post',
         //这里是重置的密码
-        url: '/api/user/reset',
+        url: '/api/user/changePasswd',
         headers: {
             'Access-Control-Allow-Origin':'*', 
             'Access-Control-Allow-Credentials':'true',
