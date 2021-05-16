@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 import { Register } from "../../api/account";
@@ -59,6 +59,7 @@ class RegisterShow extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
+                            <Space direction="vertical">
                             <Form.Item name="username" rules={[
                                 {
                                     required: true,
@@ -124,6 +125,7 @@ class RegisterShow extends React.Component {
                                     注册
                                 </Button>
                             </Form.Item>
+                            </Space>
                         </Form>
                     </div>
                 </div>

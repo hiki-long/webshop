@@ -1,7 +1,8 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
+// import "antd/dist/antd.css";
 import { Login } from "../../api/account";
 //登录界面展示
 class LoginShow extends React.Component {
@@ -13,13 +14,6 @@ class LoginShow extends React.Component {
         };
     }
     
-
-
-    //变换登录的形式
-    toggleForm = () => {
-        // this.props.switchForm("register")
-    }
-
     changeEmail = event => {
         this.setState({email: event.target.value})
     }
@@ -36,14 +30,12 @@ class LoginShow extends React.Component {
         Login(sumbitInfo);
     }
 
-
     render() {
         return (
             <div className="form-wrap">
                 <div>
                     <div className="form-header">
                         <h4 className="column">登录</h4>
-                        <span onClick={this.toggleForm}>忘记密码</span>
                     </div>
                     <div className="form-content">
                         <Form
@@ -53,6 +45,7 @@ class LoginShow extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}>
+                            <Space direction="vertical">
                             <Form.Item name="email" rules={[
                                     {
                                         required: true,
@@ -78,14 +71,21 @@ class LoginShow extends React.Component {
                             >
                                 <Input.Password prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.changePassword}/>
                             </Form.Item>
-                            <Form.Item name="remember"  valuePropName="checked" className="remember">
-                                <Checkbox>记住密码</Checkbox>
-                            </Form.Item>
                             <Form.Item>
+                                <Form.Item name="remember"  valuePropName="checked" className="remember">
+                                    <Checkbox>记住密码</Checkbox>
+                                </Form.Item>
+                                <a className="login-form-forgot" href="/forget">
+                                    忘记密码
+                                </a>
+                                <br/>
                                 <Button type="primary" htmlType="submit" className="login-form-button" block>
                                     登录
                                 </Button>
+                                <br/>
+                                <a href="/register">注册账号</a>
                             </Form.Item>
+                            </Space>
                         </Form>
                     </div>
                 </div>

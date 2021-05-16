@@ -5,20 +5,6 @@ import ResetAccont from './ResetAccount';
 import "antd/dist/antd.css";
 import { Reset } from '../../api/account';
 const { Step } = Steps;
-// const steps = [
-//     {
-//         title: '身份验证',
-//         content: <FindAccount />,
-//     },
-//     {
-//         title: '重置密码',
-//         content: <ResetAccont />,
-//     },
-//     {
-//         title: '完成',
-//         content: <h1>重置密码成功！</h1>,
-//     },
-// ];
 
 class ForgetShow extends React.Component {
 
@@ -44,8 +30,6 @@ class ForgetShow extends React.Component {
 
     next = () => {
         if(this.state.current === 1) {
-            // console.log(this.formRef.current.validateFields())
-            //
             if (this.formRef.current.getFieldValue("password") === this.formRef.current.getFieldValue("password2") && this.formRef.current.getFieldValue("password") !== undefined && this.formRef.current.getFieldValue("password").length > 5) {
                 this.ResetPasswd(this.formRef.current.getFieldValue("password"))
             }

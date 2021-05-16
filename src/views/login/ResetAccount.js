@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-
+import { Footer } from 'antd/lib/layout/layout';
 class ResetAccont extends React.Component {
     constructor(props) {
         super(props);
@@ -73,6 +73,7 @@ class ResetAccont extends React.Component {
                                 ]}>
                                 <Input.Password name="pw2" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="密码" onChange={this.HandlerPw2} />
                             </Form.Item>
+                            <Footer style={{height: "20px", backgroundColor: "darkgray"}}></Footer>
                         </Form>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Row, Col, message} from 'antd';
 import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Footer } from 'antd/lib/layout/layout';
 class FindAccount extends React.Component {
     constructor(props) {
         super(props)
@@ -85,6 +86,7 @@ class FindAccount extends React.Component {
                                     }
                                 </Col>
                                 </Row>
+                                <Footer style={{height: "60px", backgroundColor: "darkgray"}}></Footer>
                             </Form.Item>
                         </Form>
                     </div>

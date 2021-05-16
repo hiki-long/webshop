@@ -2,6 +2,8 @@ import React from 'react'
 import { Col, Input, Row } from 'antd';
 import TopNavItems from '../../model/TopNavItems'
 import './Navigate.css'
+import Avatar from 'antd/lib/avatar/avatar';
+import { UserOutlined } from '@ant-design/icons';
 //顶部导航栏
 class Navigate extends React.Component{
     state = {
@@ -36,6 +38,10 @@ class Navigate extends React.Component{
                                     enterButton="查找"
                                     size="large"/>
                             </ul>
+                            <Avatar style={{ backgroundColor: '#f56a00'}} size="large" icon={<UserOutlined />}>
+                                无法显示    
+                            </Avatar>
+                            <span>用户昵称</span>
                         </nav>
                     </Col>
                 </Row>
