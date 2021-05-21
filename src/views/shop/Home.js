@@ -47,42 +47,6 @@ class Home extends React.Component {
                 </Row>
                 <Divider/>
                 <Pagination showQuickJumper defaultCurrent={1} total={500} />
-                {/* <Row>
-                    <Col>
-                    <Carousel autoplay style={{height:'160px',lineHeight:'160px'}}>
-                        <div>
-                            <Image src={Image1} preview={false} />
-                        </div>
-                        <div>
-                            <Image src={Image2} preview={false} />
-                        </div>
-                        <div>
-                            <Image src={Image3} preview={false} />
-                        </div>
-                        <div>
-                            <Image src={Image4} preview={false} />
-                        </div>
-                        <div>
-                            <Image src={Image5} preview={false} />
-                        </div>
-                    </Carousel>
-                    </Col>
-                    
-                </Row>
-                    
-               <Row gutter={16}>
-                    <Col span={4} offset={2}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                </Row>
-                <Row gutter={16}>
-                    <Col span={4} offset={2}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                    <Col span={4} offset={1}><OneItem/></Col>
-                </Row>
-                <Pagination showQuickJumper defaultCurrent={1} total={500} /> */}
             </div>
         );
     }
