@@ -1,4 +1,4 @@
-import { Divider, Row } from 'antd';
+import { Col, Divider, Row } from 'antd';
 import React from 'react';
 import OneItem from './OneItem';
 //商品底层推荐物品
@@ -9,10 +9,18 @@ class ProductRecommend extends React.Component {
             <div>
                 <Divider horizontal><span>相关商品推荐</span></Divider>
                 <Row>
-                    <OneItem />
-                    <OneItem />
-                    <OneItem />
-                    <OneItem />
+                    <Col span={4} offset={4}>
+                        <OneItem />
+                    </Col>
+                    <Col span={4}>
+                        <OneItem />
+                    </Col>
+                    <Col span={4}>
+                        <OneItem />
+                    </Col>
+                    <Col span={4}>
+                        <OneItem />
+                    </Col>
                 </Row>
             </div>
         );

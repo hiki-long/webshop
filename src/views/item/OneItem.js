@@ -6,7 +6,7 @@ class OneItem extends React.Component {
     //商品预览界面
     render() {
         return(
-                    <Card hoverable cover={<Image src={'http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'}/>}>
+                    <Card hoverable cover={<Image preview={false} src={'http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'}/>}>
                         
                         <Link>
                             <p>价格：￥1000</p>

@@ -18,19 +18,19 @@ class Home extends React.Component {
                 <Col span={24}>
                      <Carousel autoplay >
                         <div>
-                            <Image src={Image1} preview={false} style={{height:'200px',width:'2000px'}} />
+                            <Image src={Image1} preview={false} style={{height:'400px',width:'800px'}} />
                         </div>
                         <div>
-                            <Image src={Image2} preview={false} style={{height:'200px',width:'2000px'}}/>
+                            <Image src={Image2} preview={false} style={{height:'400px',width:'800px'}}/>
                         </div>
                         <div>
-                            <Image src={Image3} preview={false} style={{height:'200px',width:'2000px'}}/>
+                            <Image src={Image3} preview={false} style={{height:'400px',width:'800px'}}/>
                         </div>
                         <div>
-                            <Image src={Image4} preview={false} style={{height:'200px',width:'2000px'}}/>
+                            <Image src={Image4} preview={false} style={{height:'400px',width:'800px'}}/>
                         </div>
                         <div>
-                            <Image src={Image5} preview={false} style={{height:'200px',width:'2000px'}}/>
+                            <Image src={Image5} preview={false} style={{height:'400px',width:'800px'}}/>
                         </div>
                     </Carousel>
                 </Col>

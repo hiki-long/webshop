@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col, Input, Row,Menu } from 'antd';
-import TopNavItems from '../../model/TopNavItems'
 import './Navigate.css'
 import Avatar from 'antd/lib/avatar/avatar';
 import { UserOutlined } from '@ant-design/icons';
