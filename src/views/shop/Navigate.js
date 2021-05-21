@@ -47,39 +47,6 @@ class Navigate extends React.Component{
                             <Link to="/test">测试页面</Link>
                         </Menu.Item>
                     </Menu>
-                    {/* <Input.Search 
-                        style={{textAlign:"center", marginLeft:"280px"}}
-                        placeholder="请输入想要搜索的商品"
-                        allowClear
-                        enterButton="查找"
-                        size="large"/>
-                    <Avatar style={{ backgroundColor: '#f56a00'}} size="large" icon={<UserOutlined />}>
-                        无法显示    
-                    </Avatar> */}
-               {/* <Row>
-                    <Col span={24}>
-                        <nav className="NavbarItems" >
-                            <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                                {TopNavItems.map((item, index) => {
-                                    return (
-                                        <li key={index}>
-                                            <a className={item.cName} href={item.url}>
-                                                {item.title}
-                                            </a>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                            <ul>
-                            </ul>
-                            <ul>
-                            </ul>
-                            <ul>
-                                <span>用户昵称</span>
-                            </ul>
-                        </nav>
-                    </Col>
-                </Row> */}
             </div>
         );
     }
