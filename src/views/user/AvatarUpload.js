@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImgCrop from 'antd-img-crop'; //引入图片裁剪组件
 import { Upload, Button, Modal } from 'antd'; //引入上传、按钮、弹窗等antd组件
+import { stringify } from 'qs';
 
 
 //base64图片文件
@@ -39,7 +40,10 @@ class AvatarUpload extends Component {
     };
 
 　　//上传文件改变时的状态，详情可以参考antd的Upload组件API参数
-    onChange = ({fileList}) => {
+    onChange = ({file, fileList}) => {
+        const { status, response } = file
+        console.log("status = " + status)
+        console.log("response = " + stringify(response))
         this.setState({ fileList });
         this.props.onChange(fileList);
     };
