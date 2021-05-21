@@ -1,5 +1,5 @@
 import './App.css';
-import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Link, BrowserRouter,HashRouter } from 'react-router-dom';
 import Home from './views/shop/Home'
 import Navigate from './views/shop/Navigate';
 import LoginShow from './views/login/LoginShow';
@@ -11,13 +11,15 @@ import 'moment/locale/zh-cn';
 import UserPage from './views/user/UserPage';
 import ForgetShow from './views/login/ForgetShow';
 import Test from './views/shop/Test';
+import ItemList from './views/itemlist/ItemList';
 
 function App() {
   moment.locale('zh-cn');
   return (
     <div className="App">
-      <Navigate />
-      <BrowserRouter >
+
+        <BrowserRouter >
+        <Navigate />
           <Route component={Home} exact path="/" />
           <Route component={ShowUpload} exact path="/itemUploadResult" />
           <Route component={LoginShow} path="/login" />
@@ -26,7 +28,9 @@ function App() {
           <Route component={UserPage} path="/user" />
           <Route component={ForgetShow} path="/forget" />
           <Route component={Test} path="/test" />
+          <Route component={ItemList} path="/itemList"/>
       </BrowserRouter>
+      
     </div>
       
   );
