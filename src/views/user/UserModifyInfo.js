@@ -1,23 +1,30 @@
 import React from 'react';
-import { Form, Input, Select, Button, Space, DatePicker, Avatar } from 'antd';
-import { UserOutlined,UploadOutlined } from '@ant-design/icons';
+import { Form, Input, Select, Button, Space, DatePicker, Avatar, Upload, message, ImgCrop} from 'antd';
+// import { UserOutlined,LoadingOutlined,PlusOutlined } from '@ant-design/icons';
+import AvatarUpload from './AvatarUpload';
 const { Option } = Select;
 //修改用户信息个人页面
 class UserModifyInfo extends React.Component{
-    onFinish = values => {
-        console.log('Received values of form: ', values);
-    };
+    constructor(props) {
+        super(props)
+    }
+
+    handelUpload = values => {
+        console.log(values)
+    }
+
+    // 处理图片上传
+    handleImageChange = ({ file, fileList }) => {
+
+        this.setState({ fileList })
+    }
+
     render() {
         return(
             <div>
-                <Form name="complex-form" onFinish={this.onFinish} labelCol={{ span: 4 }} wrapperCol={{ span: 16 }} style={{textAlign:'left'}}>
-                    <Form.Item label="头像">
-                        <Space size={20}>
-                            <Avatar style={{ backgroundColor: '#f56a00', verticalAlign: 'middle' }} size="large" gap={2} icon={<UserOutlined />}>
-                                无法显示    
-                            </Avatar>
-                            <Button icon={<UploadOutlined />}>上传个人头像</Button>
-                        </Space>
+                <Form name="complex-form" labelCol={{ span: 4 }} wrapperCol={{ span: 8 }} style={{textAlign:'left'}} onFinish={this.handelUpload}>
+                    <Form.Item label="头像" name="avatar" >
+                        <AvatarUpload onChange={this.handleImageChange}/>
                     </Form.Item>
                     <Form.Item label="用户昵称">
                         <Space>
@@ -63,7 +70,7 @@ class UserModifyInfo extends React.Component{
                     </Form.Item>
                     <Form.Item label="出生日期" style={{ marginBottom: 0 }}>
                         <Form.Item
-                        name="year"
+                        name="birthday"
                         rules={[{ required: true }]}
                         style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
                         >
