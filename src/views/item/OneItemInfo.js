@@ -33,7 +33,7 @@ class OneItemInfo extends React.Component{
         const data = await fetch("http://localhost:8089/item/detail?id="+this.state.uuid,requestOptions)
         .then((response) =>{
             return response.json().then(data => {
-                if (data.code==200){
+                if (data.code===200){
                     //console.log(data.data)
                     return data.data;
                 }
