@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, Space } from 'antd';
+import { Form, Input, Button, message, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 import { Register } from "../../api/account";
@@ -14,10 +14,6 @@ class RegisterShow extends React.Component {
             password2: ""
         };
     }
-
-    toggleForm = () => {
-        // this.props.switchForm("login")
-    };
 
     changeUsername = event => {
         this.setState({username: event.target.value})
@@ -36,12 +32,14 @@ class RegisterShow extends React.Component {
     }
 
     handleSubmit = event => {
+        message.info("注册成功")
         const sumbitInfo = {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
         };
         Register(sumbitInfo);
+        window.location = 'http://localhost:3000'
     }
 
     render() {

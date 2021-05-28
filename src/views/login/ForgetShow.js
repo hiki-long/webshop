@@ -25,7 +25,8 @@ class ForgetShow extends React.Component {
     }
 
     Done() {
-        message.success('重置完成，将返回主页!')
+        message.success('重置完成，将返回登陆界面!')
+        window.location = 'http://localhost:3000/login'
     }
 
     next = () => {
