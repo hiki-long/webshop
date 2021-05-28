@@ -81,7 +81,7 @@ class FindAccount extends React.Component {
                                 </Col>
                                 <Col span={12}>
                                     {this.state.count ? 
-                                        <Button disabled>${this.state.count} s</Button> :
+                                        <Button disabled>{this.state.count} s</Button> :
                                         <Button  onClick={this.onGetCaptcha}>获取验证码</Button>
                                     }
                                 </Col>

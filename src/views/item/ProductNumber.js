@@ -2,19 +2,20 @@ import { InputNumber, Space } from 'antd';
 import React from 'react';
 //商品购买数量选择
 class ProductNumber extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            buynum: props.buynum,
-        }
-    }
+    // constructor(props){
+    //     super(props);
+    //     // this.state = {
+    //     //     buynum: props.buynum,
+    //     // }
+    // }
 
     render(){
         return(
             <div>
                 <Space>
                     <span>数量</span>
-                    <InputNumber min={1} value={this.state.buynum}/>
+                    {/* <InputNumber min={1} value={this.state.buynum}/> */}
+                    <InputNumber />
                     <span>件</span>
                 </Space>
             </div>

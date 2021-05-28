@@ -1,0 +1,225 @@
+{
+    "itemType": 
+        [
+            {
+            "value": "computer",
+            "label": "computer",
+            "children": [
+                {
+                    "value": "computer-desktop",
+                    "label": "computer-desktop"
+                },
+                {
+                    "value": "laptop",
+                    "label": "laptop"
+                },
+                {
+                    "value": "parts",
+                    "label": "parts"
+                },
+                {
+                    "value": "printers",
+                    "label": "printers"
+                },
+                {
+                    "value": "other",
+                    "label": "other"
+                }
+            ]
+            },
+            {
+                "value": "phone",
+                "label": "phone",
+                "children": [
+                    {
+                        "value": "mobilephone",
+                        "label": "mobilephone"
+                    },
+                    {
+                        "value": "equipment",
+                        "label": "equipment"
+                    }
+                ]
+            },
+            {
+                "value": "fresh",
+                "label": "fresh",
+                "children": [
+                    {
+                        "value": "fruits",
+                        "label": "fruits"
+                    },
+                    {
+                        "value": "vegetables",
+                        "label": "vegetables"
+                    },
+                    {
+                        "value": "meat",
+                        "label": "meat"
+                    },
+                    {
+                        "value": "seafood",
+                        "label": "seafood"
+                    }
+                ]
+            },
+            {
+                "value": "food",
+                "label": "food",
+                "children": [
+                    {
+                        "value": "eatingfood",
+                        "label": "eatingfood"
+                    },
+                    {
+                        "value": "drink",
+                        "label": "drink"
+                    },
+                    {
+                        "value": "liquor",
+                        "label": "liquor"
+                    }
+                ]
+            },
+            {
+                "value": "clean",
+                "label": "clean",
+                "children": [
+                    {
+                        "value": "home",
+                        "label": "home"
+                    },
+                    {
+                        "value": "clothes",
+                        "label": "clothes"
+                    },
+                    {
+                        "value": "bode",
+                        "label": "bode"
+                    },
+                    {
+                        "value": "hair",
+                        "label": "hair"
+                    },
+                    {
+                        "value": "teeth",
+                        "label": "teeth"
+                    }
+                ]
+            },
+            {
+                "value": "appliance",
+                "label": "appliance"
+            },
+            {
+                "value": "children",
+                "label": "children",
+                "children": [
+                    {
+                        "value": "clothes",
+                        "label": "clothes"
+                    },
+                    {
+                        "value": "food",
+                        "label": "food"
+                    },
+                    {
+                        "value": "toy",
+                        "label": "toy"
+                    },
+                    {
+                        "value": "milkpowder",
+                        "label": "milkpowder"
+                    }
+                ]
+            },
+            {
+                "value": "digital",
+                "label": "digital",
+                "children": [
+                    {
+                        "value": "camera",
+                        "label": "camera"
+                    },
+                    {
+                        "value": "audio",
+                        "label": "audio"
+                    },
+                    {
+                        "value": "devices",
+                        "label": "devices"
+                    }
+                ]
+            },
+            {
+                "value": "outdoor",
+                "label": "outdoor",
+                "children": [
+                    {
+                        "value": "clothes",
+                        "label": "clothes"
+                    },
+                    {
+                        "value": "shoes",
+                        "label": "shoes"
+                    },
+                    {
+                        "value": "equipment",
+                        "label": "equipment"
+                    }
+                ]
+            },
+            {
+                "value": "household",
+                "label": "household",
+                "children": [
+                    {
+                        "value": "kitcherware",
+                        "label": "kitcherware"
+                    }
+                ]
+            },
+            {
+                "value": "clothes",
+                "label": "clothes",
+                "children": [
+                    {
+                        "value": "men",
+                        "label": "men"
+                    },
+                    {
+                        "value": "women",
+                        "label": "women"
+                    }
+                ]
+            },
+            {
+                "value": "shoes",
+                "label": "shose",
+                "children": [
+                    {
+                        "value": "men",
+                        "label": "men"
+                    },
+                    {
+                        "value": "women",
+                        "label": "women"
+                    }
+                ]
+            },
+            {
+                "value": "furniture",
+                "label": "furniture",
+                "children": [
+                    {
+                        "value": "furniture",
+                        "label": "furniture"
+                    },
+                    {
+                        "value": "decoration",
+                        "label": "decoration"
+                    }
+                ]
+            }
+        ]
+}
