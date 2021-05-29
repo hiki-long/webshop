@@ -42,8 +42,11 @@ class Navigate extends React.Component{
                         <Menu.Item>
                             <Link to="/forget">忘记密码</Link>
                         </Menu.Item>
-                        <Menu.Item>
+                        {/* <Menu.Item>
                             <Link to="/test">测试页面</Link>
+                        </Menu.Item> */}
+                        <Menu.Item>
+                            <Link to="/shoppingcart">购物车</Link>
                         </Menu.Item>
                     </Menu>
             </div>
