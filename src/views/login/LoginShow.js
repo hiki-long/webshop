@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, Space } from 'antd';
+import { Form, Input, Button, Checkbox, Space, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 // import "antd/dist/antd.css";
@@ -23,11 +23,13 @@ class LoginShow extends React.Component {
     }
 
     handleSubmit = event => {
+        message.info("登陆成功")
         const sumbitInfo = {
             email: this.state.email,
             pw: this.state.password,
         };
         Login(sumbitInfo);
+        window.location = 'http://localhost:3000'
     }
 
     render() {
