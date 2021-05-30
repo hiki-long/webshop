@@ -25,6 +25,7 @@ const columns = [
   }
 ];
 
+//这里是mock的伪造数据
 let data = [];
 for (let i = 0; i < 46; i++) {
   data.push({
@@ -43,6 +44,7 @@ class ShoppingCart extends React.Component {
         super()
         this.state = {
             selectedRowKeys: [],//购物车中选中购买的物品
+            dataSource: data
         };
         this.onDeleteItem = this.onDeleteItem.bind(this)
     }
@@ -54,10 +56,15 @@ class ShoppingCart extends React.Component {
 
     //这里是清理购物车不要的东西的按钮
     onDeleteItem() {
-        let RowKeys = [...this.state.selectedRowKeys]
-        console.log(RowKeys)
+        //这里改变state状态即更新购物车数据，之后要加入后端的购物车交互操作
+        let selectedRowKeys = [...this.state.selectedRowKeys]
+        console.log(selectedRowKeys)
         this.setState({ selectedRowKeys: []})
-        console.log(data)
+        let dataSource = [...this.state.dataSource]
+        for(let i in selectedRowKeys) {
+          dataSource.splice(dataSource.findIndex(item => item.key === i.key), 1)
+        }
+        this.setState({ dataSource: dataSource})
     }
 
     //这里是提交购买的按钮
@@ -66,7 +73,7 @@ class ShoppingCart extends React.Component {
     }
     
     render() {
-        const { selectedRowKeys } = this.state;
+        const { selectedRowKeys, dataSource } = this.state;
         const rowSelection = {
         selectedRowKeys,
         onChange: this.onSelectChange,
@@ -78,7 +85,7 @@ class ShoppingCart extends React.Component {
 
     return (
         <div>
-            <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+            <Table rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
             <Space>
                 <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
                 <Button type="primary">购买</Button>
