@@ -3,123 +3,35 @@ import { Card, Col, Row,Layout,Pagination,Button,Collapse,Cascader,Divider,Input
 import ItemCard from './ItemCard';
 const { Panel } = Collapse;
 class ItemList extends React.Component{
-    state = {
-        total:1,
-        defaultPageSize:20,
-        currentPage:1,
-        info:[],
-        options:[
-            {
-              value: 'computer',
-              label: 'computer',
-              children: [
-                {
-                    value: 'computer-desktop',
-                    label: 'computer-desktop',
-                },
-                {
-                    value: 'laptop',
-                    label: 'laptop',
-                },
-                {
-                    value: 'parts',
-                    label: 'parts',
-                },
-                {
-                    value: 'printers',
-                    label: 'printers',
-                },
-                {
-                    value: 'other',
-                    label: 'other',
-                }
-              ],
-            },
-            {
-              value: 'phone',
-              label: 'phone',
-              children: [
-                {
-                    value: 'mobilephone',
-                    label: 'mobilephone',
-                },
-                {
-                    value: 'equipment',
-                    label: 'equipment',
-                }
-              ],
-            },
-            {
-                value: 'fresh',
-                label: 'fresh',
-                children: [
-                    {
-                        value: 'fruits',
-                        label: 'fruits',
-                    },
-                    {
-                        value: 'vegetables',
-                        label: 'vegetables',
-                    },
-                    {
-                        value: 'meat',
-                        label: 'meat',
-                    },
-                    {
-                        value: 'seafood',
-                        label: 'seafood',
-                    }
-                ]
-            },
-            {
-                value: 'food',
-                label: 'food',
-                children: [
-                    {
-                        value: 'eatingfood',
-                        label: 'eatingfood',
-                    },
-                    {
-                        value: 'drink',
-                        label: 'drink',
-                    },
-                    {
-                        value: 'liquor',
-                        label: 'liquor',
-                    }
-                ]
-            },
-            {
-                value: 'clean',
-                label: 'clean',
-                children: [
-                    {
-                        value: 'home',
-                        label: 'home',
-                    },
-                    {
-                        value: 'clothes',
-                        label: 'clothes',
-                    },
-                    {
-                        value: 'bode',
-                        label: 'bode',
-                    },
-                    {
-                        value: 'hair',
-                        label: 'hair',
-                    },
-                    {
-                        value: 'teeth',
-                        label: 'teeth',
-                    }
-                ]
-            },
-          ],
-        minPrice:-1,
-        maxPrice:0x3FFFFFFFF,
-        type:"all",
-        name:"",
+
+    constructor() {
+        super();
+        let jsondata = []
+        fetch('./itemType.json', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+        },
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.setState({options: data})
+            // jsondata = data
+            console.log(this.state.options)
+        })
+        // console.log(jsondata)
+        this.state = {
+            total:1,
+            defaultPageSize:20,
+            currentPage:1,
+            info:[],
+            // options: jsondata,
+            minPrice:-1,
+            maxPrice:0x3FFFFFFFF,
+            type:"all",
+            name:"",
+        }
     }
 
     async componentDidMount(){

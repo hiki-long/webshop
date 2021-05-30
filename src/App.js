@@ -18,7 +18,6 @@ function App() {
   moment.locale('zh-cn');
   return (
     <div className="App">
-
         <BrowserRouter >
         <Navigate />
           <Route component={Home} exact path="/" />

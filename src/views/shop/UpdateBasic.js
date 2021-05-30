@@ -120,13 +120,6 @@ class UpdateBasic extends React.Component{
                 }
             >
                 <ItemType />
-                {/* <Select defaultValue="请选择" style={{ width: 120 }} allowClear onChange={this.handleChangeType}>
-                    <Select.Option value="cloth">衣服</Select.Option>
-                    <Select.Option value="food">食品</Select.Option>
-                    <Select.Option value="electric">电器</Select.Option>
-                    <Select.Option value="furniture">家具</Select.Option>
-                    <Select.Option value="machine">器械</Select.Option>
-                </Select> */}
             </Form.Item>
             <Form.Item name="price" label="价格"
                 wrapperCol={{
