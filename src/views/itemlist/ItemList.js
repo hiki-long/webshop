@@ -6,21 +6,6 @@ class ItemList extends React.Component{
 
     constructor() {
         super();
-        let jsondata = []
-        fetch('./itemType.json', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-        },
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({options: data})
-            // jsondata = data
-            console.log(this.state.options)
-        })
-        // console.log(jsondata)
         this.state = {
             total:1,
             defaultPageSize:20,
@@ -32,6 +17,18 @@ class ItemList extends React.Component{
             type:"all",
             name:"",
         }
+        fetch('./itemType.json', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+        },
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.setState({options: data})
+            console.log(this.state.options)
+        })
     }
 
     async componentDidMount(){
