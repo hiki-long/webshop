@@ -13,6 +13,7 @@ import ForgetShow from './views/login/ForgetShow';
 import Test from './views/shop/Test';
 import ItemList from './views/itemlist/ItemList';
 import ShoppingCart from './views/cart/ShoppingCart';
+import OrderList from './views/order/OrderList';
 
 function App() {
   moment.locale('zh-cn');
@@ -30,6 +31,7 @@ function App() {
           <Route component={Test} path="/test" />
           <Route component={ItemList} path="/itemList"/>
           <Route component={ShoppingCart} path="/shoppingcart"/>
+          <Route component={OrderList} path="/order" />
       </BrowserRouter>
       
     </div>
