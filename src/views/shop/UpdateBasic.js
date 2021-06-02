@@ -27,17 +27,18 @@ class UpdateBasic extends React.Component{
             good_name: "",
             good_owner: "",
             good_remain: "",
-            good_onSale: "",
+            good_onSale: false,
             good_description: "",
-            good_type: ""
+            good_type: "",
+            good_price: 1000,
         };
         this.handleSaleChange = this.handleSaleChange.bind(this);
         this.handleChangeRemain = this.handleChangeRemain.bind(this);
         this.handleChangeType = this.handleChangeType.bind(this);
+        this.handleChangePrice = this.handleChangePrice.bind(this);
     }
 
     handleSaleChange(checked) {
-        console.log(checked)
         if(checked){
             this.setState({good_onSale: true})
         }
@@ -66,6 +67,10 @@ class UpdateBasic extends React.Component{
         this.setState({good_type: value})
     }
 
+    handleChangePrice = value => {
+        this.setState({good_price: value})
+    }
+
     handleSubmit = event => {
         const sumbitInfo = {
             name: this.state.good_name,
@@ -74,9 +79,15 @@ class UpdateBasic extends React.Component{
             type: this.state.good_type,
             onSale: this.state.good_onSale,
             description: this.state.good_description,
+            price: this.state.good_price
         };
-        UploadGoad(sumbitInfo)
-        // window.location.href="http://localhost:3000/itemUpload";
+        // UploadGoad(sumbitInfo);
+        this.props.history.push({
+            pathname: '/itemUploadResult',
+            state: {
+                "Info": sumbitInfo
+            }
+        })
     }
 
     render(){
@@ -94,14 +105,8 @@ class UpdateBasic extends React.Component{
             layout="horizontal"
             onFinish={this.handleSubmit}
           >
-            <Form.Item label="卖方ID" >
+            <Form.Item label="卖方" >
               <Input onChange={this.handleChangeOwner} />
-            </Form.Item>
-            <Form.Item label="产品情况" >
-              <Select>
-                <Select.Option value="none" >新上架</Select.Option>
-                <Select.Option value="has">已有</Select.Option>
-              </Select>
             </Form.Item>
             <Form.Item name="item_name" label="商品名" >
                 <Input onChange={this.handleChangeName}/>
@@ -110,16 +115,16 @@ class UpdateBasic extends React.Component{
                 wrapperCol={{
                     span:4,
                 }}
-                rules={
-                    [
-                        {
-                            required: true,
-                            message:"请选择你商品的类型"
-                        },
-                    ]
-                }
+                // rules={
+                //     [
+                //         {
+                //             required: true,
+                //             message:"请选择你商品的类型"
+                //         },
+                //     ]
+                // }
             >
-                <ItemType />
+                <ItemType onChangeType={this.handleChangeType} />
             </Form.Item>
             <Form.Item name="price" label="价格"
                 wrapperCol={{
@@ -130,13 +135,13 @@ class UpdateBasic extends React.Component{
                     defaultValue={1000}
                     formatter={value => `￥ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     parser={value => value.replace(/\$\s?|(,*)/g, '')}
+                    onChange={this.handleChangePrice}
                 />
             </Form.Item>
             <Form.Item name="number" label="库存"
                 wrapperCol={{
                     span:2,
                 }}
-                
             >
                 <Form.Item name="input-number" noStyle>
                     <InputNumber min={0} max={100000}  onChange={this.handleChangeRemain}/>

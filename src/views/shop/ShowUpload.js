@@ -4,13 +4,40 @@ import {GetItem} from '../../api/item';
 
 //商品信息上传页面
 class ShowUpload extends React.Component {
-  state = {
-    size: 'default',
-  };
+  constructor() {
+    super();
+    this.state = {
+      size: 'default',
+      item: []
+    };
+    
+  }
+  
+  componentDidMount () {
+    // console.log(this.props.history.location);
+    let get_history_item = [];
+    get_history_item = JSON.parse(sessionStorage.getItem("upload_time"));
+    if(get_history_item === null)
+    {
+      get_history_item = [];
+    }
+    get_history_item.push(this.props.history.location.state.Info);
+    // console.log(get_history_item);
+    this.setState({
+      item: get_history_item
+    },
+    () => {
+      //这里打印的是最新的state值
+      console.log(this.state.item);
+    });
+  }
 
   onEdit = e => {
-    // window.location.href="http://localhost:3000/itemInfo";
-    GetItem()
+    sessionStorage.setItem("upload_time", JSON.stringify(this.state.item));
+    // sessionStorage.clear();
+    this.props.history.push({
+      pathname: './itemUpload'
+  })  
   }
 
   render() {
@@ -24,14 +51,14 @@ class ShowUpload extends React.Component {
           size={this.state.size}
           extra={<Button type="primary" onClick={this.onEdit}>修改</Button>}
         >
-          <Descriptions.Item label="商品名" name="item_name" style>这里填写商品名</Descriptions.Item>
-          <Descriptions.Item label="卖家" name="shop_name" >这里填写卖家名</Descriptions.Item>
-          <Descriptions.Item label="商品类别" name="item_type">这里填写商品类别</Descriptions.Item>
-          <Descriptions.Item label="商品库存" name="item_number" >这里填写商品数量</Descriptions.Item>
-          <Descriptions.Item label="商品价格" name="item_price" >这里填写商品价格</Descriptions.Item>
+          <Descriptions.Item label="商品名" name="item_name" style>{this.state.item.length !== 0 ? this.state.item[0].name : ""}</Descriptions.Item>
+          <Descriptions.Item label="卖家" name="shop_name" >{this.state.item.length !== 0 ? this.state.item[0].owner : ""}</Descriptions.Item>
+          <Descriptions.Item label="商品类别" name="item_type">{this.state.item.length !== 0 ? this.state.item[0].type : ""}</Descriptions.Item>
+          <Descriptions.Item label="商品库存" name="item_number" >{this.state.item.length !== 0 ? this.state.item[0].remain : ""}</Descriptions.Item>
+          <Descriptions.Item label="商品价格" name="item_price" >{this.state.item.length !== 0 ? this.state.item[0].price : ""}</Descriptions.Item>
           <Descriptions.Item label="是否在售" name="on_sale">是</Descriptions.Item>
           <Descriptions.Item label="商品详情" name="desc">
-            商品详情描述页面
+          {this.state.item.length !== 0 ? this.state.item[0].description : ""}
           </Descriptions.Item>
         </Descriptions>
         <br/>
