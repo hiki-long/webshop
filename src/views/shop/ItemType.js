@@ -2,16 +2,12 @@ import React from 'react';
 import { TreeSelect } from 'antd';
 const { TreeNode } = TreeSelect;
 class ItemType extends React.Component {
-    state = {
-        value: undefined,
-    };
-
-    onChange = value => {
-        console.log(value)
-        this.setState({
-            value: value
-        });
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: undefined,
+        };
+    }
 
     render() {
         return (
@@ -23,7 +19,7 @@ class ItemType extends React.Component {
                     dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
                     allowClear
                     multiple
-                    onChange={this.onChange}
+                    onChange={this.props.onChangeType}
                 >
                     <TreeNode value="food" title="食品酒饮">
                         <TreeNode value="snacks" title="休闲食品" />
@@ -36,7 +32,7 @@ class ItemType extends React.Component {
                         <TreeNode value="computer" title="整机" />
                         <TreeNode value="laptop" title="笔记本" />
                         <TreeNode value="peripheral" title="外设" />
-                        <TreeNode value="parts" title="配件" />
+                        <TreeNode value="e-parts" title="配件" />
                     </TreeNode>
                     <TreeNode value="phone" title="手机">
                         <TreeNode value="mobile" title="手机" />
@@ -45,7 +41,7 @@ class ItemType extends React.Component {
                         <TreeNode value="usb" title="数据线" />
                         <TreeNode value="charger" title="充电器" />
                         <TreeNode value="film" title="膜壳" />
-                        <TreeNode value="parts" title="配件" />
+                        <TreeNode value="p-parts" title="配件" />
                     </TreeNode>
                     <TreeNode value="fresh" title="生鲜">
                         <TreeNode value="fruit" title="水果" />
