@@ -32,19 +32,26 @@ class ShoppingCartItemInfo extends React.Component{
             image: JSON.parse(data.image)[0],
             name:data.name,
             price:data.price
-        });    
+        });   
+        if (this.props.onRef) {
+            this.props.onRef(this);
+         }
+     
     };
 
-    onSelect(select){
+    onSelect(){
         this.setState({
-            select:select.target.checked
+            select:!this.state.select
         })
-    }
+        this.props.onSelect(!this.state.select,this.state.uuid,this.state.num);
+
+    }   
 
     onChange(num){
         this.setState({
             num:num
         })
+        this.props.onSelect(this.state.select,this.state.uuid,num);
     }
 
     render() {

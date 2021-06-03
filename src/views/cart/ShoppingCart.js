@@ -6,7 +6,7 @@ class ShoppingCart extends React.Component {
     
     state = {
       items:[],
-      selectList:[]
+      selectList:new Map()
     }
 
     async componentDidMount() {
@@ -31,13 +31,22 @@ class ShoppingCart extends React.Component {
     }
 
     onBuy(){
-      console.log(this.refs.cartitem.state.uuid)
+      console.log(this.state.selectList)
+    }
+
+    onSelect = (select,id,num) => {
+      if(select!=false){
+        this.state.selectList.set(id,num);
+      }
+      else{
+        this.state.selectList.delete(id);
+      }      
     }
 
     render() {
         const { total,currentPage,items } = this.state;
         const Iteminfo = items.map((iteminfo) =>
-          <ShoppingCartItemInfo key={iteminfo.id} uuid={iteminfo.id} num={iteminfo.num} ref="cartitem"/>
+          <ShoppingCartItemInfo key={iteminfo.id} uuid={iteminfo.id} num={iteminfo.num} onSelect={this.onSelect}/>
         );
         return (
         <div>
