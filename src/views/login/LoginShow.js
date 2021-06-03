@@ -26,10 +26,10 @@ class LoginShow extends React.Component {
         message.info("登陆成功")
         const sumbitInfo = {
             email: this.state.email,
-            pw: this.state.password,
+            passwd: this.state.password,
         };
         Login(sumbitInfo);
-        window.location = 'http://localhost:3000'
+        //window.location = 'http://localhost:3000'
     }
 
     render() {
@@ -65,9 +65,6 @@ class LoginShow extends React.Component {
                                     {
                                         required: true,
                                         message: '请在此输入你的密码!',
-                                    },
-                                    {
-                                        pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: "密码需要包含字母+数字，长度在6-20之间"
                                     },
                                 ]}
                             >

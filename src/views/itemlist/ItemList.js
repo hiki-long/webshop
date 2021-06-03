@@ -8,7 +8,7 @@ class ItemList extends React.Component{
         super();
         this.state = {
             total:1,
-            defaultPageSize:20,
+            defaultPageSize:18,
             currentPage:1,
             info:[],
             // options: jsondata,
@@ -42,7 +42,7 @@ class ItemList extends React.Component{
             },
             withCredentials: true,
         };
-        const data =await fetch("http://localhost:8089/item/listAll?page=1&size=20", requestOptions)
+        const data =await fetch("http://localhost:8089/item/listAll?page=1&size=18", requestOptions)
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
@@ -68,8 +68,33 @@ class ItemList extends React.Component{
             }
         })
     }
-    changePage(page,pageSize){
-        console.log(page)
+    async changePage(page,pageSize){
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            mode: 'cors',
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/item/listAll?page="+page+"&size=18", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        //console.log(data.data)
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                currentPage:page
+            })
     }
     displayRender(label){
         return label[label.length - 1];
@@ -135,7 +160,7 @@ class ItemList extends React.Component{
                 </Collapse>
                 
                 <Divider/>
-                <Row gutter={16}>
+                <Row gutter={[16,16]}>
                     {ListCards}
                 </Row>
                 <Divider/>

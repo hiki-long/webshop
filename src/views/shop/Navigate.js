@@ -1,10 +1,7 @@
 import React from 'react'
-import { Col, Input, Row,Menu } from 'antd';
+import { Menu } from 'antd';
 import './Navigate.css'
-import Avatar from 'antd/lib/avatar/avatar';
-import { UserOutlined } from '@ant-design/icons';
-import { BrowserRouter, Link,Route } from 'react-router-dom';
-import ItemList from"../itemlist/ItemList";
+import { Link } from 'react-router-dom';
 //顶部导航栏
 class Navigate extends React.Component{
     state = {
