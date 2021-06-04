@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Space,Pagination,Divider } from 'antd';
+import { Button, Space,Pagination,Divider, Empty } from 'antd';
 import ShoppingCartItemInfo from './ShoppingCartItemInfo';
 
 class ShoppingCart extends React.Component {
@@ -50,6 +50,7 @@ class ShoppingCart extends React.Component {
         );
         return (
         <div>
+        {this.state.items.length === 0 ? <Empty /> : <div></div>}
         {Iteminfo}
             <Space>
                 <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
