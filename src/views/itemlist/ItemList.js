@@ -17,18 +17,6 @@ class ItemList extends React.Component{
             type:"all",
             name:"",
         }
-        fetch('./itemType.json', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-        },
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({options: data})
-            console.log(this.state.options)
-        })
     }
 
     async componentDidMount(){
@@ -57,6 +45,20 @@ class ItemList extends React.Component{
                 total:data.total,
                 info:data.list,
                 currentPage:1
+            })
+            const tags = await fetch('./itemType.json', {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+            },
+            })
+            .then(response => response.json().then(data => {
+                return data;
+            }))
+            console.log(tags);
+            this.setState({
+                options:tags.itemType
             })
     }
 
