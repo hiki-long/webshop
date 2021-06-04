@@ -23,13 +23,13 @@ class LoginShow extends React.Component {
     }
 
     handleSubmit = event => {
-        message.info("登陆成功")
+        
         const sumbitInfo = {
             email: this.state.email,
             passwd: this.state.password,
         };
         Login(sumbitInfo);
-        //window.location = 'http://localhost:3000'
+        
     }
 
     render() {
