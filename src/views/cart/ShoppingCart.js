@@ -35,7 +35,7 @@ class ShoppingCart extends React.Component {
     }
 
     onSelect = (select,id,num) => {
-      if(select!=false){
+      if(select!==false){
         this.state.selectList.set(id,num);
       }
       else{
@@ -54,7 +54,7 @@ class ShoppingCart extends React.Component {
         {Iteminfo}
             <Space>
                 <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
-                <Button type="primary" onClick={this.onBuy.bind(this)}>购买</Button> 
+                <Button type="primary" onClick={this.onBuy.bind(this)} disabled={this.state.items.length > 0 ? '' : 'disabled'}>购买</Button> 
             </Space>
             <Divider/>
         </div>
