@@ -39,8 +39,7 @@ class UserPage extends React.Component {
                         >
                         <Menu.Item key="1">个人中心<Link to='/user' /></Menu.Item>
                         <Menu.Item key="2">修改个人信息<Link to='/userinfo' /></Menu.Item>
-                        <Menu.Item key="3">我的购物车</Menu.Item>
-                        <Menu.Item key="4">查询账单</Menu.Item>
+                        <Menu.Item key="3">查询账单</Menu.Item>
                         </Menu>
                     </Sider>
                     <Layout style={{ padding: '0 24px 24px' }}>
