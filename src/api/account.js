@@ -1,5 +1,6 @@
 import { setCookie } from './storeage';
 import { Link } from 'react-router-dom';
+import { message } from 'antd';
 
 //登录和注册接口
 export async function Login(params){
@@ -20,7 +21,9 @@ export async function Login(params){
         .then((response=>{
             response.json().then(data=>{
                 if(data.code===200){
+                    message.info("登陆成功")
                     console.log("success");
+                    window.location = 'http://localhost:3000'
                 }
                 else{
                     alert("fail");
