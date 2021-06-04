@@ -30,9 +30,6 @@ class Navigate extends React.Component{
                         <Menu.Item key="itemUpload">
                             <Link to="/itemUpload">商品上传页</Link>    
                         </Menu.Item>
-                        <Menu.Item key="itemList">
-                            <Link to="/itemList">商品列表</Link>   
-                        </Menu.Item>
                         <Menu.Item>
                             <Link to="/user">用户中心</Link>
                         </Menu.Item>

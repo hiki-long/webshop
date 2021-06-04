@@ -8,6 +8,7 @@ import Image2 from "../../image/a-happy-shopping-woman.jpg"
 import Image3 from "../../image/hand-fashion-jewelry-beard.jpg"
 import Image4 from "../../image/woman-person-model-beauty.jpg"
 import Image5 from "../../image/yoga-girls-personalization.jpg"
+import ItemList from "../itemlist/ItemList";
 
 //主界面,对应'/'路径，方便用来测试
 class Home extends React.Component {
@@ -34,7 +35,8 @@ class Home extends React.Component {
                         </div>
                     </Carousel>
                 </Col>
-                <Divider/>            
+                <ItemList />
+                {/* <Divider/>            
                 <Row gutter={16}>
                     <Col span={4}><OneItem/></Col>
                     <Col span={4}><OneItem/></Col>
@@ -45,8 +47,8 @@ class Home extends React.Component {
                     <Col span={4}><OneItem/></Col>
                     <Col span={4}><OneItem/></Col>
                 </Row>
-                <Divider/>
-                <Pagination showQuickJumper defaultCurrent={1} total={500} />
+                <Divider/> */}
+                {/* <Pagination showQuickJumper defaultCurrent={1} total={500} /> */}
             </div>
         );
     }
