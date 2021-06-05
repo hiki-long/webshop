@@ -77,6 +77,7 @@ class OrderList extends React.Component {
                             <div>订单号:6666666</div>
                             <div>收货地址:北京邮电大学</div>
                             <div>收货人:野兽前辈</div>
+                            <div>状态:未付款</div>
                         </Space>
                     </Col>
                 </Row>
