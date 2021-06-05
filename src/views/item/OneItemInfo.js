@@ -68,9 +68,9 @@ class OneItemInfo extends React.Component{
                 <Row justify="center" >
                     <ProductComment />
                 </Row>
-                {/* <Row justify="center">
+                <Row justify="center">
                     <ProductRecommend />
-                </Row> */}
+                </Row>
                 <CommentEditor />
                 <Button type="primary">发表评论</Button>
                 <Footer style={{height: "100px", backgroundColor: "#DADED4"}} ></Footer>
