@@ -12,7 +12,6 @@ class ItemList extends React.Component{
             defaultPageSize:18,
             currentPage:1,
             info:[],
-            // options: jsondata,
             minPrice:-1,
             maxPrice:0x3FFFFFFFF,
             type:"all",
@@ -57,14 +56,14 @@ class ItemList extends React.Component{
             .then(response => response.json().then(data => {
                 return data;
             }))
-            console.log(tags);
+            // console.log(tags);
             this.setState({
                 options:tags.itemType
             })
     }
 
     itemOnClick(key){
-        console.log(this.props.history)
+        // console.log(this.props.history)
         this.props.history.push({
             pathname:'../test',
             state:{
@@ -87,7 +86,7 @@ class ItemList extends React.Component{
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        console.log(data.data)
+                        // console.log(data.data)
                         return data.data;
                     }
                 })
