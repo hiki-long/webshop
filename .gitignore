@@ -10,7 +10,7 @@
 
 # production
 /build
-
+.git/MERGE_MSG
 # misc
 .DS_Store
 .env.local
