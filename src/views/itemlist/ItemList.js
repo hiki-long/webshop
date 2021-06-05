@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Row,Layout,Pagination,Button,Collapse,Cascader,Divider,InputNumber,Input} from 'antd';
 import ItemCard from './ItemCard';
+import { withRouter } from 'react-router';
 const { Panel } = Collapse;
 class ItemList extends React.Component{
 
@@ -63,8 +64,9 @@ class ItemList extends React.Component{
     }
 
     itemOnClick(key){
+        console.log(this.props.history)
         this.props.history.push({
-            pathname:'../test',
+            pathname:'./test',
             state:{
                 'uuid':key
             }
@@ -85,7 +87,7 @@ class ItemList extends React.Component{
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        //console.log(data.data)
+                        console.log(data.data)
                         return data.data;
                     }
                 })
@@ -178,4 +180,4 @@ class ItemList extends React.Component{
     }
 }
 
-export default ItemList;
+export default withRouter(ItemList);
