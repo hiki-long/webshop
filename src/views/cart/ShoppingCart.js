@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Space,Pagination,Divider, Empty } from 'antd';
 import ShoppingCartItemInfo from './ShoppingCartItemInfo';
+import { SubmitCart } from '../../api/submitcart';
 
 class ShoppingCart extends React.Component {
     
@@ -31,7 +32,16 @@ class ShoppingCart extends React.Component {
     }
 
     onBuy(){
-      console.log(this.state.selectList)
+      let res = SubmitCart(this.state.selectList);
+      if (res != null) {
+        this.props.history.push({
+          pathname:'../order',
+          state:{
+              'info': res
+          }
+      })
+      }
+      // console.log(this.state.selectList)
     }
 
     onSelect = (select,id,num) => {
