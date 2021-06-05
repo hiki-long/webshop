@@ -50,8 +50,8 @@ class ShoppingCart extends React.Component {
         );
         return (
         <div>
-        {this.state.items.length === 0 ? <Empty /> : <div></div>}
-        {Iteminfo}
+        {this.state.items.length === 0 ? <Empty /> : <Iteminfo />}
+        {/* {Iteminfo} */}
             <Space>
                 <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
                 <Button type="primary" onClick={this.onBuy.bind(this)} disabled={this.state.items.length > 0 ? '' : 'disabled'}>购买</Button> 
