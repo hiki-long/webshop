@@ -20,7 +20,7 @@ class ItemCard extends React.Component{
                     hoverable
                     cover={<img src={image}></img>}
                 >
-                    <Meta title={name} description={"$"+price}/>
+                    <Meta title={name} description={"¥"+price}/>
                 </Card>
         )
     }
