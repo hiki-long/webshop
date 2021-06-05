@@ -28,6 +28,8 @@ function App() {
           <Route component={UpdateBasic} path="/itemUpload" />
           <Route component={UserPage} path="/user" />
           <Route component={ForgetShow} path="/forget" />
+          <Route component={Test} path="/test" />
+          <Route component={ItemList} path="/itemList"/>
           <Route component={ShoppingCart} path="/shoppingcart"/>
           <Route component={OrderList} path="/order" />
       </BrowserRouter>
