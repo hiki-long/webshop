@@ -10,6 +10,7 @@ import ProductComment from './ProductComment';
 import ProductRecommend from './ProductRecommend';
 import CommentEditor from './CommentEditor';
 import { Footer } from 'antd/lib/layout/layout';
+import { SubmitOrder } from '../../api/submitorder';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -17,7 +18,8 @@ class OneItemInfo extends React.Component{
         ImageList:['http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'],
         name:"test",
         price:0,
-        uuid:""
+        uuid:"",
+        number:1,
     }
 
     constructor(props){
@@ -46,6 +48,22 @@ class OneItemInfo extends React.Component{
         })
     }
     
+    onPurchase(uuid) {
+        let params = new Map();
+        params.set(uuid, this.state.number)
+        SubmitOrder(params)
+    }
+
+    onAddShoppingCart(uuid) {
+        
+    }
+
+    ChangeNumber = value => {
+        this.setState({
+                number: value,
+            }
+        )
+    }
 
     render(){
         const{ImageList,uuid,name,price}=this.state
@@ -58,9 +76,9 @@ class OneItemInfo extends React.Component{
                     <Col offset={4} style={{textAlign: 'left' }} >
                         <Space direction="vertical" size={20}>
                             <ProductHeaer name={name} price={price}/>
-                            <ProductSelect />
-                            <ProductNumber buynum={1}/>
-                            <ProductBuyButton />
+                            {/* <ProductSelect /> */}
+                            <ProductNumber ChangeNumber={this.ChangeNumber}/>
+                            <ProductBuyButton onPurchas={this.onPurchase.bind(uuid)}/>
                             <ProductDetail />
                         </Space>
                     </Col>

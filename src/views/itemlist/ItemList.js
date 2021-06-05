@@ -66,7 +66,7 @@ class ItemList extends React.Component{
     itemOnClick(key){
         console.log(this.props.history)
         this.props.history.push({
-            pathname:'./test',
+            pathname:'../test',
             state:{
                 'uuid':key
             }

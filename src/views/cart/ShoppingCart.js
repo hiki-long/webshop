@@ -44,6 +44,7 @@ class ShoppingCart extends React.Component {
       // console.log(this.state.selectList)
     }
 
+    //uuid对应商品数量
     onSelect = (select,id,num) => {
       if(select!==false){
         this.state.selectList.set(id,num);
