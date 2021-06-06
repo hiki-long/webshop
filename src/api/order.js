@@ -1,20 +1,22 @@
 import { message } from 'antd';
 export async function SubmitOrder(params) {
-    const orderlist = params;
-    let urlencoded = new URLSearchParams();
     console.log(params);
+    // const orderlist = params;
+    const orderlist = JSON.stringify(params);
+    let urlencoded = new URLSearchParams();
+    console.log(orderlist);
     urlencoded.append("orderlist", orderlist);
-    console.log(urlencoded)
     let requestOptions = {
         method:'POST',
         redirect: 'follow',
         body:urlencoded,
+        // body:orderlist,
         credentials: 'include',
         'Access-Control-Allow-Credentials':'true',
     };
     
-    const data = await fetch("http://localhost:8089/order/addorder",requestOptions)
-        .then((response=>{
+    const data = await fetch("http://localhost:8089/order/createOrder",requestOptions)
+        .then((response=>{   
             response.json().then(data=>{
                 if(data.code===200){
                     message.info("提交订单成功")

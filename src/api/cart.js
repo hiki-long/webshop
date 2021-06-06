@@ -81,3 +81,7 @@ export async function SubmitOneCart(params) {
         .catch((error=>console.log('error', error)))
     return data
 }
+
+export async function RemoveItemCart(params) {
+    
+}

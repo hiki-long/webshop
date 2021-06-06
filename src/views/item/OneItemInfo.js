@@ -54,13 +54,20 @@ class OneItemInfo extends React.Component{
             itemUUID: uuid,
             number: 1,
             owner: "京东",
+            buyer: "lsala",
+            price:"",
         }
         const data2 = {
             itemUUID: "2234040-234",
             number: 2,
             owner: "淘宝",
+            buyer: 'sdlkf',
+            price:"",
         }
-        params.push(JSON.stringify(data),JSON.stringify(data2));
+        // params.push(JSON.stringify(data))
+        // params.push(JSON.stringify(data2));
+        params.push(data);
+        params.push(data2);
         SubmitOrder(params)
     }
 

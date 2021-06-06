@@ -14,7 +14,6 @@ export async function Login(params){
         credentials: 'include',
         'Access-Control-Allow-Credentials':'true',
     };
-    
     const data = await fetch("http://localhost:8089/user/login",requestOptions)
         .then((response=>{
             response.json().then(data=>{
