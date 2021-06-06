@@ -29,9 +29,10 @@ class ShoppingCart extends React.Component {
           })
         })
         .catch(error=> console.log('error', error));
-      this.setState({
-        items:JSON.parse(data)
-      })     
+      console.log(data);
+        // this.setState({
+      //   items: data
+      // })     
     }
 
     onBuy(){
@@ -47,7 +48,12 @@ class ShoppingCart extends React.Component {
       //     }
       // })
       // }
+      
       console.log(this.state.selectList)
+    }
+
+    onDeleteItem() {
+      let data = [...this.state.selectList];
     }
 
     //uuid对应商品数量

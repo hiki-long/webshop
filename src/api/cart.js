@@ -83,5 +83,28 @@ export async function SubmitOneCart(params) {
 }
 
 export async function RemoveItemCart(params) {
-    
+    const itemUUID = params.itemUUID;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append("itemUUID", itemUUID);
+    let requestOptions = {
+        method:'POST',
+        redirect: 'follow',
+        body: urlencoded,
+        credentials: 'include',
+        'Access-Control-Allow-Credentials':'true',
+    };
+    const data = await fetch("http://localhost:8089/wishlist/removeWishlist",requestOptions)
+        .then((response=>{
+            response.json().then(data=>{
+                if(data.code===200){
+                    message.info("添加到购物车成功")
+                    console.log(data.data)
+                }
+                else{
+                    alert("fail");
+                }
+            })
+        }))
+        .catch((error=>console.log('error', error)))
+    return data
 }
