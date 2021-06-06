@@ -10,6 +10,7 @@ import ProductRecommend from './ProductRecommend';
 import CommentEditor from './CommentEditor';
 import { Footer } from 'antd/lib/layout/layout';
 import { SubmitOrder } from '../../api/order';
+import { SubmitOneCart } from '../../api/cart';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -61,8 +62,12 @@ class OneItemInfo extends React.Component{
         SubmitOrder(data)
     }
 
-    onAddShoppingCart(uuid) {
-        
+    onAddShoppingCart(uuid, number) {
+        const data = {
+            itemUUID: uuid,
+            number: number
+        }
+        SubmitOneCart(data);
     }
 
     ChangeNumber = value => {
@@ -73,8 +78,9 @@ class OneItemInfo extends React.Component{
         )
     }
 
+
     render(){
-        const{ImageList,uuid,name,price}=this.state
+        const{ImageList,uuid,name,price,number}=this.state
         return (
             <div>
                 <Row justify="start">
@@ -85,7 +91,7 @@ class OneItemInfo extends React.Component{
                         <Space direction="vertical" size={20}>
                             <ProductHeaer name={name} price={price}/>
                             <ProductNumber ChangeNumber={this.ChangeNumber}/>
-                            <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid)}/>
+                            <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid)} onAddShoppingCart={this.onAddShoppingCart.bind(this, uuid, number)}/>
                             <ProductDetail />
                         </Space>
                     </Col>

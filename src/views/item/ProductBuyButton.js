@@ -11,7 +11,7 @@ class ProductBuyButton extends React.Component{
             <div>
                 <Space>
                     <Button onClick={this.props.onPurchase}>立即购买</Button>
-                    <Button icon={<ShoppingCartOutlined />} >加入购物车</Button>
+                    <Button icon={<ShoppingCartOutlined />} onClick={this.props.onAddShoppingCart} >加入购物车</Button>
                 </Space>
             </div>
         );
