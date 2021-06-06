@@ -39,7 +39,6 @@ class RegisterShow extends React.Component {
             password: this.state.password,
         };
         Register(sumbitInfo);
-        window.location = 'http://localhost:3000'
     }
 
     render() {

@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Space, Button } from 'antd';
 import ProductImage from './ProductImage';
 import ProductHeaer from './ProductHeader';
-import ProductSelect from './ProductSelect';
 import ProductNumber from './ProductNumber';
 import ProductBuyButton from './ProductBuyButton';
 import ProductDetail from './ProductDetail';
@@ -10,7 +9,7 @@ import ProductComment from './ProductComment';
 import ProductRecommend from './ProductRecommend';
 import CommentEditor from './CommentEditor';
 import { Footer } from 'antd/lib/layout/layout';
-import { SubmitOrder } from '../../api/submitorder';
+import { SubmitOrder } from '../../api/order';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -50,8 +49,16 @@ class OneItemInfo extends React.Component{
     
     onPurchase(uuid) {
         let params = new Map();
+        let params2 = new Map();
         params.set(uuid, this.state.number)
-        SubmitOrder(params)
+        params2.set("2039492034-2394",2)
+        // console.log(params)
+        // console.log(JSON.stringify([...params]))
+        const data = {
+            numberlist: JSON.stringify([...params]),
+            ownerlist: JSON.stringify([...params2])
+        }
+        SubmitOrder(data)
     }
 
     onAddShoppingCart(uuid) {
@@ -59,6 +66,7 @@ class OneItemInfo extends React.Component{
     }
 
     ChangeNumber = value => {
+        console.log("value = " + value)
         this.setState({
                 number: value,
             }
@@ -76,9 +84,8 @@ class OneItemInfo extends React.Component{
                     <Col offset={4} style={{textAlign: 'left' }} >
                         <Space direction="vertical" size={20}>
                             <ProductHeaer name={name} price={price}/>
-                            {/* <ProductSelect /> */}
                             <ProductNumber ChangeNumber={this.ChangeNumber}/>
-                            <ProductBuyButton onPurchas={this.onPurchase.bind(uuid)}/>
+                            <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid)}/>
                             <ProductDetail />
                         </Space>
                     </Col>

@@ -56,14 +56,12 @@ class ItemList extends React.Component{
             .then(response => response.json().then(data => {
                 return data;
             }))
-            // console.log(tags);
             this.setState({
                 options:tags.itemType
             })
     }
 
     itemOnClick(key){
-        // console.log(this.props.history)
         this.props.history.push({
             pathname:'../test',
             state:{

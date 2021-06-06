@@ -1,5 +1,3 @@
-import { setCookie } from './storeage';
-import { Link } from 'react-router-dom';
 import { message } from 'antd';
 
 //登录和注册接口
@@ -31,50 +29,62 @@ export async function Login(params){
             })
         }))
         .catch((error=>console.log('error', error)))
+    return data
 }
 
-export function Register(params) {
-    var axios = require('axios');
-    var qs = require('qs');
-    var data = qs.stringify(params);
-    var config = {
-        method: 'post',
-        url: '/api/user/register',
-        headers: {
-            'Access-Control-Allow-Origin':'*', 
-            'Access-Control-Allow-Credentials':'true',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        withCredentials: true,
-        data: data
-    };
-    axios(config)
-    .then(function (response) {
-        console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+export async function Register(params) {
+    const username = params.username;
+    const email = params.email;
+    const password = params.password;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append("username", username);
+    urlencoded.append("email", email);
+    urlencoded.append("password", password);
+    let requestOptions = {
+        method: 'POST',
+        redirect: 'follow',
+        body: urlencoded,
+        credentials: 'include',
+        'Access-Control-Allow-Credentials': 'true',
+    }
+
+    const data = await fetch("http://localhost:8089/user/register", requestOptions)
+        .then((response=> {
+            response.json().then(data=>{
+                if(data.code===200){
+                    message.info("注册成功");
+                    window.location = 'http://localhost:3000';
+                }
+            })
+        }))
+        .catch((error=>console.log(error)))
+    return data
 }
 
-export function Reset(params) {
-    var axios = require('axios');
-    var qs = require('qs');
-    var data = qs.stringify(params);
-    var config = {
-        method: 'post',
-        //这里是重置的密码
-        url: '/api/user/changePasswd',
-        headers: {
-            'Access-Control-Allow-Origin':'*', 
-            'Access-Control-Allow-Credentials':'true',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        withCredentials: true,
-        data: data
-    };
-    axios(config)
-    .then(function (response) {
-        console.log(JSON.stringify(response.data));
-    })
+export async function Reset(params) {
+    const email = params.email;
+    const newpassword = params.newpassword;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append("email", email);
+    urlencoded.append("passwd","")
+    urlencoded.append("newpasswd", newpassword);
+    let requestOptions = {
+        method: 'POST',
+        redirect: 'follow',
+        body: urlencoded,
+        credentials: 'include',
+        'Access-Control-Allow-Credentials': 'true',
+    }
+
+    const data = await fetch("http://localhost:8089/user/changePasswd", requestOptions)
+        .then((response=> {
+            response.json().then(data=>{
+                if(data.code===200){
+                    message.info("修改成功");
+                    window.location = 'http://localhost:3000/login';
+                }
+            })
+        }))
+        .catch((error=>console.log(error)))
+    return data
 }

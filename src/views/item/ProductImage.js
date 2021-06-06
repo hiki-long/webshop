@@ -12,7 +12,7 @@ class ProductImage extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps.ImageList)
+        // console.log(nextProps.ImageList)
         this.setState({
             ImageList: nextProps.ImageList
         })

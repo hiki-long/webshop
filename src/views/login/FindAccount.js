@@ -60,7 +60,7 @@ class FindAccount extends React.Component {
                                         type: "email", message: "邮箱格式不正确"
                                     },
                                 ]}>
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱"/>
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="邮箱" onChange={this.props.onChangeEmail}/>
                             </Form.Item>
                             <Form.Item>
                                 <Row gutter={8}>

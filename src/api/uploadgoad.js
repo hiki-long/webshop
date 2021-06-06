@@ -1,25 +1,38 @@
 //上传商品信息
-export function UploadGoad(params) {
-    var axios = require('axios');
-    var qs = require('qs');
-    var data = qs.stringify(params);
-    var config = {
-        method: 'post',
-        url: '/api/item/addItem',
-        headers: {
-            'Access-Control-Allow-Origin':'*', 
-            'Access-Control-Allow-Credentials':'true',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        withCredentials: true,
-        data: data
-    };
+import { message } from 'antd';
+export async function UploadGoad(params) {
+    const name = params.name;
+    const owner = params.owner;
+    const remain = params.remain;
+    const type = params.type;
+    const onSale = params.onSale;
+    const description = params.description;
+    const price = params.price;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append("name", name);
+    urlencoded.append("owner", owner);
+    urlencoded.append("remain", remain);
+    urlencoded.append("type", type);
+    urlencoded.append("onSale", onSale);
+    urlencoded.append("description", description);
+    urlencoded.append("price", price);
 
-    axios(config)
-    .then(function (response) {
-        console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    let requestOptions = {
+        method: 'POST',
+        redirect: 'follow',
+        body: urlencoded,
+        credentials: 'include',
+        'Access-Control-Allow-Credentials': 'true',
+    }
+
+    const data = await fetch("http://localhost:8089/item/addItem", requestOptions)
+        .then((response=> {
+            response.json().then(data=>{
+                if(data.code===200){
+                    message.info("上传商品成功");
+                }
+            })
+        }))
+        .catch((error=>console.log(error)))
+    return data
 }

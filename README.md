@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+[{，}，{, }]
+
+记录问题：
+1.  前端需要加入additem相应的添加购物车接口
+2.  前端api的请求方法/api proxy失效，可能需要重写
+3.  核对下购物车跳转order流程
+4.  Map现在是一对一，但是要加入商家名，用什么数据结构

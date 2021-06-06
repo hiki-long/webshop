@@ -14,7 +14,7 @@ class ProductNumber extends React.Component{
             <div>
                 <Space>
                     <span>数量</span>
-                    <InputNumber min={1} onChange={this.props.ChangeNumber}/>
+                    <InputNumber min={1} defaultValue={1} onChange={this.props.ChangeNumber}/>
                     <span>件</span>
                 </Space>
             </div>

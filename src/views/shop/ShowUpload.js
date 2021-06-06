@@ -1,6 +1,5 @@
 import { Descriptions, Radio, Button, Space } from 'antd';
 import React from 'react';
-import {GetItem} from '../../api/item';
 
 //商品信息上传页面
 class ShowUpload extends React.Component {

@@ -19,7 +19,8 @@ class ForgetShow extends React.Component {
     ResetPasswd(params) {
         console.log("发送重置密码")
         const data = {
-            password: params
+            email: this.state.email,
+            newpassword: params
         };
         Reset(data);
     }
@@ -53,15 +54,22 @@ class ForgetShow extends React.Component {
             current: temp - 1
         })
     };
+
+    onChangeEmail = value => {
+        this.setState({
+            email: value
+        })
+    }
+
     render() {
         let steps = [
             {
-                title: '身份验证',
-                content: <FindAccount />,
+                title: '请输入验证码',
+                content: <FindAccount onChangeEmail={this.onChangeEmail}/>,
             },
             {
                 title: '重置密码',
-                content: <ResetAccont formRef={this.formRef} />,
+                content: <ResetAccont formRef={this.formRef} email={this.state.email}/>,
             },
             {
                 title: '完成',
