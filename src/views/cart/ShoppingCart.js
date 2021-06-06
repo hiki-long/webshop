@@ -29,9 +29,17 @@ class ShoppingCart extends React.Component {
           })
         })
         .catch(error=> console.log('error', error));
-      console.log(data);
-        // this.setState({
-      //   items: data
+      // console.log(JSON.parse(data));
+      let temp = JSON.parse(data);
+      // console.log(temp[0].num)
+      let temp2 = this.state.items.concat(temp);
+      console.log(temp2);
+      // temp.forEach((value, index) => 
+      //   temp2.push(value)
+      // );
+      // console.log(typeof(temp2));
+      // this.setState({
+      //   items: this.state.items.concat(temp2)
       // })     
     }
 
