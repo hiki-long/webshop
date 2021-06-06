@@ -46,28 +46,28 @@ class OrderList extends React.Component {
         this.onPaymentDone = this.onPaymentDone.bind(this);
     }
 
-    async componentDidMount() {
-        let requestOptions = {
-            method: 'Get',
-            redirect: 'follow',
-            credentials: 'include',
-            'Access-Control-Allow-Credentials': 'true',
-        }
-        const data = await fetch("http://localhost:8089/order/addorder")
-                        .then((response) => {
-                            return response.json().then(data => {
-                                console.log("response json = " + JSON.parse(data))
-                                if(data.code === 200) {
-                                    return data.data;
-                                }
-                            })
-                        })
-                        .catch(error => console.log('error', error));
-                        this.setState({
-                            items:JSON.parse(data)
-                        })
+    // async componentDidMount() {
+    //     let requestOptions = {
+    //         method: 'Get',
+    //         redirect: 'follow',
+    //         credentials: 'include',
+    //         'Access-Control-Allow-Credentials': 'true',
+    //     }
+    //     const data = await fetch("http://localhost:8089/order/addorder")
+    //                     .then((response) => {
+    //                         return response.json().then(data => {
+    //                             console.log("response json = " + JSON.parse(data))
+    //                             if(data.code === 200) {
+    //                                 return data.data;
+    //                             }
+    //                         })
+    //                     })
+    //                     .catch(error => console.log('error', error));
+    //                     this.setState({
+    //                         items:JSON.parse(data)
+    //                     })
         
-    }
+    // }
 
     onPaymentDone() {
         this.setState({
