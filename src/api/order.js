@@ -1,10 +1,10 @@
 import { message } from 'antd';
 export async function SubmitOrder(params) {
-    const numberlist = params.numberlist;
-    const ownerlist = params.ownerlist;
+    const orderlist = params;
     let urlencoded = new URLSearchParams();
-    urlencoded.append("numberlist", numberlist);
-    urlencoded.append("ownerlist", ownerlist);
+    console.log(params);
+    urlencoded.append("orderlist", orderlist);
+    console.log(urlencoded)
     let requestOptions = {
         method:'POST',
         redirect: 'follow',

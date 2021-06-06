@@ -49,17 +49,19 @@ class OneItemInfo extends React.Component{
     }
     
     onPurchase(uuid) {
-        let params = new Map();
-        let params2 = new Map();
-        params.set(uuid, this.state.number)
-        params2.set("2039492034-2394",2)
-        // console.log(params)
-        // console.log(JSON.stringify([...params]))
+        let params = [];
         const data = {
-            numberlist: JSON.stringify([...params]),
-            ownerlist: JSON.stringify([...params2])
+            itemUUID: uuid,
+            number: 1,
+            owner: "京东",
         }
-        SubmitOrder(data)
+        const data2 = {
+            itemUUID: "2234040-234",
+            number: 2,
+            owner: "淘宝",
+        }
+        params.push(JSON.stringify(data),JSON.stringify(data2));
+        SubmitOrder(params)
     }
 
     onAddShoppingCart(uuid, number) {
