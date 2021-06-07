@@ -11,9 +11,9 @@ class ShoppingCart extends React.Component {
     }
 
     async componentDidMount() {
-      //测试语句，需要删除
-      this.state.selectList.set("sdlfjfsl", 1);
-
+      this.setState({
+        items: []
+      })
       let requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -29,18 +29,10 @@ class ShoppingCart extends React.Component {
           })
         })
         .catch(error=> console.log('error', error));
-      // console.log(JSON.parse(data));
-      let temp = JSON.parse(data);
-      // console.log(temp[0].num)
-      let temp2 = this.state.items.concat(temp);
-      console.log(temp2);
-      // temp.forEach((value, index) => 
-      //   temp2.push(value)
-      // );
-      // console.log(typeof(temp2));
-      // this.setState({
-      //   items: this.state.items.concat(temp2)
-      // })     
+      this.setState({
+        items: JSON.parse(data)
+      })
+      console.log(this.state.items);
     }
 
     onBuy(){
@@ -81,12 +73,10 @@ class ShoppingCart extends React.Component {
         );
         return (
         <div>
-        {this.state.items.length === 0 ? <Empty /> : <Iteminfo />}
-        {/* {Iteminfo} */}
+        {this.state.items.length === 0 ? <Empty /> : Iteminfo}
             <Space>
                 <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
-                {/* <Button type="primary" onClick={this.onBuy.bind(this)} disabled={this.state.items.length > 0 ? '' : 'disabled'}>购买</Button>  */}
-                <Button type="primary" onClick={this.onBuy.bind(this)}>购买</Button> 
+                <Button type="primary" onClick={this.onBuy.bind(this)} disabled={this.state.items.length > 0 ? '' : 'disabled'}>购买</Button> 
             </Space>
             <Divider/>
         </div>
