@@ -5,6 +5,7 @@ class ShoppingCartItemInfo extends React.Component{
     state = {
         uuid:"",
         num:1,
+        owner:"",
         select:false,
     }
     
@@ -28,10 +29,12 @@ class ShoppingCartItemInfo extends React.Component{
                 })
             })
             .catch(error => console.log('error', error));
+        // console.log(data)
         this.setState({
             image: JSON.parse(data.image)[0],
             name:data.name,
-            price:data.price
+            price:data.price,
+            owner:data.owner
         });   
         if (this.props.onRef) {
             this.props.onRef(this);
@@ -43,7 +46,7 @@ class ShoppingCartItemInfo extends React.Component{
         this.setState({
             select:!this.state.select
         })
-        this.props.onSelect(!this.state.select,this.state.uuid,this.state.num);
+        this.props.onSelect(!this.state.select,this.state.uuid,this.state.num,this.state.owner);
 
     }   
 
@@ -55,7 +58,7 @@ class ShoppingCartItemInfo extends React.Component{
     }
 
     render() {
-        const { image,name,num,price } = this.state
+        const { image,name,num,price,owner } = this.state
         return(
             <div>
                 <Row align="middle">
@@ -67,6 +70,9 @@ class ShoppingCartItemInfo extends React.Component{
                     </Col>
                     <Col xs={2}>
                         <div style={{alignSelf:"center"}}>{name}</div>
+                    </Col>
+                    <Col xs={2}>
+                        <div style={{alignSelf:"center"}}>{owner}</div>
                     </Col>
                     <Col xs={2}   offset={6}>
                         <div style={{alignSelf:"center"}}>￥{price}</div>

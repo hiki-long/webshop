@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Space,Pagination,Divider, Empty } from 'antd';
 import ShoppingCartItemInfo from './ShoppingCartItemInfo';
 import { SubmitCart } from '../../api/cart';
+import { SubmitOrder } from '../../api/order';
 
 class ShoppingCart extends React.Component {
     
@@ -32,14 +33,11 @@ class ShoppingCart extends React.Component {
       this.setState({
         items: JSON.parse(data)
       })
-      console.log(this.state.items);
     }
 
     onBuy(){
-    const data = {
-      wishlist: [...this.state.selectList]
-    }
-      let res = SubmitCart(data);
+      const data = [...this.state.selectList];
+      // let res = SubmitCart(data);
       // if (res != null) {
       //   this.props.history.push({
       //     pathname:'../order',
@@ -48,18 +46,34 @@ class ShoppingCart extends React.Component {
       //     }
       // })
       // }
-      
-      console.log(this.state.selectList)
+      let params = [];
+      for(var [key, value] of data) {
+        const temp = {
+          itemUUID: key,
+          number: value.number,
+          owner: value.owner,
+        }
+        params.push(temp);
+      }
+      console.log(params);
+      SubmitOrder(params);
+      // console.log(this.state.selectList)
     }
 
     onDeleteItem() {
-      let data = [...this.state.selectList];
+      const data = [...this.state.selectList];
+      console.log(data);
     }
 
     //uuid对应商品数量
-    onSelect = (select,id,num) => {
+    onSelect = (select,id,num,own) => {
       if(select!==false){
-        this.state.selectList.set(id,num);
+        this.state.selectList.set(id,{
+          itemUUID: id,
+          number: num,
+          owner: own,
+          buyer: "408b1cfb-ce0f-4f41-b773-e916378e35f5",
+        });
       }
       else{
         this.state.selectList.delete(id);

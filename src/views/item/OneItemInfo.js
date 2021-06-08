@@ -44,20 +44,18 @@ class OneItemInfo extends React.Component{
         this.setState({
             ImageList: JSON.parse(data.image),
             name: data.name,
-            price: data.price
+            price: data.price,
+            owner: data.owner
         })
     }
     
-    onPurchase(uuid) {
+    onPurchase(uuid,num,own) {
         let params = [];
         const data = {
             itemUUID: uuid,
-            number: 1,
-            owner: "京东",
-            buyer: "lsala",
-            price:"",
+            number: num,
+            owner: own,
         }
-        // params.push(JSON.stringify(data))
         params.push(data);
         SubmitOrder(params)
     }
@@ -80,7 +78,7 @@ class OneItemInfo extends React.Component{
 
 
     render(){
-        const{ImageList,uuid,name,price,number}=this.state
+        const{ImageList,uuid,name,price,number,owner}=this.state
         return (
             <div>
                 <Row justify="start">
@@ -91,7 +89,7 @@ class OneItemInfo extends React.Component{
                         <Space direction="vertical" size={20}>
                             <ProductHeaer name={name} price={price}/>
                             <ProductNumber ChangeNumber={this.ChangeNumber}/>
-                            <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid)} onAddShoppingCart={this.onAddShoppingCart.bind(this, uuid, number)}/>
+                            <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid, number, owner)} onAddShoppingCart={this.onAddShoppingCart.bind(this, uuid, number)}/>
                             <ProductDetail />
                         </Space>
                     </Col>
