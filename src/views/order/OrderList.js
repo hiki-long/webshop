@@ -2,36 +2,36 @@ import React from 'react';
 import { List, Image, Space, Button, Col, Row, Modal ,Spin, Alert, message} from 'antd';
 import ShowPayment from './ShowPayment';
 
-const data = [
-  {
-    uuid: '1',
-    title: '商品名',
-    storename: '店铺名',
-    number: 2,
-    price: 100,
-  },
-  {
-    uuid: '2',
-    title: '商品名',
-    storename: '店铺名',
-    number: 1,
-    price: 100,
-  },
-  {
-    uuid: '3',
-    title: '商品名',
-    storename: '店铺名',
-    number: 1,
-    price: 100,
-  },
-  {
-    uuid: '4',
-    title: '商品名',
-    storename: '店铺名',
-    number: 1,
-    price: 100,
-  },
-];
+// const data = [
+//   {
+//     uuid: '1',
+//     title: '商品名',
+//     storename: '店铺名',
+//     number: 2,
+//     price: 100,
+//   },
+//   {
+//     uuid: '2',
+//     title: '商品名',
+//     storename: '店铺名',
+//     number: 1,
+//     price: 100,
+//   },
+//   {
+//     uuid: '3',
+//     title: '商品名',
+//     storename: '店铺名',
+//     number: 1,
+//     price: 100,
+//   },
+//   {
+//     uuid: '4',
+//     title: '商品名',
+//     storename: '店铺名',
+//     number: 1,
+//     price: 100,
+//   },
+// ];
 
 class OrderList extends React.Component {
     
@@ -46,28 +46,14 @@ class OrderList extends React.Component {
         this.onPaymentDone = this.onPaymentDone.bind(this);
     }
 
-    // async componentDidMount() {
-    //     let requestOptions = {
-    //         method: 'Get',
-    //         redirect: 'follow',
-    //         credentials: 'include',
-    //         'Access-Control-Allow-Credentials': 'true',
-    //     }
-    //     const data = await fetch("http://localhost:8089/order/addorder")
-    //                     .then((response) => {
-    //                         return response.json().then(data => {
-    //                             console.log("response json = " + JSON.parse(data))
-    //                             if(data.code === 200) {
-    //                                 return data.data;
-    //                             }
-    //                         })
-    //                     })
-    //                     .catch(error => console.log('error', error));
-    //                     this.setState({
-    //                         items:JSON.parse(data)
-    //                     })
+    async componentDidMount() {
+        console.log(this.props.history.location.state.info)
+        this.setState({
+            data: this.props.history.location.state.info,
+            totalprice: 100
+        })
         
-    // }
+    }
 
     onPaymentDone() {
         this.setState({
@@ -99,20 +85,20 @@ class OrderList extends React.Component {
                         <Space direction="horizontal" align="start" size={40}>
                             <div>订单号:6666666</div>
                             <div>收货地址:北京邮电大学</div>
-                            <div>收货人:野兽前辈</div>
+                            <div>收货人:小明同学</div>
                             <div>状态:未付款</div>
                         </Space>
                     </Col>
                 </Row>
                 <List
                     itemLayout="horizontal"
-                    dataSource={data}
+                    dataSource={this.state.data}
                     renderItem={item => (
                     <List.Item style={{textAlign:"left", width:"80%", marginLeft:"10%"}}>
                         <List.Item.Meta
-                        avatar={<Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" width={100}/>}
-                        title={<a href="https://ant.design">{item.title}</a>}
-                        description={<span>{item.storename}</span>}
+                        avatar={<Image src={item.image} preview={false} width={100}/>}
+                        title={<span>{item.name}</span>}
+                        description={<span>{item.owner}</span>}
                         />
                         <Space direction="vertical" size={10} style={{marginLeft: "800px"}}>
                             <Row>

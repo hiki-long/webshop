@@ -21,12 +21,15 @@ export async function SubmitOrder(params) {
                 if(data.code===200){
                     message.info("提交订单成功")
                     console.log("提交订单成功");
+                    return true;
                 }
                 else{
                     alert("fail");
+                    return false;
                 }
             })
         }))
         .catch((error=>console.log('error', error)))
-    return data
+        return false;
+    
 }

@@ -36,27 +36,46 @@ class ShoppingCart extends React.Component {
     }
 
     onBuy(){
+      let params = []
       const data = [...this.state.selectList];
-      // let res = SubmitCart(data);
-      // if (res != null) {
+       for(var [key, value] of data) {
+        const temp = {
+          itemUUID: key,
+          number: value.number,
+          owner: value.owner,
+          name: value.name,
+          price: value.price,
+          image: value.image
+        }
+        params.push(temp);
+      }
+      this.props.history.push({
+        pathname:'../order',
+        state:{
+          'info': params
+        }
+      })
+
+      // const data = [...this.state.selectList];
+      // let params = [];
+      // for(var [key, value] of data) {
+      //   const temp = {
+      //     itemUUID: key,
+      //     number: value.number,
+      //     owner: value.owner,
+      //   }
+      //   params.push(temp);
+      // }
+      // console.log(params);
+      // let res = SubmitOrder(params);
+      // if(res === true) {
       //   this.props.history.push({
       //     pathname:'../order',
       //     state:{
       //         'info': this.state.selectList
       //     }
-      // })
+      //   })
       // }
-      let params = [];
-      for(var [key, value] of data) {
-        const temp = {
-          itemUUID: key,
-          number: value.number,
-          owner: value.owner,
-        }
-        params.push(temp);
-      }
-      console.log(params);
-      SubmitOrder(params);
       // console.log(this.state.selectList)
     }
 
@@ -77,7 +96,7 @@ class ShoppingCart extends React.Component {
     }
 
     //uuid对应商品数量
-    onSelect = (select,id,num,own,isNumChange) => {
+    onSelect = (select,id,num,own,name,price,img,isNumChange) => {
       //不管有没有选中都要进行数据改变的记录
       if(isNumChange===true) {
         const params = {
@@ -91,6 +110,9 @@ class ShoppingCart extends React.Component {
           itemUUID: id,
           number: num,
           owner: own,
+          name: name,
+          price: price,
+          image: img
         });
       }
       else{

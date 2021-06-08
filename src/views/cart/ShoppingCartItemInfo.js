@@ -46,7 +46,7 @@ class ShoppingCartItemInfo extends React.Component{
         this.setState({
             select:!this.state.select
         })
-        this.props.onSelect(!this.state.select,this.state.uuid,this.state.num,this.state.owner,false);
+        this.props.onSelect(!this.state.select,this.state.uuid,this.state.num,this.state.owner,this.state.name,this.state.price,this.state.image,false);
 
     }   
 
@@ -54,7 +54,7 @@ class ShoppingCartItemInfo extends React.Component{
         this.setState({
             num:num
         })
-        this.props.onSelect(this.state.select,this.state.uuid,num,this.state.owner,true);
+        this.props.onSelect(this.state.select,this.state.uuid,num,this.state.owner,this.state.name,this.state.price,this.state.image,true);
     }
 
     render() {
