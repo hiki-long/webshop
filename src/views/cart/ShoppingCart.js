@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Space,Pagination,Divider, Empty } from 'antd';
 import ShoppingCartItemInfo from './ShoppingCartItemInfo';
-import { SubmitCart } from '../../api/cart';
+import { RemoveItemCart, SubmitCart, SubmitOneCart } from '../../api/cart';
 import { SubmitOrder } from '../../api/order';
 
 class ShoppingCart extends React.Component {
@@ -62,17 +62,35 @@ class ShoppingCart extends React.Component {
 
     onDeleteItem() {
       const data = [...this.state.selectList];
-      console.log(data);
+      let params = [];
+      for(var [key, value] of data) {
+        const temp = {
+          itemUUID: key
+        }
+        params.push(temp);
+      }
+      const sendata = {
+        wishlist: params
+      }
+      RemoveItemCart(sendata);
+      // console.log(this.state.selectList);
     }
 
     //uuid对应商品数量
-    onSelect = (select,id,num,own) => {
+    onSelect = (select,id,num,own,isNumChange) => {
+      //不管有没有选中都要进行数据改变的记录
+      if(isNumChange===true) {
+        const params = {
+          itemUUID: id,
+          number: num
+        }
+        SubmitOneCart(params);
+      }
       if(select!==false){
         this.state.selectList.set(id,{
           itemUUID: id,
           number: num,
           owner: own,
-          buyer: "408b1cfb-ce0f-4f41-b773-e916378e35f5",
         });
       }
       else{
@@ -89,7 +107,7 @@ class ShoppingCart extends React.Component {
         <div>
         {this.state.items.length === 0 ? <Empty /> : Iteminfo}
             <Space>
-                <Button type="default" onClick={this.onDeleteItem}>删除选中</Button>
+                <Button type="default" onClick={this.onDeleteItem.bind(this)}>删除选中</Button>
                 <Button type="primary" onClick={this.onBuy.bind(this)} disabled={this.state.items.length > 0 ? '' : 'disabled'}>购买</Button> 
             </Space>
             <Divider/>

@@ -83,9 +83,10 @@ export async function SubmitOneCart(params) {
 }
 
 export async function RemoveItemCart(params) {
-    const itemUUID = params.itemUUID;
+    const wishlist = JSON.stringify(params);
+    console.log(wishlist)
     let urlencoded = new URLSearchParams();
-    urlencoded.append("itemUUID", itemUUID);
+    urlencoded.append("wishlist", wishlist);
     let requestOptions = {
         method:'POST',
         redirect: 'follow',
