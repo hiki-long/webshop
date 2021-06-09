@@ -84,14 +84,11 @@ class ShoppingCart extends React.Component {
       let params = [];
       for(var [key, value] of data) {
         const temp = {
-          itemUUID: key
+          uuid: key
         }
         params.push(temp);
       }
-      const sendata = {
-        wishlist: params
-      }
-      RemoveItemCart(sendata);
+      RemoveItemCart(params);
       // console.log(this.state.selectList);
     }
 
