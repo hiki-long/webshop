@@ -2,37 +2,6 @@ import React from 'react';
 import { List, Image, Space, Button, Col, Row, Modal ,Spin, Alert, message} from 'antd';
 import ShowPayment from './ShowPayment';
 
-// const data = [
-//   {
-//     uuid: '1',
-//     title: '商品名',
-//     storename: '店铺名',
-//     number: 2,
-//     price: 100,
-//   },
-//   {
-//     uuid: '2',
-//     title: '商品名',
-//     storename: '店铺名',
-//     number: 1,
-//     price: 100,
-//   },
-//   {
-//     uuid: '3',
-//     title: '商品名',
-//     storename: '店铺名',
-//     number: 1,
-//     price: 100,
-//   },
-//   {
-//     uuid: '4',
-//     title: '商品名',
-//     storename: '店铺名',
-//     number: 1,
-//     price: 100,
-//   },
-// ];
-
 class OrderList extends React.Component {
     
     constructor() {

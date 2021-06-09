@@ -98,7 +98,7 @@ export async function RemoveItemCart(params) {
         .then((response=>{
             response.json().then(data=>{
                 if(data.code===200){
-                    message.info("添加到购物车成功")
+                    message.info("去除订单成功")
                     console.log(data.data)
                 }
                 else{
