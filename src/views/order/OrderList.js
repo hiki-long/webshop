@@ -41,16 +41,18 @@ class OrderList extends React.Component {
             isvisible: false, //弹窗是否可见
             paymentvisible: false,
             totalprice: 0,
+            orderid: "",
         };
         this.onPaymentClick = this.onPaymentClick.bind(this);
         this.onPaymentDone = this.onPaymentDone.bind(this);
     }
 
     async componentDidMount() {
-        console.log(this.props.history.location.state.info)
+        console.log(this.props.history.location)
         this.setState({
             data: this.props.history.location.state.info,
-            totalprice: 100
+            totalprice: this.props.history.location.state.price,
+            orderid: this.props.history.location.state.orderid
         })
         
     }
@@ -81,9 +83,9 @@ class OrderList extends React.Component {
             <div>
                 <h1>查看订单页面</h1>
                 <Row>
-                    <Col offset={9}>
+                    <Col offset={6}>
                         <Space direction="horizontal" align="start" size={40}>
-                            <div>订单号:6666666</div>
+                            <div>订单号:{this.state.orderid}</div>
                             <div>收货地址:北京邮电大学</div>
                             <div>收货人:小明同学</div>
                             <div>状态:未付款</div>
