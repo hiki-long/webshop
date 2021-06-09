@@ -66,7 +66,7 @@ class ShoppingCartItemInfo extends React.Component{
                         <Checkbox onChange={this.onSelect.bind(this)}/>
                     </Col>
                     <Col xs={4}>
-                        <Image src={image} style={{height:'100px',width:'100px'}}/>
+                        <Image src={image} style={{height:'100px',width:'100px'}} preview={false}/>
                     </Col>
                     <Col xs={2}>
                         <div style={{alignSelf:"center"}}>{name}</div>

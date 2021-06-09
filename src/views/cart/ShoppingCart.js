@@ -89,6 +89,7 @@ class ShoppingCart extends React.Component {
         params.push(temp);
       }
       RemoveItemCart(params);
+      window.location='http://localhost:3000/shoppingcart';
       // console.log(this.state.selectList);
     }
 
