@@ -12,7 +12,6 @@ import CommentEditor from './CommentEditor';
 import { Footer } from 'antd/lib/layout/layout';
 import { SubmitOrder } from '../../api/order';
 import { SubmitOneCart } from '../../api/cart';
-import { withRouter } from 'react-router';
 
 //商品详情页面
 class OneItemInfo extends React.Component{
