@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Image, Space, Button, Col, Row, Modal ,Spin, Alert, message} from 'antd';
 import ShowPayment from './ShowPayment';
-import { PayMoney } from '../../api/paymoney';
+import { PayMoney, PayDone } from '../../api/paymoney';
 
 class OrderList extends React.Component {
     
@@ -27,7 +27,7 @@ class OrderList extends React.Component {
         
     }
 
-    onPaymentDone() {
+    async onPaymentDone() {
         this.setState({
             paymentvisible: true,
         })
@@ -36,10 +36,19 @@ class OrderList extends React.Component {
         const params = {
             uuid: this.state.orderid
         }
-        PayMoney(params)
-        // setTimeout(function () {
-        //     window.location = 'http://localhost:3000/shoppingcart';
-        // }, 2000);
+        let billid = await PayMoney(params).then(data=>{
+            return data;
+        })
+        console.log(billid)
+        setTimeout(function () {
+            const params2 = {
+                orderUUID: this.state.orderid,
+                billUUID: billid
+            };
+            console.log(params2);
+            PayDone(params2);
+            // window.location = 'http://localhost:3000/shoppingcart';
+        }, 2000);
     }
 
     onPaymentClick() {
