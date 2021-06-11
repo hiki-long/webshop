@@ -46,7 +46,8 @@ class OneItemInfo extends React.Component{
             ImageList: JSON.parse(data.image),
             name: data.name,
             price: data.price,
-            owner: data.owner
+            owner: data.owner,
+            description:data.description
         })
     }
     
@@ -67,7 +68,7 @@ class OneItemInfo extends React.Component{
             price: this.state.price,
             image: this.state.ImageList[0]
         });
-        SubmitOrder(params, data2, this.props);
+        SubmitOrder(params, data2, this.props, true);
     }
 
     onAddShoppingCart(uuid, number) {
@@ -88,7 +89,7 @@ class OneItemInfo extends React.Component{
 
 
     render(){
-        const{ImageList,uuid,name,price,number,owner}=this.state
+        const{ImageList,uuid,name,price,number,owner,description}=this.state
         return (
             <div>
                 <Row justify="start">
@@ -103,6 +104,11 @@ class OneItemInfo extends React.Component{
                             <ProductDetail />
                         </Space>
                     </Col>
+                </Row>
+                <Row justify="center" >
+                    <div>
+                        {description}
+                    </div>
                 </Row>
                 <Row justify="center" >
                     <ProductComment />
