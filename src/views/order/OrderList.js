@@ -42,10 +42,9 @@ class OrderList extends React.Component {
         console.log(billid)
         setTimeout(function () {
             const params2 = {
-                orderUUID: this.state.orderid,
+                orderUUID: params.uuid,
                 billUUID: billid
             };
-            console.log(params2);
             PayDone(params2);
             // window.location = 'http://localhost:3000/shoppingcart';
         }, 2000);
