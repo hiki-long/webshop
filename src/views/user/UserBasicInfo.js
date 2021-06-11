@@ -1,13 +1,22 @@
 import React from 'react';
 import {Image, Avatar, Button, Space, Col, Rate, List, Divider} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { GetAllOrder } from '../../api/order';
 
 const data = [
-    '商品已发送到xxx'
+    {
+        uuid: "23048204",
+        paid: true,
+        time: 1623080815000, 
+    }
 ];
 //用户个人页面
 class UserBasicInfo extends React.Component{
     
+    onTest() {
+        GetAllOrder();
+    }
+
     render(){
         var date = new Date();
         var d1 = date.toLocaleString();
@@ -44,10 +53,10 @@ class UserBasicInfo extends React.Component{
                             <List.Item.Meta
                                 avatar={<Image src={'http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'} width="50px" height="50px" preview={false} />}
                                 title={<div>商品xxx已发货</div>}
-                                description={"发货时间"+d1}
+                                description={<div>"发货时间" {d1}</div>}
                             />
                             <Space>
-                                <Button>查看订单详情</Button>
+                                <Button onClick={this.onTest}>查看订单详情</Button>
                                 <Button>确认收货</Button>
                             </Space>
                         </List.Item>

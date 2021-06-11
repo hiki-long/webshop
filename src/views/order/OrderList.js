@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, Image, Space, Button, Col, Row, Modal ,Spin, Alert, message} from 'antd';
 import ShowPayment from './ShowPayment';
+import { PayMoney } from '../../api/paymoney';
 
 class OrderList extends React.Component {
     
@@ -32,9 +33,13 @@ class OrderList extends React.Component {
         })
         // 等待2秒后跳转到成功页面
         message.info("购买成功！");
-        setTimeout(function () {
-            window.location = 'http://localhost:3000/shoppingcart';
-        }, 2000);
+        const params = {
+            uuid: this.state.orderid
+        }
+        PayMoney(params)
+        // setTimeout(function () {
+        //     window.location = 'http://localhost:3000/shoppingcart';
+        // }, 2000);
     }
 
     onPaymentClick() {

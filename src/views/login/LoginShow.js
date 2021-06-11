@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox, Space, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './Login.css'
 // import "antd/dist/antd.css";
-import { Login } from "../../api/account";
+import { HasLogin, Login } from "../../api/account";
 //登录界面展示
 class LoginShow extends React.Component {
     constructor(props) {
@@ -12,6 +12,10 @@ class LoginShow extends React.Component {
             email: "",
             password: ""
         };
+    }
+
+    componentDidMount() {
+        HasLogin();
     }
     
     changeEmail = event => {

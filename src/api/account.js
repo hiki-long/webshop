@@ -1,6 +1,25 @@
 import { message } from 'antd';
 
 //登录和注册接口
+export async function HasLogin() {
+    let requestOptions = {
+        method: 'POST',
+        redirect: 'follow',
+        credentials: 'include',
+        'Access-Control-Allow-Credentials':'true',
+    }
+    const data = await fetch("http://localhost:8089/user/login", requestOptions)
+        .then((response) => {
+            response.json().then(data=>{
+                if(data.code===401){
+                    message.info("您已登陆，即将返回主页面")
+                    window.location = 'http://localhost:3000'
+                }
+            })
+        })
+        .catch((error)=>console.log(error))
+}
+
 export async function Login(params){
     const email=params.email;
     const passwd=params.passwd;

@@ -1,6 +1,31 @@
 import { message } from 'antd';
 import { convertLegacyProps } from 'antd/lib/button/button';
 import { RemoveItemCart } from './cart';
+export async function GetAllOrder() {
+    //确认下url
+    let requestOptions = {
+        method:'GET',
+        redirect: 'follow',
+        credentials: 'include',
+        'Access-Control-Allow-Credentials':'true',
+    };
+    
+    const data = await fetch("http://localhost:8089/order/listOrderByUser",requestOptions)
+        .then((response=>{
+            response.json().then(data=>{
+                if(data.code===200){
+                    message.info("获取所有订单成功")
+                    console.log(data.data)
+                }
+                else{
+                    alert("fail");
+                }
+            })
+        }))
+        .catch((error=>console.log('error', error)))
+    return data
+}
+
 export async function SubmitOrder(params, data2, props) {
     console.log(params);
     const orderlist = JSON.stringify(params);
@@ -62,5 +87,4 @@ export async function SubmitOrder(params, data2, props) {
             )
         }))
         .catch((error=>console.log('error', error)))
-    
 }
