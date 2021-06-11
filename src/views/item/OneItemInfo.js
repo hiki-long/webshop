@@ -57,14 +57,15 @@ class OneItemInfo extends React.Component{
             owner: own,
         }
         params.push(data);
-        let data2 = [{
+        let data2 = new Map();
+        data2.set(uuid, {
             itemUUID: uuid,
             number: num,
             owner: own,
             name: this.state.name,
             price: this.state.price,
             image: this.state.ImageList[0]
-        }]
+        });
         SubmitOrder(params, data2, this.props);
     }
 
