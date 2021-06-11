@@ -1,17 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Row, Col, Space, Button } from 'antd';
+import { Typography,Row, Col, Space, Divider } from 'antd';
 import ProductImage from './ProductImage';
 import ProductHeaer from './ProductHeader';
 import ProductNumber from './ProductNumber';
 import ProductBuyButton from './ProductBuyButton';
-import ProductDetail from './ProductDetail';
-import ProductComment from './ProductComment';
-import ProductRecommend from './ProductRecommend';
-import CommentEditor from './CommentEditor';
-import { Footer } from 'antd/lib/layout/layout';
 import { SubmitOrder } from '../../api/order';
 import { SubmitOneCart } from '../../api/cart';
+import marked from 'marked'
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -21,6 +17,7 @@ class OneItemInfo extends React.Component{
         price:0,
         uuid:"",
         number:1,
+        description:"",
     }
 
     constructor(props){
@@ -37,7 +34,7 @@ class OneItemInfo extends React.Component{
         .then((response) =>{
             return response.json().then(data => {
                 if (data.code===200){
-                    //console.log(data.data)
+                    console.log(data.data)
                     return data.data;
                 }
             })
@@ -97,28 +94,19 @@ class OneItemInfo extends React.Component{
                         <ProductImage ImageList={ImageList} />
                     </Col>
                     <Col offset={4} style={{textAlign: 'left' }} >
-                        <Space direction="vertical" size={20}>
+                        <Space direction="vertical" size={30}>
                             <ProductHeaer name={name} price={price}/>
                             <ProductNumber ChangeNumber={this.ChangeNumber}/>
                             <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid, number, owner)} onAddShoppingCart={this.onAddShoppingCart.bind(this, uuid, number)}/>
-                            <ProductDetail />
                         </Space>
                     </Col>
                 </Row>
                 <Row justify="center" >
-                    <div>
-                        {description}
-                    </div>
+                    <Typography>
+                        <Divider horizontal><span>商品介绍</span></Divider>
+                        <div dangerouslySetInnerHTML={{__html:marked(description)}}/>
+                    </Typography>
                 </Row>
-                <Row justify="center" >
-                    <ProductComment />
-                </Row>
-                <Row justify="center">
-                    <ProductRecommend />
-                </Row>
-                <CommentEditor />
-                <Button type="primary">发表评论</Button>
-                <Footer style={{height: "100px", backgroundColor: "#DADED4"}} ></Footer>
             </div>
         );
     }
