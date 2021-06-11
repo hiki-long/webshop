@@ -57,7 +57,15 @@ class OneItemInfo extends React.Component{
             owner: own,
         }
         params.push(data);
-        SubmitOrder(params)
+        let data2 = [{
+            itemUUID: uuid,
+            number: num,
+            owner: own,
+            name: this.state.name,
+            price: this.state.price,
+            image: this.state.ImageList[0]
+        }]
+        SubmitOrder(params, data2, this.props);
     }
 
     onAddShoppingCart(uuid, number) {
