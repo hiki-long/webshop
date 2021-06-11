@@ -14,24 +14,27 @@ import Test from './views/shop/Test';
 import ItemList from './views/itemlist/ItemList';
 import ShoppingCart from './views/cart/ShoppingCart';
 import OrderList from './views/order/OrderList';
+import ScrollToTop from './views/utils/ScrollToTop'
 
 function App() {
   moment.locale('zh-cn');
   return (
     <div className="App">
         <BrowserRouter >
-        <Navigate />
-          <Route component={Home} exact path="/" />
-          <Route component={ShowUpload} exact path="/itemUploadResult" />
-          <Route component={LoginShow} path="/login" />
-          <Route component={RegisterShow} path="/register" />
-          <Route component={UpdateBasic} path="/itemUpload" />
-          <Route component={UserPage} path="/user" />
-          <Route component={ForgetShow} path="/forget" />
-          <Route component={Test} path="/test" />
-          <Route component={ItemList} path="/itemList"/>
-          <Route component={ShoppingCart} path="/shoppingcart"/>
-          <Route component={OrderList} path="/order" />
+        <ScrollToTop>
+          <Navigate />
+            <Route component={Home} exact path="/" />
+            <Route component={ShowUpload} exact path="/itemUploadResult" />
+            <Route component={LoginShow} path="/login" />
+            <Route component={RegisterShow} path="/register" />
+            <Route component={UpdateBasic} path="/itemUpload" />
+            <Route component={UserPage} path="/user" />
+            <Route component={ForgetShow} path="/forget" />
+            <Route component={Test} path="/test" />
+            <Route component={ItemList} path="/itemList"/>
+            <Route component={ShoppingCart} path="/shoppingcart"/>
+            <Route component={OrderList} path="/order" />
+        </ScrollToTop>
       </BrowserRouter>
       
     </div>
