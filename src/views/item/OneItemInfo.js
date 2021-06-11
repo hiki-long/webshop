@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { Row, Col, Space, Button } from 'antd';
 import ProductImage from './ProductImage';
 import ProductHeaer from './ProductHeader';
@@ -117,4 +118,4 @@ class OneItemInfo extends React.Component{
     }
 }
 
-export default OneItemInfo;
+export default withRouter(OneItemInfo);
