@@ -30,7 +30,7 @@ class UpdateBasic extends React.Component{
             good_onSale: false,
             good_description: "",
             good_type: "",
-            good_price: 1000,
+            good_price: 1000
         };
         this.handleSaleChange = this.handleSaleChange.bind(this);
         this.handleChangeRemain = this.handleChangeRemain.bind(this);
@@ -39,6 +39,7 @@ class UpdateBasic extends React.Component{
     }
 
     handleSaleChange(checked) {
+        console.log(checked)
         if(checked){
             this.setState({good_onSale: true})
         }
@@ -81,7 +82,8 @@ class UpdateBasic extends React.Component{
             description: this.state.good_description,
             price: this.state.good_price
         };
-        // UploadGoad(sumbitInfo);
+        // UploadGoad(sumbitInfo)
+        // window.location.href="http://localhost:3000/itemUpload";
         this.props.history.push({
             pathname: '/itemUploadResult',
             state: {
@@ -115,16 +117,8 @@ class UpdateBasic extends React.Component{
                 wrapperCol={{
                     span:4,
                 }}
-                // rules={
-                //     [
-                //         {
-                //             required: true,
-                //             message:"请选择你商品的类型"
-                //         },
-                //     ]
-                // }
             >
-                <ItemType onChangeType={this.handleChangeType} />
+                <ItemType onChangeType={this.handleChangeType}/>
             </Form.Item>
             <Form.Item name="price" label="价格"
                 wrapperCol={{
@@ -142,6 +136,7 @@ class UpdateBasic extends React.Component{
                 wrapperCol={{
                     span:2,
                 }}
+                
             >
                 <Form.Item name="input-number" noStyle>
                     <InputNumber min={0} max={100000}  onChange={this.handleChangeRemain}/>
