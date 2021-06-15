@@ -49,7 +49,7 @@ class ShoppingCart extends React.Component {
         params.push(temp);
       }
       const data2 = [...this.state.selectList];
-      SubmitOrder(params, data2, this.props);
+      SubmitOrder(params, data2, this.props, false);
       // console.log(this.state.selectList)
     }
 
