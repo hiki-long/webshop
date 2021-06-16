@@ -81,7 +81,7 @@ class AvatarUpload extends Component {
                         onChange={this.onChange}
                         //这里action对应的是后端api的接口
                         // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                        action="http://localhost:8089/user/uploadAvatar"
+                        action="http://localhost:8089/item/storePicture"
                     >
                         {fileList.length >= 1 ? null : (<Button>添加图片</Button>)}　
 {/* {通过三木运算符判断文件列表fileList的长度来决定上传图片的数量，达到控制图片数量的功能} */}
