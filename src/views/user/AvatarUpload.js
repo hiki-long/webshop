@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImgCrop from 'antd-img-crop'; //引入图片裁剪组件
-import { Upload, Button, Modal } from 'antd'; //引入上传、按钮、弹窗等antd组件
+import { Upload, Button, Modal, message } from 'antd'; //引入上传、按钮、弹窗等antd组件
 import { stringify } from 'qs';
 
 
@@ -21,6 +21,7 @@ class AvatarUpload extends Component {
             previewVisible: false,
             previewImage: '',
             fileList: [],
+            img: ""
         };
 
     }
@@ -43,21 +44,30 @@ class AvatarUpload extends Component {
     onChange = ({file, fileList}) => {
         const { status, response } = file
         console.log("status = " + status)
-        console.log("response = " + stringify(response))
-        this.setState({ fileList });
-        this.props.onChange(fileList);
+        console.log("response = " + JSON.stringify(response))
+        this.setState({fileList});
+        if (status === "done") {
+            const res = JSON.stringify(response);
+            console.log(res.data);
+            if(res.code === 200) {
+                message.info("上传图片成功");
+                this.setState({ img: res.data});
+                this.props.onChange(res.data);
+            }
+        }
+        
     };
 
     render() {
         const { previewVisible, previewImage, fileList } = this.state;
 　　　　　//根据官方属性定制化裁剪框大小固定的裁剪组件属性
         const props = {
-            width: 500,  //裁剪宽度
-            height: 300, //裁剪高度
-            resize: false, //裁剪是否可以调整大小
+            width: 800,  //裁剪宽度
+            height: 800, //裁剪高度
+            resize: true, //裁剪是否可以调整大小
             resizeAndDrag: true, //裁剪是否可以调整大小、可拖动
             modalTitle: "上传图片", //弹窗标题
-            modalWidth: 600, //弹窗宽度
+            modalWidth: 800, //弹窗宽度
         };
         return (
             <div>
@@ -78,7 +88,7 @@ class AvatarUpload extends Component {
                     </Upload>
                 </ImgCrop>
 {/* {图片预览弹出框：可以实时查看上传的图片} */}
-                <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel} title='Image-Show' width={100}>
+                <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel} title='Image-Show' width={800}>
                     <img alt="example" style={{ width: '100%' }} src={previewImage} />
                 </Modal>
             </div>

@@ -118,7 +118,7 @@ class ItemList extends React.Component{
         );
         return(
             <div className="site-card-wrapper" style={{ padding: '50px 50px' }}>
-                <Collapse>
+                {/* <Collapse>
                     <Panel header="筛选" key="1">
                     <Row gutter={32}>
                         <Col>
@@ -158,7 +158,7 @@ class ItemList extends React.Component{
                         </Col> 
                     </Row>
                 </Panel>
-                </Collapse>
+                </Collapse> */}
                 
                 <Divider/>
                 <Row gutter={[16,16]}>

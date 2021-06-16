@@ -11,6 +11,7 @@ import {
 } from 'antd';
 import { UploadGoad } from '../../api/uploadgoad';
 import ItemType from './ItemType';
+import AvatarUpload from '../user/AvatarUpload';
 
 const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -64,11 +65,17 @@ class UpdateBasic extends React.Component{
     }
 
     handleChangeType = value =>{
+        console.log(value)
         this.setState({good_type: value})
     }
 
     handleChangePrice = value => {
         this.setState({good_price: value})
+    }
+
+    handleImageChange = url => {
+        this.setState({imgurl: url})
+        console.log("url = " + url);
     }
 
     handleSubmit = event => {
@@ -81,13 +88,13 @@ class UpdateBasic extends React.Component{
             description: this.state.good_description,
             price: this.state.good_price
         };
-        // UploadGoad(sumbitInfo);
-        this.props.history.push({
-            pathname: '/itemUploadResult',
-            state: {
-                "Info": sumbitInfo
-            }
-        })
+        UploadGoad(sumbitInfo);
+        // this.props.history.push({
+        //     pathname: '/itemUploadResult',
+        //     state: {
+        //         "Info": sumbitInfo
+        //     }
+        // })
     }
 
     render(){
@@ -115,14 +122,6 @@ class UpdateBasic extends React.Component{
                 wrapperCol={{
                     span:4,
                 }}
-                // rules={
-                //     [
-                //         {
-                //             required: true,
-                //             message:"请选择你商品的类型"
-                //         },
-                //     ]
-                // }
             >
                 <ItemType onChangeType={this.handleChangeType} />
             </Form.Item>
@@ -156,9 +155,7 @@ class UpdateBasic extends React.Component{
             </Form.Item>
             <Form.Item name="upload" label="商品图片" valuePropName="fileList" getValueFromEvent={normFile}
                 >
-                <Upload name="logo" listType="picture">
-                    <Button icon={<UploadOutlined />}>上传图片</Button>
-                </Upload>
+                <AvatarUpload onChange={this.handleImageChange}/>
             </Form.Item>
             <Form.Item name={['user','introduction']} label="商品描述">
                 <Input.TextArea showCount maxLength={250} onChange={this.handleChangeDesc}/>
