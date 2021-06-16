@@ -4,7 +4,7 @@ export async function UploadGoad(params) {
     const name = params.name;
     const owner = params.owner;
     const remain = params.remain;
-    const type = JSON.parse(params.type);
+    const type = JSON.stringify(params.type);
     const onSale = params.onSale;
     const description = params.description;
     const price = params.price;
