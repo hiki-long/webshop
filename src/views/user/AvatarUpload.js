@@ -47,7 +47,7 @@ class AvatarUpload extends Component {
         console.log("response = " + JSON.stringify(response))
         this.setState({fileList});
         if (status === "done") {
-            const res = JSON.stringify(response);
+            const res = response;
             console.log(res.data);
             if(res.code === 200) {
                 message.info("上传图片成功");

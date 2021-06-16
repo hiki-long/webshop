@@ -32,6 +32,7 @@ class UpdateBasic extends React.Component{
             good_description: "",
             good_type: "",
             good_price: 1000,
+            imgurl:""
         };
         this.handleSaleChange = this.handleSaleChange.bind(this);
         this.handleChangeRemain = this.handleChangeRemain.bind(this);
@@ -86,8 +87,10 @@ class UpdateBasic extends React.Component{
             type: this.state.good_type,
             onSale: this.state.good_onSale,
             description: this.state.good_description,
-            price: this.state.good_price
+            price: this.state.good_price,
+            image: this.state.imgurl
         };
+        // console.log(sumbitInfo);
         UploadGoad(sumbitInfo);
         // this.props.history.push({
         //     pathname: '/itemUploadResult',
