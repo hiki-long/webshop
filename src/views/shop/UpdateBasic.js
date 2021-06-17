@@ -66,7 +66,6 @@ class UpdateBasic extends React.Component{
     }
 
     handleChangeType = value =>{
-        console.log(value)
         this.setState({good_type: value})
     }
 
@@ -76,7 +75,6 @@ class UpdateBasic extends React.Component{
 
     handleImageChange = url => {
         this.setState({imgurl: url})
-        console.log("url = " + url);
     }
 
     handleSubmit = event => {
@@ -136,7 +134,6 @@ class UpdateBasic extends React.Component{
                 <InputNumber
                     defaultValue={1000}
                     formatter={value => `￥ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    parser={value => value.replace(/\$\s?|(,*)/g, '')}
                     onChange={this.handleChangePrice}
                 />
             </Form.Item>
