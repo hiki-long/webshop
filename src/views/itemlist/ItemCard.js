@@ -15,7 +15,7 @@ class ItemCard extends React.Component{
     }
     render() {
         const {uuid,image, name, price} = this.state;
-        const localimage = "http://localhost:8089/mystatic/" + image;
+        const localimage = "http://localhost:8089/" + image;
         // console.log(localimage);
         return (
                 <Card
