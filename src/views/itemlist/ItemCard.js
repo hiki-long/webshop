@@ -18,7 +18,11 @@ class ItemCard extends React.Component{
         return (
                 <Card
                     hoverable
-                    cover={<img src={image}></img>}
+                    cover={
+                    image.startsWith('http') ? <img src={image} alt="图片不存在"></img> :
+                    <img src={"file://" + image} alt="图片不存在"></img>
+                    
+                }
                 >
                     <Meta title={name} description={"¥"+price}/>
                 </Card>
