@@ -34,13 +34,7 @@ class Navigate extends React.Component{
                             <Link to="/user">用户中心</Link>
                         </Menu.Item>
                         <Menu.Item>
-                            <Link to="/forget">忘记密码</Link>
-                        </Menu.Item>
-                        <Menu.Item>
                             <Link to="/shoppingcart">购物车</Link>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <Link to="/order">查看订单</Link>
                         </Menu.Item>
                     </Menu>
             </div>

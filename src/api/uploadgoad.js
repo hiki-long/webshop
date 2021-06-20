@@ -4,10 +4,11 @@ export async function UploadGoad(params) {
     const name = params.name;
     const owner = params.owner;
     const remain = params.remain;
-    const type = params.type;
+    const type = JSON.stringify(params.type);
     const onSale = params.onSale;
     const description = params.description;
     const price = params.price;
+    const image = params.image;
     let urlencoded = new URLSearchParams();
     urlencoded.append("name", name);
     urlencoded.append("owner", owner);
@@ -16,6 +17,7 @@ export async function UploadGoad(params) {
     urlencoded.append("onSale", onSale);
     urlencoded.append("description", description);
     urlencoded.append("price", price);
+    urlencoded.append("image", image);;
 
     let requestOptions = {
         method: 'POST',

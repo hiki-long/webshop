@@ -46,6 +46,7 @@ class ItemList extends React.Component{
                 info:data.list,
                 currentPage:1
             })
+            console.log(this.state.total);
             const tags = await fetch('./itemType.json', {
                 method: "GET",
                 headers: {
@@ -112,13 +113,13 @@ class ItemList extends React.Component{
         const ListCards = info.map((iteminfo)=>
             <Col span={4}>
                 <div onClick={this.itemOnClick.bind(this, iteminfo.uuid)}>
-                    <ItemCard key={iteminfo.uuid} image={JSON.parse(iteminfo.image)[0]} price={iteminfo.price} name={iteminfo.name}/>
+                    <ItemCard key={iteminfo.uuid} uuid={iteminfo.uuid} image={JSON.parse(iteminfo.image)[0]} price={iteminfo.price} name={iteminfo.name}/>
                 </div>
             </Col>
         );
         return(
             <div className="site-card-wrapper" style={{ padding: '50px 50px' }}>
-                <Collapse>
+                {/* <Collapse>
                     <Panel header="筛选" key="1">
                     <Row gutter={32}>
                         <Col>
@@ -158,7 +159,7 @@ class ItemList extends React.Component{
                         </Col> 
                     </Row>
                 </Panel>
-                </Collapse>
+                </Collapse> */}
                 
                 <Divider/>
                 <Row gutter={[16,16]}>

@@ -11,6 +11,7 @@ import {
 } from 'antd';
 import { UploadGoad } from '../../api/uploadgoad';
 import ItemType from './ItemType';
+import AvatarUpload from '../user/AvatarUpload';
 
 const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -30,7 +31,8 @@ class UpdateBasic extends React.Component{
             good_onSale: false,
             good_description: "",
             good_type: "",
-            good_price: 1000
+            good_price: 1000,
+            imgurl:""
         };
         this.handleSaleChange = this.handleSaleChange.bind(this);
         this.handleChangeRemain = this.handleChangeRemain.bind(this);
@@ -72,6 +74,10 @@ class UpdateBasic extends React.Component{
         this.setState({good_price: value})
     }
 
+    handleImageChange = url => {
+        this.setState({imgurl: url})
+    }
+
     handleSubmit = event => {
         const sumbitInfo = {
             name: this.state.good_name,
@@ -80,16 +86,17 @@ class UpdateBasic extends React.Component{
             type: this.state.good_type,
             onSale: this.state.good_onSale,
             description: this.state.good_description,
-            price: this.state.good_price
+            price: this.state.good_price,
+            image: this.state.imgurl
         };
-        // UploadGoad(sumbitInfo)
-        // window.location.href="http://localhost:3000/itemUpload";
-        this.props.history.push({
-            pathname: '/itemUploadResult',
-            state: {
-                "Info": sumbitInfo
-            }
-        })
+        // console.log(sumbitInfo);
+        UploadGoad(sumbitInfo);
+        // this.props.history.push({
+        //     pathname: '/itemUploadResult',
+        //     state: {
+        //         "Info": sumbitInfo
+        //     }
+        // })
     }
 
     render(){
@@ -128,7 +135,6 @@ class UpdateBasic extends React.Component{
                 <InputNumber
                     defaultValue={1000}
                     formatter={value => `￥ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    parser={value => value.replace(/\$\s?|(,*)/g, '')}
                     onChange={this.handleChangePrice}
                 />
             </Form.Item>
@@ -151,9 +157,7 @@ class UpdateBasic extends React.Component{
             </Form.Item>
             <Form.Item name="upload" label="商品图片" valuePropName="fileList" getValueFromEvent={normFile}
                 >
-                <Upload name="logo" listType="picture">
-                    <Button icon={<UploadOutlined />}>上传图片</Button>
-                </Upload>
+                <AvatarUpload onChange={this.handleImageChange}/>
             </Form.Item>
             <Form.Item name={['user','introduction']} label="商品描述">
                 <Input.TextArea showCount maxLength={250} onChange={this.handleChangeDesc}/>

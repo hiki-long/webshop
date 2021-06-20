@@ -26,7 +26,7 @@ export async function GetAllOrder() {
     return data
 }
 
-export async function SubmitOrder(params, data2, props) {
+export async function SubmitOrder(params, data2, props, isDirectBuy) {
     console.log(params);
     const orderlist = JSON.stringify(params);
     let urlencoded = new URLSearchParams();
@@ -43,6 +43,7 @@ export async function SubmitOrder(params, data2, props) {
     const data = fetch("http://localhost:8089/order/createOrder",requestOptions)
         .then((response=>{   
             response.json().then(data=>{
+                console.log(data);
                 if(data.code===200){
                     message.info("提交订单成功")
                     let result = data.data.split(",");
@@ -54,11 +55,13 @@ export async function SubmitOrder(params, data2, props) {
                 }
             })
             .then(result=>{
-                let params = [];
-                for(var [key2, value2] of data2) {
-                    params.push({uuid: key2})
+                if(isDirectBuy) {
+                    let params = [];
+                    for(var [key2, value2] of data2) {
+                        params.push({uuid: key2})
+                    }
+                    RemoveItemCart(params);
                 }
-                RemoveItemCart(params);
                 return result;
             }
             )

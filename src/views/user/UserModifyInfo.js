@@ -15,7 +15,6 @@ class UserModifyInfo extends React.Component{
 
     // 处理图片上传
     handleImageChange = ({ file, fileList }) => {
-
         this.setState({ fileList })
     }
 

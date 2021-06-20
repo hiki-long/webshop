@@ -36,19 +36,6 @@ class Home extends React.Component {
                     </Carousel>
                 </Col>
                 <ItemList />
-                {/* <Divider/>            
-                <Row gutter={16}>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                    <Col span={4}><OneItem/></Col>
-                </Row>
-                <Divider/> */}
-                {/* <Pagination showQuickJumper defaultCurrent={1} total={500} /> */}
             </div>
         );
     }

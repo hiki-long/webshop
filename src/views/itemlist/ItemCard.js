@@ -5,20 +5,25 @@ const {Meta} = Card;
 
 class ItemCard extends React.Component{
     constructor(props){
-        super(props);
+        super(props)
         this.state ={
             image:props.image,
             name:props.name,
             price:props.price,
-            key:props.key,
+            uuid:props.uuid,
         }
     }
     render() {
-        const {key,image, name, price} = this.state
+        const {uuid,image, name, price} = this.state;
+        const localimage = "http://localhost:8089/" + image;
+        // console.log(localimage);
         return (
                 <Card
                     hoverable
-                    cover={<img src={image}></img>}
+                    cover={
+                    image.startsWith('http') ? <img src={image} alt="图片不存在"></img> :
+                    <img src={localimage} alt="图片不存在"></img>
+                }
                 >
                     <Meta title={name} description={"¥"+price}/>
                 </Card>
