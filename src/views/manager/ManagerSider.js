@@ -3,9 +3,9 @@
  */
  import React from 'react'
  import { Link } from 'react-router-dom'
- import { Layout, Menu, Icon} from 'antd'
- import './sider.less'
+ import { Layout, Menu} from 'antd'
  import {UserOutlined, AppstoreOutlined} from '@ant-design/icons';
+ import './sider.less'
  
  const { Sider } = Layout;
  const SubMenu = Menu.SubMenu;
@@ -49,11 +49,11 @@
                         mode="inline"
                         openKeys={this.state.openKeys}
                         onOpenChange={this.onOpenChange}
-                        defaultSelectedKeys={['/index']}
+                        defaultSelectedKeys={['/manage']}
                         selectedKeys={[this.props.selectKey]}
                     >
-                        <Menu.Item key='/index'>
-                            <Link to='/index'>
+                        <Menu.Item key='/manage'>
+                            <Link to='/manage'>
                                 <UserOutlined />
                                 <span>首页</span>
                             </Link>

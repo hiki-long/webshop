@@ -60,7 +60,7 @@ class Navigate extends React.Component{
                             <Link to="/shoppingcart">购物车</Link>
                         </Menu.Item>
                         <Menu.Item>
-                            <Link to="/admin">后台管理</Link>
+                            <Link to="/manage">后台管理</Link>
                         </Menu.Item>
                         <Menu.Item style={{marginLeft: "60%"}}>
                         {

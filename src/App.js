@@ -35,7 +35,7 @@ function App() {
             <Route component={ItemList} path="/itemList"/>
             <Route component={ShoppingCart} path="/shoppingcart"/>
             <Route component={OrderList} path="/order" />
-            <Route component={ManagerHome} path="/index" />
+            <Route component={ManagerHome} path="/manage" />
         </ScrollToTop>
       </BrowserRouter>
       
