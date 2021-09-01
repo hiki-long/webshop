@@ -46,7 +46,8 @@ class OrderList extends React.Component {
                 billUUID: billid
             };
             PayDone(params2);
-            // window.location = 'http://localhost:3000/shoppingcart';
+            var index = window.location.href.lastIndexOf('/');
+        window.location = window.location.href.slice(0, index+1) + '/shoppingcart';
         }, 2000);
     }
 
@@ -57,7 +58,8 @@ class OrderList extends React.Component {
     }
 
     goBackShoppingCart() {
-        window.location = 'http://localhost:3000/shoppingcart'
+        var index = window.location.href.lastIndexOf('/');
+        window.location = window.location.href.slice(0, index+1) + '/shoppingcart';
     }
 
     render() {
