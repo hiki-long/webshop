@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import './Navigate.css'
 import { Link } from 'react-router-dom';
 //顶部导航栏
@@ -9,10 +9,33 @@ class Navigate extends React.Component{
         haslogin: false,
         current:'main'
     }
+
+    componentDidMount() {
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            credentials: 'include',
+            'Access-Control-Allow-Credentials':'true',
+        }
+        const data = fetch("http://localhost:8089/user/login", requestOptions)
+        .then((response) => {
+            response.json().then(data=>{
+                if(data.code===200){
+                    this.setState({haslogin: true})
+                } else {
+                    this.setState({haslogin: false})
+                }
+            })
+        })
+    }
+
     
     handleClick = e => {
         console.log('click ', e);
         this.setState({ current: e.key });
+    }
+
+    handleLogOut() {
 
     }
 
@@ -36,6 +59,15 @@ class Navigate extends React.Component{
                         <Menu.Item>
                             <Link to="/shoppingcart">购物车</Link>
                         </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/admin">后台管理</Link>
+                        </Menu.Item>
+                        <Menu.Item style={{marginLeft: "60%"}}>
+                        {
+                            this.state.haslogin ?  <Button type="primary" >退出登录</Button> : <></>
+                        }
+                        </Menu.Item>
+                        
                     </Menu>
             </div>
         );

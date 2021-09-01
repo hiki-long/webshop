@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, Avatar, Button, Space, Col, Rate, List, Divider, Collapse } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { GetAllOrder } from '../../api/order';
-import { Label } from 'semantic-ui-react';
+
 const { Panel } = Collapse;
 const data = [
     {

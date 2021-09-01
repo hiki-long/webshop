@@ -13,7 +13,8 @@ export async function HasLogin() {
             response.json().then(data=>{
                 if(data.code===401){
                     message.info("您已登陆，即将返回主页面")
-                    window.location = 'http://localhost:3000'
+                    var index = window.location.href.lastIndexOf('/');
+                    window.location = window.location.href.slice(0, index+1);
                 }
             })
         })
@@ -39,7 +40,11 @@ export async function Login(params){
                 if(data.code===200){
                     message.info("登陆成功")
                     console.log("success");
-                    window.location = 'http://localhost:3000'
+                    console.log(window.location.href);
+                    var index = window.location.href.lastIndexOf('/');
+                    // console.log("index" + index);
+                    // console.log(window.location.href.slice(0, index+1));
+                    window.location = window.location.href.slice(0, index+1);
                 }
                 else{
                     alert("fail");
@@ -71,7 +76,8 @@ export async function Register(params) {
             response.json().then(data=>{
                 if(data.code===200){
                     message.info("注册成功");
-                    window.location = 'http://localhost:3000';
+                    var index = window.location.href.lastIndexOf('/');
+                    window.location = window.location.href.slice(0, index+1);
                 }
             })
         }))
@@ -99,7 +105,8 @@ export async function Reset(params) {
             response.json().then(data=>{
                 if(data.code===200){
                     message.info("修改成功");
-                    window.location = 'http://localhost:3000/login';
+                    var index = window.location.href.lastIndexOf('/');
+                    window.location = window.location.href.slice(0, index+1) + '/login';
                 }
             })
         }))
