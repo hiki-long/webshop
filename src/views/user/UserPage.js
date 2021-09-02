@@ -42,7 +42,7 @@ class UserPage extends React.Component {
                         <Menu.Item key="3">查询账单</Menu.Item>
                         </Menu>
                     </Sider>
-                    <Layout style={{ padding: '0 24px 24px' }}>
+                    <Layout style={{ padding: '0 24px 24px',backgroundColor: 'white'}}>
                         <Content
                         className="site-layout-background"
                         style={{

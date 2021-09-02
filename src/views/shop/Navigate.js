@@ -13,12 +13,12 @@ class Navigate extends React.Component{
 
     componentDidMount() {
         let requestOptions = {
-            method: 'POST',
+            method: 'Get',
             redirect: 'follow',
             credentials: 'include',
             'Access-Control-Allow-Credentials':'true',
         }
-        const data = fetch("http://localhost:8089/user/login", requestOptions)
+        const data = fetch("http://localhost:8089/user/isLogin", requestOptions)
         .then((response) => {
             response.json().then(data=>{
                 if(data.code===200){

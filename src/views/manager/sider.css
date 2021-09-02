@@ -1,0 +1,14 @@
+.sider > .ant-menu > .ant-menu-submenu-title{
+    height: 54px;
+    line-height: 54px;
+}
+
+.sider > .ant-menu > .ant-menu-time {
+    margin: 0;
+    height: 54px;
+    line-height: 54px;
+}
+
+.sider > .ant-menu > .ant-menu-item-selected {
+    background-color: #2DAFCB;
+}

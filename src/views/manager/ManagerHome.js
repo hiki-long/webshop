@@ -5,7 +5,10 @@ import { Breadcrumb } from 'antd';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import {withRouter} from 'react-router-dom'
 import ManagerMainPage from './ManagerMainPage';
-import './manager.less'
+import './manager.css'
+import ProductIndex from './ProductIndex';
+import OrderIndex from './OrderIndex';
+import UserIndex from './UserIndex';
 
 const breadcrumbNameMap = {
     '/manage': '首页',
@@ -54,7 +57,7 @@ class ManagerHome extends React.Component{
             <BrowserRouter>
                 <Layout style={{height:"100vh"}}>
                     <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/>
-                    <Layout>
+                    <Layout style={{backgroundColor: 'white'}}>
                         {/* <Header collapsed={this.state.collapsed} toggle={this.toggle} style={{backgroundColor: 'white', color: 'white', height: '40px'}}>
                             <Breadcrumb style={{textAlign: 'start', marginLeft: '250px'}}>
                                 {breadcrumbItems}
@@ -63,6 +66,9 @@ class ManagerHome extends React.Component{
                         <Content>
                             <Switch>
                                 <Route path="/manage" component={ManagerMainPage}></Route>
+                                <Route path="/product-index" component={ProductIndex}></Route>
+                                <Route path="/order-index" component={OrderIndex}></Route>
+                                <Route path="/user-index" component={UserIndex}></Route>
                             </Switch>
                         </Content>
                     </Layout>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { Row, Col} from 'antd';
+import { Row, Col, Space} from 'antd';
+import classnames from 'classnames';
 import { BarsOutlined, ScheduleOutlined, UserOutlined } from '@ant-design/icons';
-import './home.less';
+import './home.css';
 
 class ManagerMainPage extends Component {
     constructor(props) {
@@ -29,35 +30,35 @@ class ManagerMainPage extends Component {
         return (
             <div className='home' style={{marginLeft: "260px"}}>
                 <Row gutter={16}>
-                    <Col className="gutter-row" span={8} >
-                        <div className="gutter-box" style={{backgroundColor: "#f0ad4e"}}>
-                            <Link to='/user-index' className='color-box brown' >
-                                <p className='count'>{this.state.count.userCount}</p>
-                                <p className='desc'>
-                                    <UserOutlined className='fa' />
-                                    <span>用户总数</span>
+                    <Col className="gutter-row" span={7} >
+                        <div className={classnames({'color-box':true, 'brown':true, 'gutter-box':true})}>
+                            <Link to='/user-index'>
+                                <p style={{fontSize:"40px", height:"20px", lineHeight:"60px"}}>{this.state.count.userCount}</p>
+                                <p style={{fontSize:"18px"}}>
+                                    <UserOutlined style={{marginLeft:"5px", fontSize:"40px"}} />
+                                    <span style={{fontSize:"50px"}}>用户总数</span>
                                 </p>
                             </Link>
                         </div>
                     </Col>
-                    <Col className="gutter-row" span={8}>
-                        <div className="gutter-box">
-                            <Link to='/product-index' className='color-box green'>
-                                <p className='count'>{this.state.count.productCount}</p>
-                                <p className='desc'>
-                                    <BarsOutlined className='fa' />
-                                    <span>商品总数</span>
+                    <Col className="gutter-row" span={7}>
+                        <div className={classnames({'color-box':true, 'green':true, 'gutter-box':true})}>
+                            <Link to='/product-index' >
+                                <p style={{fontSize:"40px", height:"20px", lineHeight:"60px"}}>{this.state.count.productCount}</p>
+                                <p style={{fontSize:"18px"}}>
+                                    <BarsOutlined style={{marginLeft:"5px", fontSize:"40px"}} />
+                                    <span style={{fontSize:"50px"}}>商品总数</span>
                                 </p>
                             </Link>
                         </div>
                     </Col>
-                    <Col className="gutter-row" span={8}>
-                        <div className="gutter-box">
-                            <Link to='/order-index' className='color-box blue'>
-                                <p className='count'>{this.state.count.orderCount}</p>
-                                <p className='desc'>
-                                    <ScheduleOutlined className='fa' />
-                                    <span>订单总数</span>
+                    <Col className="gutter-row" span={7}>
+                        <div className={classnames({'color-box':true, 'blue':true, 'gutter-box':true})}>
+                            <Link to='/order-index' >
+                                <p style={{fontSize:"40px", height:"20px", lineHeight:"60px"}}>{this.state.count.orderCount}</p>
+                                <p style={{fontSize:"18px"}}>
+                                    <ScheduleOutlined style={{marginLeft:"5px", fontSize:"40px"}}/>
+                                    <span style={{fontSize:"50px"}}>订单总数</span>
                                 </p>
                             </Link>
                         </div>

@@ -5,7 +5,7 @@
  import { Link } from 'react-router-dom'
  import { Layout, Menu} from 'antd'
  import {UserOutlined, AppstoreOutlined} from '@ant-design/icons';
- import './sider.less'
+ import './sider.css'
  
  const { Sider } = Layout;
  const SubMenu = Menu.SubMenu;

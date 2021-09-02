@@ -1,9 +1,8 @@
-:global {
 .ant-layout * {
     box-sizing: border-box;
-  }
+}
   
-  .ant-layout {
+.ant-layout > .ant-layout {
     height: 100%;
     background-color: #666;
     
@@ -11,6 +10,5 @@
     flex-direction: column;
     flex: auto;
   
-    min-height: 0; /* fix bug in firefox */
-}
+    min-height: 0;
 }

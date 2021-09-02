@@ -29,9 +29,16 @@ export async function GetAllOrder() {
 export async function SubmitOrder(params, data2, props, isDirectBuy) {
     console.log(params);
     const orderlist = JSON.stringify(params);
+    let params2 = [];
+    for(var [key2, value2] of data2) {
+        params2.push({uuid: key2, number: data2.number})
+    }
+    const wishlist = JSON.stringify(params2);
+    //这里加一个wishlist
     let urlencoded = new URLSearchParams();
     console.log(orderlist);
     urlencoded.append("orderlist", orderlist);
+    urlencoded.append("wishlist", wishlist);
     let requestOptions = {
         method:'POST',
         redirect: 'follow',
@@ -54,17 +61,17 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
                     alert("fail");
                 }
             })
-            .then(result=>{
-                if(isDirectBuy) {
-                    let params = [];
-                    for(var [key2, value2] of data2) {
-                        params.push({uuid: key2})
-                    }
-                    RemoveItemCart(params);
-                }
-                return result;
-            }
-            )
+            // .then(result=>{
+            //     if(isDirectBuy) {
+                    // let params = [];
+                    // for(var [key2, value2] of data2) {
+                    //     params.push({uuid: key2})
+                    // }
+                    // RemoveItemCart(params);
+            //     }
+            //     return result;
+            // }
+            // )
             .then(result=>{
                 let params2 = [];
                 for(var [key2, value2] of data2) {

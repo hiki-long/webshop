@@ -15,7 +15,7 @@ class LoginShow extends React.Component {
     }
 
     componentDidMount() {
-        HasLogin();
+        // HasLogin();
     }
     
     changeEmail = event => {
