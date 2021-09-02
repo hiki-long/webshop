@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Menu } from 'antd';
 import './Navigate.css'
 import { Link } from 'react-router-dom';
+import { LogOut } from '../../api/account';
 //顶部导航栏
 class Navigate extends React.Component{
     state = {
@@ -36,7 +37,7 @@ class Navigate extends React.Component{
     }
 
     handleLogOut() {
-
+        LogOut();
     }
 
     render() {
@@ -62,9 +63,9 @@ class Navigate extends React.Component{
                         <Menu.Item>
                             <Link to="/manage">后台管理</Link>
                         </Menu.Item>
-                        <Menu.Item style={{marginLeft: "60%"}}>
+                        <Menu.Item style={{marginLeft: "40%"}}>
                         {
-                            this.state.haslogin ?  <Button type="primary" >退出登录</Button> : <></>
+                            this.state.haslogin ?  <Button type="primary" onClick={this.handleLogOut}>退出登录</Button> : <></>
                         }
                         </Menu.Item>
                         
