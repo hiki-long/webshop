@@ -12,10 +12,11 @@ export async function GetAllOrder() {
     
     const data = await fetch("http://localhost:8089/order/listOrderByUser",requestOptions)
         .then((response=>{
-            response.json().then(data=>{
+            return response.json().then(data=>{
                 if(data.code===200){
                     message.info("获取所有订单成功")
-                    console.log(data.data)
+                    // console.log(data.data)
+                    return data.data;
                 }
                 else{
                     alert("fail");
@@ -31,9 +32,10 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
     const orderlist = JSON.stringify(params);
     let params2 = [];
     for(var [key2, value2] of data2) {
-        params2.push({uuid: key2, number: data2.number})
+        params2.push({'uuid': key2, 'number': value2.number})
     }
     const wishlist = JSON.stringify(params2);
+    console.log(wishlist);
     //这里加一个wishlist
     let urlencoded = new URLSearchParams();
     console.log(orderlist);
@@ -85,14 +87,15 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
                     }
                     params2.push(temp);
                 }
-                props.history.push({
-                pathname:'../order',
-                state:{
-                    'info': params2,
-                    'orderid': result[0],
-                    'price': result[1]
-                }
-                });
+                console.log(params2);
+                // props.history.push({
+                // pathname:'../order',
+                // state:{
+                //     'info': params2,
+                //     'orderid': result[0],
+                //     'price': result[1]
+                // }
+                // });
             }
             )
         }))

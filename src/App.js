@@ -16,6 +16,7 @@ import ShoppingCart from './views/cart/ShoppingCart';
 import OrderList from './views/order/OrderList';
 import ScrollToTop from './views/utils/ScrollToTop'
 import ManagerHome from './views/manager/ManagerHome';
+import VisualMain from './views/visual/VisualMain';
 
 function App() {
   moment.locale('zh-cn');
@@ -36,6 +37,7 @@ function App() {
             <Route component={ShoppingCart} path="/shoppingcart"/>
             <Route component={OrderList} path="/order" />
             <Route component={ManagerHome} path="/manage" />
+            <Route component={VisualMain} path="/visual" />
         </ScrollToTop>
       </BrowserRouter>
       

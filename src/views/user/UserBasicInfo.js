@@ -18,9 +18,25 @@ const data = [
 ];
 //用户个人页面
 class UserBasicInfo extends React.Component{
-    
-    onTest() {
-        GetAllOrder();
+    constructor(props) {
+        super(props);
+        this.state = {
+            orderlist: new Map()
+        };
+    }
+
+    async componentDidMount() {       
+        const res = await GetAllOrder().then(data2=>{
+            return data2.list;
+        }
+        );
+        console.log(res);
+        // if(res !== undefined) {
+        //     for(var index in res) {
+                
+        //     }
+
+        // }
     }
 
     render(){
