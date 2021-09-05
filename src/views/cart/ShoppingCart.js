@@ -36,7 +36,6 @@ class ShoppingCart extends React.Component {
     }
 
     onBuy(){
-     
 
       const data = [...this.state.selectList];
       let params = [];
