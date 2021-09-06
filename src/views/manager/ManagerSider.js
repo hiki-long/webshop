@@ -16,6 +16,7 @@
      state = {
          openKeys: ['sub1', 'sub2', 'sub3', 'sub4'],
      };
+     
      onOpenChange = (openKeys) => {
          const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
          if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -49,15 +50,16 @@
                         mode="inline"
                         openKeys={this.state.openKeys}
                         onOpenChange={this.onOpenChange}
-                        defaultSelectedKeys={['/manage']}
-                        selectedKeys={[this.props.selectKey]}
+                        defaultSelectedKeys={"sub1"}
                     >
-                        <Menu.Item key='/manage'>
-                            <Link to='/manage'>
-                                <UserOutlined />
-                                <span>首页</span>
-                            </Link>
-                        </Menu.Item>
+                        <SubMenu key="sub1" title={<span><AppstoreOutlined /><span>首页</span></span>}>
+                            <Menu.Item key='/manage'>
+                                <Link to='/manage'>
+                                    <UserOutlined />
+                                    <span>首页</span>
+                                </Link>
+                            </Menu.Item>
+                        </SubMenu>
                         <SubMenu key="sub2" title={<span><AppstoreOutlined /><span>商品</span></span>}>
                             <Menu.Item key="/product-index">
                                 <Link to='/product-index'>

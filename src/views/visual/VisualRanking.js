@@ -53,10 +53,10 @@ class VisualRanking extends React.Component{
           <div id="ranking-board">
             <div className="ranking-board-title">巡查上报记录数量</div>
             <CapsuleChart config={temp} />
-            <div className="ranking-board-title">巡查上报记录数量</div>
+            {/* <div className="ranking-board-title">巡查上报记录数量</div>
             <CapsuleChart config={temp} />
             <div className="ranking-board-title">巡查上报记录数量</div>
-            <CapsuleChart config={temp} />
+            <CapsuleChart config={temp} /> */}
           </div>
         );
     }

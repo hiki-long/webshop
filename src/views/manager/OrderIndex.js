@@ -11,36 +11,36 @@ const mockdata = [
         payment: '100',
         createTime: 'sdf',
     }
-]
+];
+
+const columns = [{
+    title: '订单号',
+    dataIndex: 'orderNo',
+}, {
+    title: '收件人',
+    dataIndex: 'receiverName',
+}, {
+    title: '订单状态',
+    dataIndex: 'statusDesc',
+}, {
+    title: '订单总价',
+    dataIndex: 'payment',
+}, {
+    title: '创建时间',
+    dataIndex: 'createTime',
+},{
+    title: '操作',
+    dataIndex: 'orderItemVoList',
+    render: (text, record) => {
+        return (
+            <a style={{color:'#337ab7'}} onClick={() => this.goOrderDetail(record.orderNo)}>详情</a>
+        )
+    }
+}];
 
 class OrderIndex extends Component {
     constructor(props) {
         super(props);
-
-        this.columns = [{
-            title: '订单号',
-            dataIndex: 'orderNo',
-        }, {
-            title: '收件人',
-            dataIndex: 'receiverName',
-        }, {
-            title: '订单状态',
-            dataIndex: 'statusDesc',
-        }, {
-            title: '订单总价',
-            dataIndex: 'payment',
-        }, {
-            title: '创建时间',
-            dataIndex: 'createTime',
-        },{
-            title: '操作',
-            dataIndex: 'orderItemVoList',
-            render: (text, record) => {
-                return (
-                    <a style={{color:'#337ab7'}} onClick={() => this.goOrderDetail(record.orderNo)}>详情</a>
-                )
-            }
-        }];
 
         this.state = {
             search:'', //搜索
@@ -51,6 +51,10 @@ class OrderIndex extends Component {
             loading: false,
         }
 
+    }
+
+    componentDidMount() {
+        
     }
 
     searchChange = (value) => {
@@ -108,10 +112,9 @@ class OrderIndex extends Component {
                     </Select>
                     <Button type='primary' icon="search" onClick={this.onSearch}>搜索</Button>
                 </div>
-
                 <Table
                     style={{marginLeft: "260px"}}
-                    columns={this.columns} rowKey='orderNo'
+                    columns={columns} rowKey='orderNo'
                     dataSource={this.state.orderList}
                     pagination={this.state.pagination}
                     loading={this.state.loading}

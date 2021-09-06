@@ -104,15 +104,25 @@ class ProductIndex extends Component {
     //跳转添加商品页
     goAddProduct = () => {
         this.props.history.push({
-            pathname: '/add-product'
+            pathname: '/itemUpload'
         })
     }
     //跳转商品详情页
     goProductDetail = (id) => {
+        const sumbitInfo = {
+            name: "测试",
+            owner: "御主",
+            remain: 100,
+            type: "手机",
+            onSale: true,
+            description: "描述",
+            price: 200,
+            image: "https://img11.360buyimg.com/ceco/s600x600_jfs/t1/142625/26/10681/43504/5f8666feE37892e29/317e4af1178ebf8f.jpg!q70.jpg"
+        };
         this.props.history.push({
-            pathname: '/product-detail',
+            pathname: '/showupload',
             state: {
-                productId: id,
+                "Info": sumbitInfo,
             }
         })
     }

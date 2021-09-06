@@ -4,24 +4,26 @@ import { UserOutlined } from '@ant-design/icons';
 import { GetAllOrder } from '../../api/order';
 
 const { Panel } = Collapse;
-const data = [
-    {
-        uuid: "23048204",
-        paid: true,
-        time: 1623080815000, 
-    },
-    {
-        uuid: "23048204",
-        paid: true,
-        time: 1623080815001, 
-    }
-];
+// const data = [
+//     {
+//         uuid: "23048204",
+//         paid: true,
+//         time: 1623080815000, 
+//     },
+//     {
+//         uuid: "23048204",
+//         paid: true,
+//         time: 1623080815001, 
+//     }
+// ];
+
 //用户个人页面
 class UserBasicInfo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            orderlist: new Map()
+            orderlist: [],
+            ordermap: new Map()
         };
     }
 
@@ -30,13 +32,36 @@ class UserBasicInfo extends React.Component{
             return data2.list;
         }
         );
-        console.log(res);
-        // if(res !== undefined) {
-        //     for(var index in res) {
-                
-        //     }
+        // console.log(res);
+        if(res !== undefined) {
+            this.setState({
+                orderlist: res
+            });
+            var temp = new Map();
+            for(var index in res) {
+                var temp2 = this.JsonToList.bind(this, res[index].items);
+                temp.set(res[index].items, temp2);
+            }
+            this.setState({
+                ordermap: temp
+            })
+            console.log(this.state.ordermap);
+        }
+    }
 
-        // }
+    JsonToList(str) {
+        console.log(str);
+        var res = [];
+        var parsedJSON = JSON.parse(str);
+        console.log(parsedJSON);
+        for(var i=0; i<parsedJSON.length;i++) {
+            res.push({
+                uuid: parsedJSON[i].itemUUID,
+                number: parsedJSON[i].number
+            });
+        }
+        console.log(res);
+        return res;
     }
 
     render(){
@@ -66,32 +91,25 @@ class UserBasicInfo extends React.Component{
                 </Col>
                 <Col>
                     <Divider orientation="left" style={{width: "70%", marginLeft: "5%", marginRight: "5%"}}>我的物流</Divider>
-                    <Collapse defaultActiveKey={['1']}>
-                        <Panel header="订单xxx" key="1">
-                            <List
-                                style={{width: "90%", marginLeft: "5%"}}
-                                bordered
-                                dataSource={data}
-                                renderItem={item => (
-                                    <List.Item>
-                                        <List.Item.Meta
-                                            avatar={<Image src={'http://image.uc.cn/s/wemedia/s/upload/2020/e3466f09e4bc2b32558be930245a2454.jpg'} width="50px" height="50px" preview={false} />}
-                                            title={<div>商品xxx已发货</div>}
-                                            description={<div>"发货时间" {d1}</div>}
-                                        />
-                                        <Space>
-                                            {/* <Button onClick={this.onTest}>查看订单详情</Button> */}
-                                            <div>数量*2</div>
-                                            <div>价格 199</div>
-                                            <Button type="primary">确认收货</Button>
-                                        </Space>
-                                    </List.Item>
-                                )}
-                                />
-                        </Panel>
-                        <Panel header="订单xxx" key="2">
+                    <Collapse>
+                        {
+                            this.state.orderlist.length > 0 ?
+                            this.state.orderlist.map(item=>(
+                                <Panel header={"订单" + item.uuid} key={item.uuid}>
+                                    <List
+                                        style={{width: "90%", marginLeft: "5%"}}
+                                        bordered
+                                        dataSource={this.JsonToList.bind(this,item.items)}
+                                        renderItem={item2 => (
+                                            <p>"yes"</p>
 
-                        </Panel>
+                                        )}
+                                        />
+                                </Panel>
+                            )) :
+                            <></>
+                        }
+                        
                     </Collapse>
                 </Col>
             </div>

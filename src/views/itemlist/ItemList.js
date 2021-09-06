@@ -46,7 +46,7 @@ class ItemList extends React.Component{
                 info:data.list,
                 currentPage:1
             })
-            console.log(this.state.total);
+            // console.log(this.state.total);
             const tags = await fetch('./itemType.json', {
                 method: "GET",
                 headers: {

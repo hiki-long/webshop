@@ -4,11 +4,13 @@ import ManagerSider from './ManagerSider';
 import { Breadcrumb } from 'antd';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import {withRouter} from 'react-router-dom'
-import ManagerMainPage from './ManagerMainPage';
 import './manager.css'
+import ManagerMainPage from './ManagerMainPage';
 import ProductIndex from './ProductIndex';
 import OrderIndex from './OrderIndex';
 import UserIndex from './UserIndex';
+import UpdateBasic from '../shop/UpdateBasic'
+import ShowUpload from '../shop/ShowUpload';
 
 const breadcrumbNameMap = {
     '/manage': '首页',
@@ -21,6 +23,8 @@ const breadcrumbNameMap = {
     '/order-detail': '订单详情',
     '/user-index': '用户管理',
 };
+
+const fiturl = ['/manage','/product-index','/order-index','/user-index','/itemUpload','/showupload'];
 
 class ManagerHome extends React.Component{
     constructor(props) {
@@ -56,19 +60,20 @@ class ManagerHome extends React.Component{
         return (
             <BrowserRouter>
                 <Layout style={{height:"100vh"}}>
-                    <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/>
+                    {
+                        fiturl.lastIndexOf(this.props.location.pathname) > -1 ? <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/>
+                        : <></>
+                    }
+                    {/* <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/> */}
                     <Layout style={{backgroundColor: 'white'}}>
-                        {/* <Header collapsed={this.state.collapsed} toggle={this.toggle} style={{backgroundColor: 'white', color: 'white', height: '40px'}}>
-                            <Breadcrumb style={{textAlign: 'start', marginLeft: '250px'}}>
-                                {breadcrumbItems}
-                            </Breadcrumb>
-                        </Header> */}
                         <Content>
                             <Switch>
                                 <Route path="/manage" component={ManagerMainPage}></Route>
                                 <Route path="/product-index" component={ProductIndex}></Route>
                                 <Route path="/order-index" component={OrderIndex}></Route>
                                 <Route path="/user-index" component={UserIndex}></Route>
+                                <Route path="/itemUpload" component={UpdateBasic}></Route>
+                                <Route path="/showupload" component={ShowUpload}></Route>      
                             </Switch>
                         </Content>
                     </Layout>

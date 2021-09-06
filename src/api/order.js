@@ -15,7 +15,7 @@ export async function GetAllOrder() {
             return response.json().then(data=>{
                 if(data.code===200){
                     message.info("获取所有订单成功")
-                    // console.log(data.data)
+                    // console.log(data.data);
                     return data.data;
                 }
                 else{

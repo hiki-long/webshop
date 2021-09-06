@@ -121,8 +121,19 @@ export async function LogOut() {
         credentials: 'include',
         'Access-Control-Allow-Credentials': 'true',
     }
-    await fetch("http://localhost:8089/user/logout", requestOptions)
+    const data = await fetch("http://localhost:8089/user/logout", requestOptions)
         .then((response=> {
-            console.log(response);
+            return response.json().then(
+                data=>{
+                    if(data.code === 200)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+            )
+            
         }))
+    return data;
 }
