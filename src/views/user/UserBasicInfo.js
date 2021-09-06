@@ -50,6 +50,8 @@ class UserBasicInfo extends React.Component{
     }
 
     JsonToList(str) {
+        //将"[{itemUUID=03ebf1cf-f423-4c25-bad2-88aa1a67396b,number=1}]"反序列化为对象数组
+        //[{itemUUID: xxx, number: xxx}]
         console.log(str);
         var res = [];
         var parsedJSON = JSON.parse(str);
@@ -96,6 +98,7 @@ class UserBasicInfo extends React.Component{
                             this.state.orderlist.length > 0 ?
                             this.state.orderlist.map(item=>(
                                 <Panel header={"订单" + item.uuid} key={item.uuid}>
+                                    {/* 这里item是一个订单的信息,购买信息在item.items里,是字符串 */}
                                     <List
                                         style={{width: "90%", marginLeft: "5%"}}
                                         bordered
