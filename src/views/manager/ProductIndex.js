@@ -33,7 +33,7 @@ class ProductIndex extends Component {
             render: (text, record) => {
                 return (
                     <div className='status-box'>
-                        <p className='status-info'>{text === 1 ? '在售' : '已下架'}</p>
+                        <div className='status-info'>{text === 1 ? '在售' : '已下架'}</div>
                         <Button onClick={() => {this.onSetProductStatus(record.id,text)}}>{text === 1 ? '下架' : '上架'}</Button>
                     </div>
                 )
@@ -42,12 +42,12 @@ class ProductIndex extends Component {
             title: '操作',
             render: (text, record) => {
                 return (
-                    <p className='operating'>
+                    <div className='operating'>
                         <Space>
                             <a onClick={() => {this.goProductDetail(record.id)}}>详情</a>
                             <a onClick={() => {this.goProductEdit(record.id)}}>编辑</a>
                         </Space>
-                    </p>
+                    </div>
 
                 )
             }
@@ -56,16 +56,12 @@ class ProductIndex extends Component {
         this.state = {
             dataList: mockdata,
             pagination: {
-                position:['none', 'bottomCenter'] 
+                position:['none', 'bottomCenter']
             },
             loading: false,
             type: 'id', //搜索类型 默认按照id查询
             search:'', //搜索值
         }
-    }
-    //查询商品列表
-    fetch = (params = {pageNum: 1, pageSize: 10 }) => {
-        
     }
 
     //选择搜索类型
@@ -86,21 +82,20 @@ class ProductIndex extends Component {
     onSearch = () => {
 
     }
-    //搜索
     
     //上下架
     onSetProductStatus = (id,status) => {
         
     }
     //分页
-    handleTableChange = (pagination) => {
-        const pager = { ...this.state.pagination };
-        pager.current = pagination.current;
-        //改变当前页
-        this.setState({
-            pagination: pager,
-        });
-    }
+    // handleTableChange = (pagination) => {
+    //     const pager = { ...this.state.pagination };
+    //     pager.current = pagination.current;
+    //     //改变当前页
+    //     this.setState({
+    //         pagination: pager,
+    //     });
+    // }
     //跳转添加商品页
     goAddProduct = () => {
         this.props.history.push({
@@ -136,8 +131,76 @@ class ProductIndex extends Component {
         })
     }
 
-    componentDidMount () {
-        this.fetch();
+    async componentDidMount() {
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", 1);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/item/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        //console.log(data.data)
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: 1,
+                    position:['none', 'bottomCenter']
+                }
+            })
+    }
+
+    async changePage(page,pageSize){
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", page);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/item/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        console.log(data.data);
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: page,
+                    position:['none', 'bottomCenter']
+                }
+            })
     }
 
     render() {
@@ -168,7 +231,7 @@ class ProductIndex extends Component {
                             placeholder="关键词"
                         >
                         </Select>
-                        <Button type='primary' icon="search" onClick={this.onSearch}>搜索</Button>
+                        <Button type='primary' onClick={this.onSearch}>搜索</Button>
                     </div>
                     <Button style={{marginLeft: "60px"}} type="primary" onClick={this.goAddProduct}>添加商品</Button>
                     </Space>
@@ -179,7 +242,7 @@ class ProductIndex extends Component {
                     dataSource={this.state.dataList}
                     pagination={this.state.pagination}
                     loading={this.state.loading}
-                    onChange={this.handleTableChange}
+                    onChange={this.changePage.bind(this)}
                 />
             </div>
         )

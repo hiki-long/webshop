@@ -53,8 +53,76 @@ class OrderIndex extends Component {
 
     }
 
-    componentDidMount() {
-        
+    async componentDidMount() {
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", 1);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/order/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        //console.log(data.data)
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: 1,
+                    position:['none', 'bottomCenter']
+                }
+            })
+    }
+
+    async changePage(page,pageSize){
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", page);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/order/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        console.log(data.data);
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: page,
+                    position:['none', 'bottomCenter']
+                }
+            })
     }
 
     searchChange = (value) => {
@@ -62,6 +130,7 @@ class OrderIndex extends Component {
             search: value,
         })
     }
+
     //按订单号查询
     onSearch = () => {
        
@@ -77,14 +146,14 @@ class OrderIndex extends Component {
         });
     }
     //分页
-    handleTableChange = (pagination) => {
-        const pager = { ...this.state.pagination };
-        pager.current = pagination.current;
-        //改变当前页
-        this.setState({
-            pagination: pager,
-        });
-    }
+    // handleTableChange = (pagination) => {
+    //     const pager = { ...this.state.pagination };
+    //     pager.current = pagination.current;
+    //     //改变当前页
+    //     this.setState({
+    //         pagination: pager,
+    //     });
+    // }
 
     render() {
         return (
@@ -110,7 +179,7 @@ class OrderIndex extends Component {
                         placeholder="订单号"
                     >
                     </Select>
-                    <Button type='primary' icon="search" onClick={this.onSearch}>搜索</Button>
+                    <Button type='primary' onClick={this.onSearch}>搜索</Button>
                 </div>
                 <Table
                     style={{marginLeft: "260px"}}
@@ -118,7 +187,7 @@ class OrderIndex extends Component {
                     dataSource={this.state.orderList}
                     pagination={this.state.pagination}
                     loading={this.state.loading}
-                    onChange={this.handleTableChange}
+                    onChange={this.changePage.bind(this)}
                 />
             </div>
         )

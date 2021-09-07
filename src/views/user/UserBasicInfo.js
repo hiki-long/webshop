@@ -16,6 +16,22 @@ const { Panel } = Collapse;
 //         time: 1623080815001, 
 //     }
 // ];
+function JsonToList(str) {
+    //将"[{itemUUID=03ebf1cf-f423-4c25-bad2-88aa1a67396b,number=1}]"反序列化为对象数组
+    //[{itemUUID: xxx, number: xxx}]
+    console.log(str);
+    var res = [];
+    var parsedJSON = JSON.parse(str);
+    console.log(parsedJSON);
+    // for(var i=0; i<parsedJSON.length;i++) {
+    //     res.push({
+    //         uuid: parsedJSON[i].itemUUID,
+    //         number: parsedJSON[i].number
+    //     });
+    // }
+    // console.log(res);
+    // return res;
+}
 
 //用户个人页面
 class UserBasicInfo extends React.Component{
@@ -37,34 +53,20 @@ class UserBasicInfo extends React.Component{
             this.setState({
                 orderlist: res
             });
-            var temp = new Map();
-            for(var index in res) {
-                var temp2 = this.JsonToList.bind(this, res[index].items);
-                temp.set(res[index].items, temp2);
-            }
-            this.setState({
-                ordermap: temp
-            })
-            console.log(this.state.ordermap);
+            console.log(this.state.orderlist);
+            // var temp = new Map();
+            // for(var index in res) {
+            //     var temp2 = this.JsonToList.bind(this, res[index].items);
+            //     temp.set(res[index].items, temp2);
+            // }
+            // this.setState({
+            //     ordermap: temp
+            // })
+            // console.log(this.state.ordermap);
         }
     }
 
-    JsonToList(str) {
-        //将"[{itemUUID=03ebf1cf-f423-4c25-bad2-88aa1a67396b,number=1}]"反序列化为对象数组
-        //[{itemUUID: xxx, number: xxx}]
-        console.log(str);
-        var res = [];
-        var parsedJSON = JSON.parse(str);
-        console.log(parsedJSON);
-        for(var i=0; i<parsedJSON.length;i++) {
-            res.push({
-                uuid: parsedJSON[i].itemUUID,
-                number: parsedJSON[i].number
-            });
-        }
-        console.log(res);
-        return res;
-    }
+    
 
     render(){
         var date = new Date();
@@ -102,7 +104,7 @@ class UserBasicInfo extends React.Component{
                                     <List
                                         style={{width: "90%", marginLeft: "5%"}}
                                         bordered
-                                        dataSource={this.JsonToList.bind(this,item.items)}
+                                        dataSource={JsonToList(item.items)}
                                         renderItem={item2 => (
                                             <p>"yes"</p>
 

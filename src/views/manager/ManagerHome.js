@@ -59,12 +59,11 @@ class ManagerHome extends React.Component{
         const breadcrumbItems = extraBreadcrumbItems;
         return (
             <BrowserRouter>
-                <Layout style={{height:"100vh"}}>
+                <Layout style={{height:"93vh"}}>
                     {
                         fiturl.lastIndexOf(this.props.location.pathname) > -1 ? <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/>
                         : <></>
                     }
-                    {/* <ManagerSider collapsed={this.state.collapsed} selectKey={this.props.location.pathname}/> */}
                     <Layout style={{backgroundColor: 'white'}}>
                         <Content>
                             <Switch>

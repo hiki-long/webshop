@@ -41,22 +41,94 @@ class UserIndex extends Component {
         loading: false //loading状态
     }
 
+    async componentDidMount() {
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", 1);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/user/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        console.log(data.data);
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: 1,
+                    position:['none', 'bottomCenter']
+                }
+            })
+    }
+
+    async changePage(page,pageSize){
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("page", 1);
+        urlencoded.append("size", 10);
+        let requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            mode: 'cors',
+            body: urlencoded,
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
+        };
+        const data =await fetch("http://localhost:8089/user/list", requestOptions)
+            .then((response) => {
+                return response.json().then(data => {
+                    if (data.code===200){
+                        console.log(data.data);
+                        return data.data;
+                    }
+                })
+                
+            })
+            .catch(error => console.log('error', error));
+            this.setState({
+                total:data.total,
+                info:data.list,
+                pagination:{
+                    current: page,
+                    position:['none', 'bottomCenter']
+                }
+            })
+    }
+
     goUserDetail(id) {
         console.log(id);
     }
-    //处理表单变化
-    handleTableChange = (pagination) => {
-        const pager = { ...this.state.pagination };
-        pager.current = pagination.current;
-        //改变当前页
-        this.setState({
-            pagination: pager,
-        });
-        this.fetch({
-            pageSize: pagination.pageSize, //一次显示10条数据
-            pageNum: pagination.current, //当前页数
-        })
-    }
+    // //处理表单变化
+    // handleTableChange = (pagination) => {
+    //     const pager = { ...this.state.pagination };
+    //     pager.current = pagination.current;
+    //     //改变当前页
+    //     this.setState({
+    //         pagination: pager,
+    //     });
+    //     this.fetch({
+    //         pageSize: pagination.pageSize, //一次显示10条数据
+    //         pageNum: pagination.current, //当前页数
+    //     })
+    // }
 
     render() {
         return (
@@ -66,7 +138,7 @@ class UserIndex extends Component {
                 dataSource={this.state.data}
                 pagination={this.state.pagination}
                 loading={this.state.loading}
-                onChange={this.handleTableChange}
+                onChange={this.changePage.bind(this)}
             />
         )
     }

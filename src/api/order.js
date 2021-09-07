@@ -60,7 +60,8 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
                     return result;
                 }
                 else{
-                    alert("fail");
+                    alert('购买失败,库存不足');
+                    return new Promise((resolve, reject) => {});
                 }
             })
             // .then(result=>{
@@ -88,14 +89,14 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
                     params2.push(temp);
                 }
                 console.log(params2);
-                // props.history.push({
-                // pathname:'../order',
-                // state:{
-                //     'info': params2,
-                //     'orderid': result[0],
-                //     'price': result[1]
-                // }
-                // });
+                props.history.push({
+                pathname:'../order',
+                state:{
+                    'info': params2,
+                    'orderid': result[0],
+                    'price': result[1]
+                }
+                });
             }
             )
         }))
