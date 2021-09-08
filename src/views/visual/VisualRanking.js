@@ -7,39 +7,35 @@ import './VisualRanking.css'
 const configdata = {
   data: [
     {
-      name: '日常养护',
+      name: '联想小新',
       value: 55,
     },
     {
-      name: '交通事故',
+      name: '苹果手机',
       value: 120,
     },
     {
-      name: '路面',
+      name: '小米电视',
       value: 78,
     },
     {
-      name: '桥通',
+      name: '华为手表',
       value: 66,
     },
     {
-      name: '计日工',
+      name: '女士香水',
       value: 80,
     },
     {
-      name: '路基',
+      name: '食品',
       value: 45,
     },
     {
-      name: '交安设施',
+      name: '酒水',
       value: 29,
     },
     {
-      name: '除雪',
-      value: 29,
-    },
-    {
-      name: '绿化',
+      name: '服装',
       value: 29,
     },
   ],
@@ -51,12 +47,8 @@ class VisualRanking extends React.Component{
         let temp = configdata;
         return (
           <div id="ranking-board">
-            <div className="ranking-board-title">巡查上报记录数量</div>
+            <div className="ranking-board-title">商品销量量显示</div>
             <CapsuleChart config={temp} />
-            {/* <div className="ranking-board-title">巡查上报记录数量</div>
-            <CapsuleChart config={temp} />
-            <div className="ranking-board-title">巡查上报记录数量</div>
-            <CapsuleChart config={temp} /> */}
           </div>
         );
     }

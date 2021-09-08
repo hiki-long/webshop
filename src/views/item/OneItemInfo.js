@@ -44,7 +44,7 @@ class OneItemInfo extends React.Component{
             name: data.name,
             price: data.price,
             owner: data.owner,
-            description:data.description
+            description:data.description,
         })
     }
     

@@ -54,6 +54,7 @@ class Navigate extends React.Component{
         message.info(result ? "注销成功" : "注销失败");
         if(result) {
             window.location.reload();
+            window.location = 'http://localhost:3000/login'
         }
     }
 

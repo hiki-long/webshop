@@ -12,22 +12,20 @@ function getData() {
         radius: '50%',
         roseSort: false,
         data: [
-          { name: '路基', value: randomExtend(40, 70) },
-          { name: '交安设施', value: randomExtend(20, 30) },
-          { name: '日常养护', value: randomExtend(10, 50) },
-          { name: '桥通', value: randomExtend(5, 20) },
-          { name: '交通事故', value: randomExtend(40, 50) },
-          { name: '路面', value: randomExtend(20, 30) },
-          { name: '绿化', value: randomExtend(5, 10) },
-          { name: '计日工', value: randomExtend(20, 35) },
-          { name: '除雪', value: randomExtend(5, 10) },
+          { name: '苹果', value: randomExtend(40, 70) },
+          { name: '联想', value: randomExtend(10, 50) },
+          { name: '三只松鼠', value: randomExtend(5, 20) },
+          { name: '华为', value: randomExtend(40, 50) },
+          { name: '蒙牛', value: randomExtend(20, 30) },
+          { name: '小米', value: randomExtend(20, 30) },
+          { name: '松下', value: randomExtend(5, 10) },
         ],
         insideLabel: {
           show: false,
         },
         outsideLabel: {
           formatter: '{name} {percent}%',
-          labelLineEndLength: 20,
+          labelLineEndLength: 15,
           style: {
             fill: '#fff',
           },
@@ -79,7 +77,7 @@ class RoseChart extends React.Component {
         let temp = getData();
         return (
           <div id="rose-chart">
-            <div className="rose-chart-title">累计计量资金分布</div>
+            <div className="rose-chart-title">累计销量资金分布</div>
             <Charts style={{height: "400px"}} option={temp} />
           </div>
         )

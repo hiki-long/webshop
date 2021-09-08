@@ -47,7 +47,7 @@ class OrderList extends React.Component {
             };
             PayDone(params2);
             var index = window.location.href.lastIndexOf('/');
-        window.location = window.location.href.slice(0, index+1) + '/shoppingcart';
+        window.location = window.location.href.slice(0, index+1) + 'shoppingcart';
         }, 2000);
     }
 
@@ -59,7 +59,7 @@ class OrderList extends React.Component {
 
     goBackShoppingCart() {
         var index = window.location.href.lastIndexOf('/');
-        window.location = window.location.href.slice(0, index+1) + '/shoppingcart';
+        window.location = window.location.href.slice(0, index+1) + 'shoppingcart';
     }
 
     render() {

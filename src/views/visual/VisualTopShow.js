@@ -4,9 +4,9 @@ import { DigitalFlop, Decoration10 } from '@jiaminghi/data-view-react'
 function getData() {
     return [
         {
-        title: '管养里程',
+        title: '食品类',
         number: {
-            number: [randomExtend(20000, 30000)],
+            number: [61],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -14,12 +14,12 @@ function getData() {
             fontWeight: 'bold',
             },
         },
-        unit: '公里',
+        unit: '个',
         },
         {
-        title: '桥梁',
+        title: '电器类',
         number: {
-            number: [randomExtend(20, 30)],
+            number: [245],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -27,12 +27,12 @@ function getData() {
             fontWeight: 'bold',
             },
         },
-        unit: '座',
+        unit: '个',
         },
         {
-        title: '涵洞隧道',
+        title: '手机类',
         number: {
-            number: [randomExtend(20, 30)],
+            number: [236],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -43,9 +43,9 @@ function getData() {
         unit: '个',
         },
         {
-        title: '匝道',
+        title: '香水类',
         number: {
-            number: [randomExtend(10, 20)],
+            number: [24],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -56,9 +56,9 @@ function getData() {
         unit: '个',
         },
         {
-        title: '隧道',
+        title: '酒类',
         number: {
-            number: [randomExtend(5, 10)],
+            number: [31],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -69,48 +69,9 @@ function getData() {
         unit: '个',
         },
         {
-        title: '服务区',
+        title: '服装类',
         number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-            fill: '#40faee',
-            fontWeight: 'bold',
-            },
-        },
-        unit: '个',
-        },
-        {
-        title: '收费站',
-        number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-            fill: '#4d99fc',
-            fontWeight: 'bold',
-            },
-        },
-        unit: '个',
-        },
-        {
-        title: '超限站',
-        number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-            fill: '#f46827',
-            fontWeight: 'bold',
-            },
-        },
-        unit: '个',
-        },
-        {
-        title: '停车区',
-        number: {
-            number: [randomExtend(5, 10)],
+            number: [10],
             content: '{nt}',
             textAlign: 'right',
             style: {
