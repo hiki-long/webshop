@@ -13,7 +13,7 @@ const mockData = [
 
 const columns = [{
     title: '用户id',
-    dataIndex: 'id',
+    dataIndex: 'uuid',
 }, {
     title: '用户名',
     dataIndex: 'username',
@@ -60,7 +60,7 @@ class UserIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        console.log(data.data);
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -68,9 +68,9 @@ class UserIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
+                    total:data.total,
                     current: 1,
                     position:['none', 'bottomCenter']
                 }
@@ -79,7 +79,7 @@ class UserIndex extends Component {
 
     async changePage(page,pageSize){
         let urlencoded = new URLSearchParams();
-        urlencoded.append("page", 1);
+        urlencoded.append("page", page.current);
         urlencoded.append("size", 10);
         let requestOptions = {
             method: 'POST',
@@ -96,7 +96,7 @@ class UserIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        console.log(data.data);
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -104,10 +104,10 @@ class UserIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
-                    current: page,
+                    total:data.total,
+                    current: page.current,
                     position:['none', 'bottomCenter']
                 }
             })
@@ -134,8 +134,8 @@ class UserIndex extends Component {
         return (
             <Table
                 style={{marginLeft: "260px"}}
-                columns={columns} rowKey='id'
-                dataSource={this.state.data}
+                columns={columns} rowKey='uuid'
+                dataSource={this.state.info}
                 pagination={this.state.pagination}
                 loading={this.state.loading}
                 onChange={this.changePage.bind(this)}

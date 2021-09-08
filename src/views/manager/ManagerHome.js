@@ -67,12 +67,12 @@ class ManagerHome extends React.Component{
                     <Layout style={{backgroundColor: 'white'}}>
                         <Content>
                             <Switch>
-                                <Route path="/manage" component={ManagerMainPage}></Route>
-                                <Route path="/product-index" component={ProductIndex}></Route>
-                                <Route path="/order-index" component={OrderIndex}></Route>
-                                <Route path="/user-index" component={UserIndex}></Route>
-                                <Route path="/itemUpload" component={UpdateBasic}></Route>
-                                <Route path="/showupload" component={ShowUpload}></Route>      
+                                <Route exact path="/manage" component={ManagerMainPage}></Route>
+                                <Route exact path="/product-index" component={ProductIndex}></Route>
+                                <Route exact path="/order-index" component={OrderIndex}></Route>
+                                <Route exact path="/user-index" component={UserIndex}></Route>
+                                <Route exact path="/itemUpload" component={UpdateBasic}></Route>
+                                <Route exact path="/showupload" component={ShowUpload}></Route>      
                             </Switch>
                         </Content>
                     </Layout>

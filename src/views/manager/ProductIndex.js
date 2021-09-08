@@ -20,7 +20,7 @@ class ProductIndex extends Component {
 
         this.columns = [{
             title: '商品ID',
-            dataIndex: 'id',
+            dataIndex: 'uuid',
         }, {
             title: '商品信息',
             dataIndex: 'name',
@@ -29,12 +29,12 @@ class ProductIndex extends Component {
             dataIndex: 'price',
         }, {
             title: '状态',
-            dataIndex: 'status',
+            dataIndex: 'onsale',
             render: (text, record) => {
                 return (
                     <div className='status-box'>
-                        <div className='status-info'>{text === 1 ? '在售' : '已下架'}</div>
-                        <Button onClick={() => {this.onSetProductStatus(record.id,text)}}>{text === 1 ? '下架' : '上架'}</Button>
+                        <div className='status-info'>{text === true ? '在售' : '已下架'}</div>
+                        <Button onClick={() => {this.onSetProductStatus(record.id,text)}}>{text === true ? '下架' : '上架'}</Button>
                     </div>
                 )
             }
@@ -44,8 +44,8 @@ class ProductIndex extends Component {
                 return (
                     <div className='operating'>
                         <Space>
-                            <a onClick={() => {this.goProductDetail(record.id)}}>详情</a>
-                            <a onClick={() => {this.goProductEdit(record.id)}}>编辑</a>
+                            <a onClick={() => {this.goProductDetail(record.uuid)}}>详情</a>
+                            <a onClick={() => {this.goProductEdit(record.uuid)}}>编辑</a>
                         </Space>
                     </div>
 
@@ -103,17 +103,50 @@ class ProductIndex extends Component {
         })
     }
     //跳转商品详情页
-    goProductDetail = (id) => {
-        const sumbitInfo = {
-            name: "测试",
-            owner: "御主",
-            remain: 100,
-            type: "手机",
-            onSale: true,
-            description: "描述",
-            price: 200,
-            image: "https://img11.360buyimg.com/ceco/s600x600_jfs/t1/142625/26/10681/43504/5f8666feE37892e29/317e4af1178ebf8f.jpg!q70.jpg"
+    async goProductDetail (uuid) {
+        // const sumbitInfo = {
+        //     name: "测试",
+        //     owner: "御主",
+        //     remain: 100,
+        //     type: "手机",
+        //     onSale: true,
+        //     description: "描述",
+        //     price: 200,
+        //     image: "https://img11.360buyimg.com/ceco/s600x600_jfs/t1/142625/26/10681/43504/5f8666feE37892e29/317e4af1178ebf8f.jpg!q70.jpg"
+        // };
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            mode: 'cors',
+            headers: {
+                'Access-Control-Allow-Origin':'*', 
+                'Access-Control-Allow-Credentials':'true',
+            },
+            withCredentials: true,
         };
+        const detail = await fetch("http://localhost:8089/item/detail?id=" + uuid, requestOptions)
+                        .then(
+                            (response) => {
+                                return response.json().then(
+                                    data => {
+                                        if(data.code === 200){
+                                            return data.data
+                                        }
+                                    }
+                                )
+                            }
+                        );
+        console.log(detail);
+        const sumbitInfo = {
+            name: detail.name,
+            owner: detail.owner,
+            remain: detail.remain,
+            type: detail.type,
+            onSale: detail.onsale,
+            description: detail.description,
+            price: detail.price,
+            image: JSON.parse(detail.image)[0]
+        }
         this.props.history.push({
             pathname: '/showupload',
             state: {
@@ -132,6 +165,7 @@ class ProductIndex extends Component {
     }
 
     async componentDidMount() {
+        // console.log("mount !!!");
         let urlencoded = new URLSearchParams();
         urlencoded.append("page", 1);
         urlencoded.append("size", 10);
@@ -150,7 +184,7 @@ class ProductIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        //console.log(data.data)
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -158,9 +192,9 @@ class ProductIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
+                    total: data.total,
                     current: 1,
                     position:['none', 'bottomCenter']
                 }
@@ -168,8 +202,9 @@ class ProductIndex extends Component {
     }
 
     async changePage(page,pageSize){
+        console.log(page);
         let urlencoded = new URLSearchParams();
-        urlencoded.append("page", page);
+        urlencoded.append("page", page.current);
         urlencoded.append("size", 10);
         let requestOptions = {
             method: 'POST',
@@ -186,7 +221,7 @@ class ProductIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        console.log(data.data);
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -194,10 +229,10 @@ class ProductIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
-                    current: page,
+                    total: data.total,
+                    current: page.current,
                     position:['none', 'bottomCenter']
                 }
             })
@@ -238,8 +273,8 @@ class ProductIndex extends Component {
                 </div>
                 <Table
                     style={{marginLeft: "260px"}}
-                    columns={this.columns} rowKey='id'
-                    dataSource={this.state.dataList}
+                    columns={this.columns} rowKey='uuid'
+                    dataSource={this.state.info}
                     pagination={this.state.pagination}
                     loading={this.state.loading}
                     onChange={this.changePage.bind(this)}

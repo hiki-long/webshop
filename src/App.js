@@ -42,6 +42,12 @@ function App() {
             <Route component={ManagerHome} path="/manage" />
             <Route component={VisualMain} path="/visual" />
             <Route component={ManagerSider} path={["/manage" , "/product-index", "/order-index", "/user-index", "/itemUpload", "/showupload"]} />
+            <Route exact path="/manage" component={ManagerMainPage}></Route>
+            <Route exact path="/product-index" component={ProductIndex}></Route>
+            <Route exact path="/order-index" component={OrderIndex}></Route>
+            <Route exact path="/user-index" component={UserIndex}></Route>
+            <Route exact path="/itemUpload" component={UpdateBasic}></Route>
+            <Route exact path="/showupload" component={ShowUpload}></Route>
         </ScrollToTop>
       </BrowserRouter>
       

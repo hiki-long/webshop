@@ -17,20 +17,22 @@ const { Panel } = Collapse;
 //     }
 // ];
 function JsonToList(str) {
-    //将"[{itemUUID=03ebf1cf-f423-4c25-bad2-88aa1a67396b,number=1}]"反序列化为对象数组
-    //[{itemUUID: xxx, number: xxx}]
-    console.log(str);
+    // console.log(str);
     var res = [];
     var parsedJSON = JSON.parse(str);
     console.log(parsedJSON);
-    // for(var i=0; i<parsedJSON.length;i++) {
-    //     res.push({
-    //         uuid: parsedJSON[i].itemUUID,
-    //         number: parsedJSON[i].number
-    //     });
-    // }
-    // console.log(res);
-    // return res;
+    for(var i=0; i<parsedJSON.length;i++) {
+        res.push({
+            uuid: parsedJSON[i].itemUUID,
+            number: parsedJSON[i].number,
+            name: parsedJSON[i].name,
+            owner: parsedJSON[i].owner,
+            price: parsedJSON[i].totalPrice,
+            url: JSON.parse(parsedJSON[i].url)[0]
+        });
+    }
+    console.log(res);
+    return res;
 }
 
 //用户个人页面
@@ -53,16 +55,7 @@ class UserBasicInfo extends React.Component{
             this.setState({
                 orderlist: res
             });
-            console.log(this.state.orderlist);
-            // var temp = new Map();
-            // for(var index in res) {
-            //     var temp2 = this.JsonToList.bind(this, res[index].items);
-            //     temp.set(res[index].items, temp2);
-            // }
-            // this.setState({
-            //     ordermap: temp
-            // })
-            // console.log(this.state.ordermap);
+            // console.log(this.state.orderlist);
         }
     }
 
@@ -106,8 +99,19 @@ class UserBasicInfo extends React.Component{
                                         bordered
                                         dataSource={JsonToList(item.items)}
                                         renderItem={item2 => (
-                                            <p>"yes"</p>
-
+                                            <List.Item>
+                                                <List.Item.Meta
+                                                    avatar={<Image src={item2.url} width="50px" height="50px" preview={false} />}
+                                                    title={<div>商品{item2.name}已发货</div>}
+                                                    description={<div>发货时间 {d1}</div>}
+                                                />
+                                                <Space>
+                                                    {/* <Button onClick={this.onTest}>查看订单详情</Button> */}
+                                                    <div>数量*{item2.number}</div>
+                                                    <div>价格{item2.price}</div>
+                                                    <Button type="primary">确认收货</Button>
+                                                </Space>
+                                            </List.Item>
                                         )}
                                         />
                                 </Panel>

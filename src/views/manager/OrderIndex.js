@@ -15,19 +15,29 @@ const mockdata = [
 
 const columns = [{
     title: '订单号',
-    dataIndex: 'orderNo',
+    dataIndex: 'uuid',
 }, {
     title: '收件人',
-    dataIndex: 'receiverName',
+    dataIndex: 'buyer',
 }, {
     title: '订单状态',
-    dataIndex: 'statusDesc',
+    dataIndex: 'paid',
+    render: (text, record) => {
+        return (
+            <div>{text === true ? '已完成' : '未完成'}</div>
+        )
+    }
 }, {
     title: '订单总价',
-    dataIndex: 'payment',
+    dataIndex: 'price',
+    render: (text, record) => {
+        return (
+            <div>￥{text}</div>
+        )
+    }
 }, {
     title: '创建时间',
-    dataIndex: 'createTime',
+    dataIndex: 'time',
 },{
     title: '操作',
     dataIndex: 'orderItemVoList',
@@ -72,7 +82,7 @@ class OrderIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        //console.log(data.data)
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -80,9 +90,9 @@ class OrderIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
+                    total:data.total,
                     current: 1,
                     position:['none', 'bottomCenter']
                 }
@@ -91,7 +101,7 @@ class OrderIndex extends Component {
 
     async changePage(page,pageSize){
         let urlencoded = new URLSearchParams();
-        urlencoded.append("page", page);
+        urlencoded.append("page", page.current);
         urlencoded.append("size", 10);
         let requestOptions = {
             method: 'POST',
@@ -108,7 +118,7 @@ class OrderIndex extends Component {
             .then((response) => {
                 return response.json().then(data => {
                     if (data.code===200){
-                        console.log(data.data);
+                        // console.log(data.data);
                         return data.data;
                     }
                 })
@@ -116,10 +126,10 @@ class OrderIndex extends Component {
             })
             .catch(error => console.log('error', error));
             this.setState({
-                total:data.total,
                 info:data.list,
                 pagination:{
-                    current: page,
+                    total:data.total,
+                    current: page.current,
                     position:['none', 'bottomCenter']
                 }
             })
@@ -183,8 +193,8 @@ class OrderIndex extends Component {
                 </div>
                 <Table
                     style={{marginLeft: "260px"}}
-                    columns={columns} rowKey='orderNo'
-                    dataSource={this.state.orderList}
+                    columns={columns} rowKey='uuid'
+                    dataSource={this.state.info}
                     pagination={this.state.pagination}
                     loading={this.state.loading}
                     onChange={this.changePage.bind(this)}

@@ -62,7 +62,7 @@ class ItemList extends React.Component{
             })
     }
 
-    itemOnClick(key){
+        itemOnClick(key){
         this.props.history.push({
             pathname:'../test',
             state:{
