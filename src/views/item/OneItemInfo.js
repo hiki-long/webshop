@@ -12,25 +12,25 @@ import RecommendBar from './RecommendBar';
 
 const mockdata = [
     {
-        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        uuid: "019d83e3-7566-4c7d-8a2a-a07f8e1519f1",
         name: "创维",
         price: 1389,
         image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
     },
     {
-        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        uuid: "019d83e3-7566-4c7d-8a2a-a07f8e1519f1",
         name: "创维",
         price: 1389,
         image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
     },
     {
-        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        uuid: "019d83e3-7566-4c7d-8a2a-a07f8e1519f1",
         name: "创维",
         price: 1389,
         image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
     },
     {
-        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        uuid: "019d83e3-7566-4c7d-8a2a-a07f8e1519f1",
         name: "创维",
         price: 1389,
         image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
