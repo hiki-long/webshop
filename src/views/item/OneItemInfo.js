@@ -8,6 +8,35 @@ import ProductBuyButton from './ProductBuyButton';
 import { SubmitOrder } from '../../api/order';
 import { SubmitOneCart } from '../../api/cart';
 import marked from 'marked'
+import RecommendBar from './RecommendBar';
+
+const mockdata = [
+    {
+        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        name: "创维",
+        price: 1389,
+        image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
+    },
+    {
+        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        name: "创维",
+        price: 1389,
+        image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
+    },
+    {
+        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        name: "创维",
+        price: 1389,
+        image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
+    },
+    {
+        uuid: "001d12d6-7812-4c82-b810-89abc830017c",
+        name: "创维",
+        price: 1389,
+        image: "https://img10.360buyimg.com/n1/jfs/t1/201505/2/5311/139512/6134588aE68d765c2/68f46e68d5d62939.jpg"
+    }
+
+]
 
 //商品详情页面
 class OneItemInfo extends React.Component{
@@ -99,6 +128,11 @@ class OneItemInfo extends React.Component{
                             <ProductNumber ChangeNumber={this.ChangeNumber}/>
                             <ProductBuyButton onPurchase={this.onPurchase.bind(this, uuid, number, owner)} onAddShoppingCart={this.onAddShoppingCart.bind(this, uuid, number)}/>
                         </Space>
+                    </Col>
+                </Row>
+                <Row justify="center" style={{marginTop:"30px"}}>
+                    <Col offset={4}>
+                        <RecommendBar recommend={mockdata} />
                     </Col>
                 </Row>
                 <Row justify="center" >
