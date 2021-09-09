@@ -2,13 +2,19 @@ import { Space, Col, Row } from 'antd';
 import { width } from 'dom-helpers';
 import React from 'react';
 import ItemCard from '../itemlist/ItemCard';
+import OneItemInfo from './OneItemInfo';
 
 class RecommendBar extends React.Component {
     constructor(props) {
         super(props);
+        // console.log(props.recommend);
         this.state = {
             recommend: props.recommend
-        }
+        };
+    }
+
+    async componentDidMount() {
+        console.log(this.state.recommend);
     }
 
     render() {

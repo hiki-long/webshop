@@ -62,13 +62,35 @@ class ItemList extends React.Component{
             })
     }
 
-        itemOnClick(key){
-        this.props.history.push({
-            pathname:'../test',
-            state:{
-                'uuid':key
+        async itemOnClick(key){
+            let urlencode = new URLSearchParams();
+            urlencode.append("itemUUID", key);
+            let requestOptions = {
+                method: 'POST',
+                redirect: 'follow',
+                mode: 'cors',
+                body: urlencode,
+                credentials: 'include',
+                'Access-Control-Allow-Credentials':'true',
             }
-        })
+            fetch('http://localhost:8089/item/recordLike', requestOptions).then(
+                (response) => {
+
+                }
+            ).then(
+                this.props.history.push({
+                    pathname:'../test',
+                    state:{
+                        'uuid':key
+                    }
+                })
+            )
+        // this.props.history.push({
+        //     pathname:'../test',
+        //     state:{
+        //         'uuid':key
+        //     }
+        // })
     }
     async changePage(page,pageSize){
         let requestOptions = {
