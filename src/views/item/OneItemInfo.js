@@ -63,7 +63,7 @@ class OneItemInfo extends React.Component{
         .then((response) =>{
             return response.json().then(data => {
                 if (data.code===200){
-                    console.log(data.data)
+                    // console.log(data.data)
                     return data.data;
                 }
             })
@@ -132,7 +132,7 @@ class OneItemInfo extends React.Component{
                 </Row>
                 <Row justify="center" style={{marginTop:"30px"}}>
                     <Col offset={4}>
-                        <RecommendBar recommend={mockdata} />
+                        <RecommendBar recommend={mockdata} url={"http://localhost:8089/item/getItemRecommend"} ishome={false} uuid={uuid}/>
                     </Col>
                 </Row>
                 <Row justify="center" >

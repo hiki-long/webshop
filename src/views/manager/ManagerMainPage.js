@@ -59,14 +59,6 @@ class ManagerMainPage extends Component {
         }))
         .catch((error=>console.log(error)));
 
-        // let data = {
-        //     userCount: 100,
-        //     productCount: 100,
-        //     orderCount: 100
-        // };
-        // this.setState({
-        //     count: data
-        // });
     }
 
 

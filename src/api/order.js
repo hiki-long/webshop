@@ -41,6 +41,7 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
     console.log(orderlist);
     urlencoded.append("orderlist", orderlist);
     urlencoded.append("wishlist", wishlist);
+    urlencoded.append("isDirect", isDirectBuy);
     let requestOptions = {
         method:'POST',
         redirect: 'follow',

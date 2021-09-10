@@ -10,7 +10,10 @@ class RecommendBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            recommend: undefined
+            recommend: undefined,
+            url: props.url,
+            ishome: props.ishome,
+            uuid: props.uuid
         }
     }
 
@@ -22,11 +25,16 @@ class RecommendBar extends React.Component {
             'Access-Control-Allow-Credentials':'true',
         }
 
-        const data = await fetch("http://localhost:8089/item/getRecommend", requestOptions)
+        let requesturl = this.state.url;
+        if(!this.state.ishome) {
+            requesturl += "?itemUUID=" + this.state.uuid;
+        }
+
+        const data = await fetch(requesturl, requestOptions)
         .then((response=> {
             return response.json().then(data=>{
                 if(data.code===200){
-                    // console.log(data.data);
+                    console.log(data.data);
                     return data.data;
                 }
                 return undefined

@@ -74,7 +74,7 @@ class Home extends React.Component {
                 <ItemList />
                 <Row justify="center" style={{marginTop:"30px"}}>
                     <Col offset={4}>
-                        <RecommendBar recommend={this.state.recommend} />
+                        <RecommendBar recommend={this.state.recommend} url={"http://localhost:8089/item/getRecommend"} ishome={true} />
                     </Col>
                 </Row>
             </div>
