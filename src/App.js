@@ -17,7 +17,6 @@ import OrderList from './views/order/OrderList';
 import ScrollToTop from './views/utils/ScrollToTop'
 import ManagerHome from './views/manager/ManagerHome';
 import VisualMain from './views/visual/VisualMain';
-import ManagerMainPage from './views/manager/ManagerMainPage';
 import ProductIndex from './views/manager/ProductIndex';
 import OrderIndex from './views/manager/OrderIndex';
 import UserIndex from './views/manager/UserIndex';

@@ -96,6 +96,7 @@ class RecommendBar extends React.Component {
                     'uuid':value
                 }
             })
+            window.location.reload();
         })
     }
 

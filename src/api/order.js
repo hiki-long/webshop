@@ -61,7 +61,7 @@ export async function SubmitOrder(params, data2, props, isDirectBuy) {
                     return result;
                 }
                 else{
-                    alert('购买失败,库存不足');
+                    alert('购买失败');
                     return new Promise((resolve, reject) => {});
                 }
             })
